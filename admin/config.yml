@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: 'nl'
+
+collections:
+
+  # ── NIEUWS ──────────────────────────────────────
+  - name: "nieuws"
+    label: "Nieuws"
+    label_singular: "Nieuwsbericht"
+    folder: "content/nieuws"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{datum}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string", hint: "De titel van het nieuwsbericht" }
+      - { label: "Datum", name: "datum", widget: "datetime", format: "DD/MM/YYYY", date_format: "DD/MM/YYYY", time_format: false }
+      - { label: "Omslagfoto", name: "foto", widget: "image", required: false, hint: "Aanbevolen formaat: 800x500px" }
+      - { label: "Korte samenvatting", name: "samenvatting", widget: "string", hint: "Wordt getoond op de homepage (max. 120 tekens)" }
+      - { label: "Volledige tekst", name: "body", widget: "markdown" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Gepubliceerd", value: "gepubliceerd" }
+          - { label: "Concept (niet zichtbaar)", value: "concept" }
+        default: "gepubliceerd"
+
+  # ── PROGRAMMA ────────────────────────────────────
+  - name: "programma"
+    label: "Programma"
+    label_singular: "Wedstrijd"
+    folder: "content/programma"
+    create: true
+    slug: "{{volgorde}}-{{slug}}"
+    summary: "{{starttijd}} — {{naam}}"
+    fields:
+      - { label: "Naam wedstrijd", name: "naam", widget: "string", hint: "bv. Elite Mannen" }
+      - { label: "Categorie", name: "categorie", widget: "string", hint: "bv. Mannen Elite + U23 · Superprestige" }
+      - { label: "Starttijd", name: "starttijd", widget: "string", hint: "bv. 20:00" }
+      - { label: "Omschrijving starttijd", name: "starttijd_label", widget: "string", hint: "bv. Prime time" }
+      - { label: "Volgorde (1, 2, 3...)", name: "volgorde", widget: "number", value_type: "int" }
+
+  # ── SPONSORS ─────────────────────────────────────
+  - name: "sponsors"
+    label: "Sponsors & Partners"
+    label_singular: "Sponsor"
+    folder: "content/sponsors"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{naam}} — {{categorie}}"
+    fields:
+      - { label: "Naam", name: "naam", widget: "string" }
+      - { label: "Logo", name: "logo", widget: "image", hint: "Aanbevolen: PNG met transparante achtergrond" }
+      - { label: "Website (optioneel)", name: "website", widget: "string", required: false }
+      - label: "Categorie"
+        name: "categorie"
+        widget: "select"
+        options:
+          - { label: "Partners Diegem Cross", value: "partner" }
+          - { label: "Sponsors Telenet Superprestige", value: "superprestige" }
+      - { label: "Volgorde", name: "volgorde", widget: "number", value_type: "int", hint: "Lagere nummers komen eerst" }
+
+  # ── ALGEMENE INSTELLINGEN ────────────────────────
+  - name: "instellingen"
+    label: "Instellingen"
+    files:
+      - name: "algemeen"
+        label: "Algemene instellingen"
+        file: "content/instellingen/algemeen.json"
+        fields:
+          - { label: "Datum evenement", name: "datum", widget: "string", hint: "bv. 30 december 2026" }
+          - { label: "Editie (nummer)", name: "editie", widget: "string", hint: "bv. 51ste" }
+          - { label: "Hero foto (grote achtergrond)", name: "hero_foto", widget: "image" }
+          - { label: "Sfeer foto (middelste sectie)", name: "sfeer_foto", widget: "image" }
+          - { label: "VIP foto", name: "vip_foto", widget: "image" }
+          - { label: "Ticketlink", name: "ticket_url", widget: "string", hint: "Volledige URL naar het ticketplatform" }
+          - { label: "Contact e-mail", name: "email", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Instagram URL", name: "instagram", widget: "string" }
+          - { label: "Twitter/X URL", name: "twitter", widget: "string" }
