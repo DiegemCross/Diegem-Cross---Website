@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.contact-card{background:var(--paneel);padding:48px 40px;}
+.contact-label{font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--groen);margin-bottom:16px;}
+.contact-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.04em;margin-bottom:28px;}
+.contact-info{display:flex;flex-direction:column;gap:16px;}
+.contact-row{display:flex;gap:16px;align-items:flex-start;}
+.contact-row-icon{width:36px;height:36px;background:var(--groen-dim);border:1px solid var(--groen-rand);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.contact-row-content{font-size:13px;color:var(--grijs);line-height:1.7;}
+.contact-row-content a{color:var(--groen);}
+.contact-row-content strong{color:var(--wit);display:block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.bestuur-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:48px;}
+.bestuur-card{background:var(--paneel);padding:28px 24px;border-top:2px solid var(--groen-rand);}
+.bestuur-rol{font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--groen);margin-bottom:8px;}
+.bestuur-naam{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.04em;margin-bottom:6px;}
+@media(max-width:768px){.contact-split{grid-template-columns:1fr;}.bestuur-grid{grid-template-columns:1fr;}.contact-card{padding:32px 24px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="#" data-social="facebook" target="_blank">Facebook</a>
+    <a href="#" data-social="instagram" target="_blank">Instagram</a>
+    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="info.html" >Info <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="deelnemers.html">Deelnemers</a>
+        <a href="inschrijvingen.html">Inschrijvingen</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="affiche.html">Affiche</a>
+        <a href="pers.html">Pers</a>
+        <a href="technische-gids.html">Technische gids</a>
+        <a href="reglement.html">Reglement</a>
+        <a href="uitslagen.html">Uitslagen</a>
+        <a href="erelijst.html">Erelijst</a>
+      </div></li>
+    <li><a href="bereikbaarheid.html" >Bereikbaarheid</a></li>
+    <li><a href="vip.html" >VIP <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="vip.html">VIP-formules</a>
+        <a href="sponsor.html">Word sponsor</a>
+      </div></li>
+    <li><a href="nieuws.html" >Nieuws</a></li>
+    <li><a href="media.html" >Media</a></li>
+    <li><a href="contact.html" class="active">Contact <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="contact.html">Contact</a>
+        <a href="bestuur.html">Bestuur</a>
+      </div></li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="programma.html">Programma</a>
+  <a href="info.html">Info</a>
+  <a href="bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="vip.html">VIP &amp; Hospitality</a>
+  <a href="nieuws.html">Nieuws</a>
+  <a href="media.html">Media</a>
+  <a href="contact.html">Contact</a>
+  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+</nav>
+<section class="page-hero">
+  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Neem contact op</div>
+    <h1>Contact</h1>
+  </div>
+</section>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">&rsaquo;</span><span class="current">Contact</span></div>
+<section class="sec">
+  <div class="container">
+    <div class="contact-split">
+      <div class="contact-card">
+        <div class="contact-label">Neem contact op</div>
+        <div class="contact-title">Contact</div>
+        <div class="contact-info">
+          <div class="contact-row">
+            <div class="contact-row-icon">&#x2709;</div>
+            <div class="contact-row-content">
+              <strong>E-mail</strong>
+              <a href="#" data-email>info@diegemcross.be</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">&#x1F4CD;</div>
+            <div class="contact-row-content">
+              <strong>Adres</strong>
+              Wielerclub Sint-Anna-Vooruit Diegem<br>
+              Dorpscentrum Diegem, 1831 Diegem
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">&#x1F4F1;</div>
+            <div class="contact-row-content">
+              <strong>Sociale media</strong>
+              <a href="#" data-social="facebook">Facebook</a> &nbsp;&middot;&nbsp;
+              <a href="#" data-social="instagram">Instagram</a> &nbsp;&middot;&nbsp;
+              <a href="#" data-social="twitter">Twitter/X</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">Perscontact</div>
+        <div class="contact-title">Pers &amp; Media</div>
+        <div class="contact-info">
+          <div class="contact-row">
+            <div class="contact-row-icon">&#x1F4F0;</div>
+            <div class="contact-row-content">
+              <strong>Persaccreditaties</strong>
+              Journalisten en fotografen kunnen een persaccreditatie aanvragen via e-mail. Vermeld uw naam, medium en wat u wil fotograferen/filmen.
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-row-icon">&#x1F4CE;</div>
+            <div class="contact-row-content">
+              <strong>Technische gids</strong>
+              <a href="technische-gids.html">Download technische gids</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:3px;">
+      <div class="contact-card" style="background:var(--paneel);">
+        <div class="contact-label">Het bestuur</div>
+        <div class="contact-title">Bestuur Diegem Cross</div>
+        <div class="bestuur-grid">
+          <div class="bestuur-card">
+            <div class="bestuur-rol">Voorzitter</div>
+            <div class="bestuur-naam">Peter Bosschaerts</div>
+          </div>
+          <div class="bestuur-card">
+            <div class="bestuur-rol">Ondervoorzitter</div>
+            <div class="bestuur-naam">Wender Decr&eacute;</div>
+          </div>
+          <div class="bestuur-card">
+            <div class="bestuur-rol">Penningmeester</div>
+            <div class="bestuur-naam">Koen Vanpoucke</div>
+          </div>
+          <div class="bestuur-card">
+            <div class="bestuur-rol">Secretaris</div>
+            <div class="bestuur-naam">Ruben Bosschaerts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
+      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="programma.html">Programma</a></li>
+        <li><a href="info.html">Info &amp; Deelnemers</a></li>
+        <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="inschrijvingen.html">Inschrijvingen</a></li>
+        <li><a href="reglement.html">Reglement</a></li>
+        <li><a href="technische-gids.html">Technische gids</a></li>
+        <li><a href="erelijst.html">Erelijst &amp; Uitslagen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="bestuur.html">Bestuur</a></li>
+        <li><a href="pers.html">Pers</a></li>
+        <li><a href="sponsor.html">Word sponsor</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="#" data-social="facebook" target="_blank">Facebook</a>
+      <a href="#" data-social="instagram" target="_blank">Instagram</a>
+      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+    </div>
+  </div>
+</footer>
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="js/main.js"></script>
+<script>
+(async()=>{
+  await applySettings();
+  const s = await getSettings();
+  const h = document.getElementById('pageHeroImg');
+  if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
+})();
+</script>
+
+</body>
+</html>

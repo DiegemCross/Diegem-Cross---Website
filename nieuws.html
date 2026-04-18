@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nieuws &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.nieuws-overzicht{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.nc{background:var(--paneel);display:flex;flex-direction:column;transition:background 0.3s;}
+.nc:hover{background:var(--paneel2);}
+.nc-foto{width:100%;height:220px;object-fit:cover;display:block;filter:brightness(0.8);transition:filter 0.4s,transform 0.5s;}
+.nc-foto-wrap{overflow:hidden;}
+.nc-foto-wrap:hover .nc-foto{filter:brightness(1);transform:scale(1.03);}
+.nc-body{padding:24px 22px;flex:1;display:flex;flex-direction:column;}
+.nc-date{font-size:9px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--groen);margin-bottom:10px;}
+.nc-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.04em;line-height:1.1;margin-bottom:10px;}
+.nc-text{font-size:13px;color:var(--grijs);line-height:1.65;flex:1;margin-bottom:16px;}
+.nc-link{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--groen);}
+.nc-link::after{content:' →';}
+@media(max-width:1100px){.nieuws-overzicht{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.nieuws-overzicht{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="#" data-social="facebook" target="_blank">Facebook</a>
+    <a href="#" data-social="instagram" target="_blank">Instagram</a>
+    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="info.html" >Info <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="deelnemers.html">Deelnemers</a>
+        <a href="inschrijvingen.html">Inschrijvingen</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="affiche.html">Affiche</a>
+        <a href="pers.html">Pers</a>
+        <a href="technische-gids.html">Technische gids</a>
+        <a href="reglement.html">Reglement</a>
+        <a href="uitslagen.html">Uitslagen</a>
+        <a href="erelijst.html">Erelijst</a>
+      </div></li>
+    <li><a href="bereikbaarheid.html" >Bereikbaarheid</a></li>
+    <li><a href="vip.html" >VIP <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="vip.html">VIP-formules</a>
+        <a href="sponsor.html">Word sponsor</a>
+      </div></li>
+    <li><a href="nieuws.html" class="active">Nieuws</a></li>
+    <li><a href="media.html" >Media</a></li>
+    <li><a href="contact.html" >Contact <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="contact.html">Contact</a>
+        <a href="bestuur.html">Bestuur</a>
+      </div></li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="programma.html">Programma</a>
+  <a href="info.html">Info</a>
+  <a href="bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="vip.html">VIP &amp; Hospitality</a>
+  <a href="nieuws.html">Nieuws</a>
+  <a href="media.html">Media</a>
+  <a href="contact.html">Contact</a>
+  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+</nav>
+<section class="page-hero">
+  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Laatste berichten</div>
+    <h1>Nieuws &amp;<br>updates</h1>
+  </div>
+</section>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">&rsaquo;</span><span class="current">Nieuws</span></div>
+<section class="sec">
+  <div class="container">
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">Alle berichten</div>
+        <h2 class="sec-title">Nieuws &amp;<br>updates</h2>
+      </div>
+    </div>
+    <div class="nieuws-overzicht" id="nieuwsOvz">
+      <div class="loading-state">Nieuws laden...</div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
+      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="programma.html">Programma</a></li>
+        <li><a href="info.html">Info &amp; Deelnemers</a></li>
+        <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="inschrijvingen.html">Inschrijvingen</a></li>
+        <li><a href="reglement.html">Reglement</a></li>
+        <li><a href="technische-gids.html">Technische gids</a></li>
+        <li><a href="erelijst.html">Erelijst &amp; Uitslagen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="bestuur.html">Bestuur</a></li>
+        <li><a href="pers.html">Pers</a></li>
+        <li><a href="sponsor.html">Word sponsor</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="#" data-social="facebook" target="_blank">Facebook</a>
+      <a href="#" data-social="instagram" target="_blank">Instagram</a>
+      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+    </div>
+  </div>
+</footer>
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="js/main.js"></script>
+<script>
+(async()=>{
+  await applySettings();
+  const s = await getSettings();
+  const h = document.getElementById('pageHeroImg');
+  if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
+})();
+</script>
+<script>
+(async()=>{
+  const grid = document.getElementById('nieuwsOvz');
+  const files = await fetchDir('content/nieuws');
+  const md = files.filter(f=>f.name&&f.name.endsWith('.md'));
+  const items=[];
+  for(const f of md){const t=await fetchText('content/nieuws/'+f.name);if(t){const{data}=parseFM(t);if(data.status!=='concept')items.push(data);}}
+  items.sort((a,b)=>{
+    const da=a.datum?a.datum.split('/').reverse().join('-'):'';
+    const db=b.datum?b.datum.split('/').reverse().join('-'):'';
+    return db.localeCompare(da);
+  });
+  const fb=[
+    {title:'Diegem Cross 2026 — 51ste editie op 30 december!',datum:'08/09/2025',foto:'https://www.diegemcross.be/wp-content/uploads/2025/09/50-jaar-300x300.png',samenvatting:'Op 30 december 2026 verwelkomt Diegem Cross opnieuw de wereldtop van het veldrijden.'},
+    {title:'Avondcross ook in 2026',datum:'08/09/2025',foto:'https://www.diegemcross.be/wp-content/uploads/2024/10/Posts-2025-1-300x300.png',samenvatting:'Ook in 2026 volledig onder kunstlicht — de unieke sfeer blijft gegarandeerd.'},
+    {title:'Del Grosso wint jubileumeditie 2025',datum:'30/12/2025',foto:'https://www.diegemcross.be/wp-content/uploads/2023/12/Winnaar-Elite-e1757405894946-300x300.png',samenvatting:'Na een spannend duel wint Tibor Del Grosso de 50ste gouden editie.'}
+  ];
+  const data=items.length?items:fb;
+  grid.innerHTML=data.map(item=>`
+    <div class="nc">
+      ${item.foto?`<div class="nc-foto-wrap"><img class="nc-foto" src="${item.foto}" alt="${item.title||''}" loading="lazy"></div>`:''}
+      <div class="nc-body">
+        <div class="nc-date">${item.datum||''}</div>
+        <div class="nc-title">${item.title||''}</div>
+        <div class="nc-text">${item.samenvatting||''}</div>
+        <a class="nc-link" href="#">Lees meer</a>
+      </div>
+    </div>`).join('');
+})();
+</script>
+</body>
+</html>

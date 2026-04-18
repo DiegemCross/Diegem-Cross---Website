@@ -1,744 +1,793 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" id="htmlRoot">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diegem Cross — 30 december 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;0,700;1,700&display=swap" rel="stylesheet">
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<meta name="description" content="Diegem Cross — de unieke avondcross met kunstlicht in het dorpscentrum van Diegem. 30 december 2026.">
+<link rel="stylesheet" href="css/style.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --groen: #00aa13;
-  --groen-dim: rgba(0,170,19,0.12);
-  --groen-rand: rgba(0,170,19,0.28);
-  --zwart: #000000;
-  --donker: #0d0d0d;
-  --paneel: #141414;
-  --wit: #ffffff;
-  --grijs: rgba(255,255,255,0.52);
+/* ── HOMEPAGE SPECIFIEK ── */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 640px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-top: 0;
 }
-html { scroll-behavior: smooth; }
-body { background: var(--zwart); color: var(--wit); font-family: 'Barlow', Arial, sans-serif; font-weight: 400; overflow-x: hidden; }
 
-/* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 68px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(0,0,0,0.92); backdrop-filter: blur(16px); border-bottom: 2px solid var(--groen); }
-.nav-logo img { height: 38px; width: auto; display: block; }
-.nav-links { display: flex; gap: 36px; list-style: none; }
-.nav-links a { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--grijs); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--groen); }
-.nav-right { display: flex; align-items: center; gap: 12px; }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; background: none; border: none; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--wit); }
-.nav-ticket { background: var(--groen); color: #000; font-size: 11px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 24px; text-decoration: none; white-space: nowrap; }
-.mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.97); z-index: 190; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
-.mobile-menu.open { display: flex; }
-.mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.06em; color: var(--wit); text-decoration: none; }
-.mobile-menu a:hover { color: var(--groen); }
-.mobile-menu .mob-ticket { background: var(--groen); color: #000; font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 900; letter-spacing: 0.14em; padding: 16px 40px; margin-top: 16px; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  animation: slowzoom 16s ease-out forwards;
+}
+@keyframes slowzoom { from{transform:scale(1.05)} to{transform:scale(1)} }
 
-/* HERO */
-.hero { position: relative; height: 100vh; min-height: 600px; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-.hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 30%; transform: scale(1.04); animation: slowzoom 14s ease-out forwards; }
-@keyframes slowzoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.97) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.1) 70%, transparent 100%), linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 60%); }
-.hero-glow { position: absolute; bottom: -10%; left: -5%; width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(0,170,19,0.12) 0%, transparent 70%); pointer-events: none; }
-.hero-content { position: relative; z-index: 2; padding: 0 48px 72px; max-width: 900px; }
-.hero-sup { display: inline-flex; align-items: center; gap: 10px; background: var(--groen-dim); border: 1px solid var(--groen-rand); color: var(--groen); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; padding: 7px 16px; margin-bottom: 24px; opacity: 0; animation: fadeup 0.7s 0.3s forwards; }
-.hero-sup::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--groen); animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.6)} }
-.hero-logo { display: block; height: clamp(80px, 14vw, 160px); width: auto; margin-bottom: 28px; opacity: 0; animation: fadeup 0.8s 0.5s forwards; }
-.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-bottom: 36px; opacity: 0; animation: fadeup 0.7s 0.7s forwards; }
-.hero-meta-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
-.hero-meta-item::before { content: ''; width: 14px; height: 2px; background: var(--groen); }
-.hero-meta-item strong { color: var(--wit); }
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: fadeup 0.7s 0.9s forwards; }
-.btn-groen { background: var(--groen); color: #000; font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 32px; text-decoration: none; display: inline-block; transition: opacity 0.2s, transform 0.15s; }
-.btn-groen:hover { opacity: 0.88; transform: translateY(-1px); }
-.btn-ghost { background: transparent; color: var(--wit); font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 15px 32px; text-decoration: none; border: 2px solid rgba(255,255,255,0.22); display: inline-block; transition: border-color 0.2s; }
-.btn-ghost:hover { border-color: var(--groen); color: var(--groen); }
-@keyframes fadeup { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.hero-countdown { position: absolute; bottom: 72px; right: 48px; z-index: 3; text-align: right; opacity: 0; animation: fadeup 0.7s 1.1s forwards; }
-.countdown-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grijs); margin-bottom: 8px; }
-.countdown-units { display: flex; gap: 3px; }
-.countdown-box { background: rgba(0,0,0,0.75); border: 1px solid var(--groen-rand); padding: 10px 14px 7px; min-width: 58px; text-align: center; }
-.countdown-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--groen); line-height: 1; display: block; }
-.countdown-sub { font-size: 8px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grijs); display: block; margin-top: 3px; }
-.hero-sp { position: absolute; top: 88px; right: 48px; z-index: 3; background: rgba(0,0,0,0.75); border: 1px solid var(--groen-rand); border-top: 2px solid var(--groen); padding: 14px 20px; text-align: right; opacity: 0; animation: fadeup 0.7s 1.3s forwards; }
-.hero-sp-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grijs); display: block; margin-bottom: 4px; }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.1) 65%, transparent 100%),
+    linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 55%);
+}
+
+.hero-glow {
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(0,170,19,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-sp {
+  position: absolute;
+  top: 0;
+  right: 48px;
+  z-index: 3;
+  background: rgba(0,0,0,0.8);
+  border: 1px solid var(--groen-rand);
+  border-top: 2px solid var(--groen);
+  padding: 16px 22px;
+  text-align: right;
+  opacity: 0;
+  animation: fadeup 0.7s 1.4s forwards;
+}
+.hero-sp-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grijs); display: block; margin-bottom: 4px; }
 .hero-sp-name { font-size: 14px; font-weight: 700; text-transform: uppercase; color: var(--wit); letter-spacing: 0.05em; display: block; }
-.hero-sp-manche { font-size: 11px; font-weight: 700; color: var(--groen); letter-spacing: 0.1em; display: block; margin-top: 4px; text-transform: uppercase; }
-.scroll-hint { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: 0; animation: fadeup 0.7s 1.5s forwards; }
+.hero-sp-manche { font-size: 11px; font-weight: 700; color: var(--groen); letter-spacing: 0.12em; display: block; margin-top: 5px; text-transform: uppercase; }
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 48px 80px;
+  max-width: 960px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--groen-dim);
+  border: 1px solid var(--groen-rand);
+  color: var(--groen);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 7px 16px;
+  margin-bottom: 26px;
+  opacity: 0;
+  animation: fadeup 0.7s 0.3s forwards;
+}
+.hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--groen); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.5)} }
+
+.hero-logo {
+  display: block;
+  height: clamp(90px, 16vw, 180px);
+  width: auto;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeup 0.9s 0.5s forwards;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeup 0.7s 0.7s forwards;
+}
+
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+.hero-meta-item::before { content: ''; width: 16px; height: 2px; background: var(--groen); flex-shrink: 0; }
+.hero-meta-item strong { color: var(--wit); }
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeup 0.7s 0.9s forwards;
+}
+
+.hero-countdown {
+  position: absolute;
+  bottom: 80px;
+  right: 48px;
+  z-index: 3;
+  opacity: 0;
+  animation: fadeup 0.7s 1.2s forwards;
+}
+.countdown-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grijs); margin-bottom: 10px; text-align: right; }
+.countdown-units { display: flex; gap: 3px; }
+.countdown-box { background: rgba(0,0,0,0.8); border: 1px solid var(--groen-rand); padding: 12px 16px 8px; min-width: 62px; text-align: center; }
+.countdown-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--groen); line-height: 1; display: block; }
+.countdown-sub { font-size: 8px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grijs); display: block; margin-top: 4px; }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeup 0.7s 1.6s forwards;
+}
 .scroll-hint span { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grijs); }
-.scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--groen), transparent); animation: scrolldrop 2s ease-in-out infinite; }
-@keyframes scrolldrop { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+.scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--groen), transparent); animation: scrolldrop 2s ease-in-out infinite; }
+@keyframes scrolldrop { 0%,100%{opacity:0.4} 50%{opacity:1} }
 
 /* TICKER */
-.ticker { background: var(--groen); height: 42px; overflow: hidden; display: flex; align-items: center; }
-.ticker-track { display: flex; animation: scroll 28s linear infinite; white-space: nowrap; }
-.ticker-item { font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; color: #000; padding: 0 40px; display: flex; align-items: center; gap: 18px; }
-.ticker-item::after { content: '●'; font-size: 6px; }
-@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.ticker { background: var(--groen); height: 44px; overflow: hidden; display: flex; align-items: center; }
+.ticker-track { display: flex; animation: tickscroll 30s linear infinite; white-space: nowrap; }
+.ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #000; padding: 0 44px; display: flex; align-items: center; gap: 20px; }
+.ticker-item::after { content: '◆'; font-size: 6px; }
+@keyframes tickscroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
 /* STATS */
-.stats { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--donker); border-bottom: 1px solid rgba(0,170,19,0.2); }
-.stat { padding: 36px 32px; border-right: 1px solid rgba(255,255,255,0.05); }
-.stat:last-child { border-right: none; }
-.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 58px; color: var(--groen); line-height: 1; letter-spacing: 0.02em; }
-.stat-num sup { font-size: 26px; vertical-align: super; }
+.stats-bar { display: grid; grid-template-columns: repeat(4,1fr); background: var(--donker); border-bottom: 1px solid rgba(0,170,19,0.2); }
+.stat-item { padding: 36px 32px; border-right: 1px solid rgba(255,255,255,0.05); }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: var(--groen); line-height: 1; letter-spacing: 0.02em; }
+.stat-num sup { font-size: 28px; vertical-align: super; }
 .stat-lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grijs); margin-top: 6px; }
 
-/* SECTIONS */
-.sec { padding: 96px 48px; }
-.sec-alt { background: var(--donker); }
-.sec-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: var(--groen); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
-.sec-lbl::before { content: ''; width: 28px; height: 2px; background: var(--groen); }
-.sec-h { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 7vw, 88px); letter-spacing: 0.03em; line-height: 0.95; margin-bottom: 52px; }
-.sec-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
-.sec-row .sec-h { margin-bottom: 0; }
-
-/* PROGRAMMA — dynamisch geladen */
-.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
+/* PROGRAMMA PREVIEW */
+.prog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
 .prog-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 32px 28px; position: relative; overflow: hidden; transition: background 0.3s; }
-.prog-card:hover { background: #1a1a1a; }
-.prog-card::after { content: attr(data-n); position: absolute; bottom: -14px; right: 14px; font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: rgba(0,170,19,0.05); line-height: 1; pointer-events: none; }
-.prog-time { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--groen); margin-bottom: 14px; }
-.prog-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; margin-bottom: 6px; }
-.prog-cat { font-size: 13px; color: var(--grijs); }
+.prog-card:hover { background: var(--paneel2); }
+.prog-card::after { content: attr(data-n); position: absolute; bottom: -16px; right: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 110px; color: rgba(0,170,19,0.04); line-height: 1; pointer-events: none; }
+.prog-time { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 14px; }
+.prog-name { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.04em; margin-bottom: 6px; }
+.prog-cat { font-size: 13px; color: var(--grijs); line-height: 1.5; }
 
-/* SFEER */
-.sfeer { position: relative; height: 70vh; min-height: 480px; overflow: hidden; display: flex; align-items: center; }
-.sfeer-img { position: absolute; inset: 0; background-size: cover; background-position: center 60%; filter: brightness(0.45); }
-.sfeer-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,170,19,0.08) 100%); }
-.sfeer-content { position: relative; z-index: 2; padding: 0 48px; max-width: 700px; }
-.sfeer-quote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 6vw, 72px); letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 24px; }
+/* SFEER BANNER */
+.sfeer-banner {
+  position: relative;
+  height: 65vh;
+  min-height: 460px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.sfeer-img { position: absolute; inset: 0; background-size: cover; background-position: center 60%; filter: brightness(0.4); }
+.sfeer-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.92) 0%, rgba(0,170,19,0.06) 100%); }
+.sfeer-content { position: relative; z-index: 2; padding: 0 48px; max-width: 780px; }
+.sfeer-quote { font-family: 'Bebas Neue', sans-serif; font-size: clamp(44px, 7vw, 84px); letter-spacing: 0.04em; line-height: 1.0; margin-bottom: 24px; }
 .sfeer-quote em { font-style: normal; color: var(--groen); }
-.sfeer-sub { font-size: 15px; color: rgba(255,255,255,0.65); font-weight: 300; line-height: 1.7; max-width: 480px; }
+.sfeer-sub { font-size: 16px; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.7; max-width: 520px; margin-bottom: 32px; }
 
-/* FOTO GRID */
-.foto-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 3px; }
-.foto-item { overflow: hidden; position: relative; background: var(--paneel); }
-.foto-item:first-child { grid-row: 1 / 3; }
-.foto-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.8); transition: transform 0.5s ease, filter 0.4s ease; }
-.foto-item:hover img { transform: scale(1.04); filter: brightness(1); }
-.foto-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px 16px; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-.foto-overlay-year { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--groen); letter-spacing: 0.06em; }
-
-/* NIEUWS — dynamisch geladen */
+/* NIEUWS */
 .nieuws-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3px; }
 .n-card { background: var(--paneel); border-left: 3px solid transparent; display: flex; flex-direction: column; transition: background 0.3s; }
-.n-card:hover { background: #1c1c1c; }
-.n-card.feat { border-left: 3px solid var(--groen); background: #0b180c; }
-.n-foto { width: 100%; height: 220px; object-fit: cover; display: block; filter: brightness(0.85); }
-.n-card.feat .n-foto { height: 280px; }
-.n-body { padding: 24px 22px; flex: 1; display: flex; flex-direction: column; }
-.n-date { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 10px; }
-.n-title { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 10px; }
-.n-card.feat .n-title { font-size: 26px; }
+.n-card:hover { background: var(--paneel2); }
+.n-card.feat { border-left: 3px solid var(--groen); background: #0c1a0d; }
+.n-foto { width: 100%; object-fit: cover; display: block; filter: brightness(0.82); transition: filter 0.4s; }
+.n-foto-wrap { overflow: hidden; }
+.n-foto-wrap:hover .n-foto { filter: brightness(1); transform: scale(1.03); transition: transform 0.5s, filter 0.4s; }
+.n-card.feat .n-foto { height: 300px; }
+.n-foto { height: 200px; }
+.n-body { padding: 26px 24px; flex: 1; display: flex; flex-direction: column; }
+.n-date { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 12px; }
+.n-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; line-height: 1.1; margin-bottom: 10px; }
+.n-card.feat .n-title { font-size: 28px; }
 .n-text { font-size: 13px; color: var(--grijs); line-height: 1.65; margin-bottom: 18px; flex: 1; }
-.n-link { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--groen); text-decoration: none; }
-.n-link::after { content: ' →'; }
+.n-link { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--groen); display: flex; align-items: center; gap: 6px; }
+.n-link::after { content: '→'; }
 
-/* BEREIKBAARHEID */
-.reach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; }
-.r-card { background: var(--paneel); padding: 32px 28px; border-top: 2px solid rgba(0,170,19,0.25); transition: border-top-color 0.3s; }
-.r-card:hover { border-top-color: var(--groen); }
-.r-icon { font-size: 28px; margin-bottom: 14px; }
-.r-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--groen); margin-bottom: 10px; }
-.r-text { font-size: 13px; color: var(--grijs); line-height: 1.65; }
+/* FOTO GRID */
+.foto-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 3px; }
+.foto-item { overflow: hidden; position: relative; background: var(--paneel); cursor: pointer; }
+.foto-item:first-child { grid-row: 1/3; }
+.foto-item img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.75); transition: transform 0.6s ease, filter 0.4s; }
+.foto-item:hover img { transform: scale(1.05); filter: brightness(1); }
+.foto-jaar { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px 16px; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); }
+.foto-jaar-num { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--groen); letter-spacing: 0.06em; }
 
-/* PARTNERS — dynamisch geladen */
-.part-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grijs); margin-bottom: 10px; }
-.part-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; margin-bottom: 24px; }
-.p-cell { background: var(--paneel); height: 72px; display: flex; align-items: center; justify-content: center; padding: 0 16px; border: 1px solid rgba(255,255,255,0.03); transition: background 0.2s; }
-.p-cell:hover { background: #1e1e1e; border-color: var(--groen-rand); }
-.p-cell a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; text-decoration: none; }
-.p-cell img { max-height: 44px; max-width: 90%; object-fit: contain; filter: grayscale(1) brightness(0.6); transition: filter 0.3s; }
-.p-cell:hover img { filter: grayscale(0) brightness(1); }
-.p-name { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.24); text-align: center; transition: color 0.2s; }
-.p-cell:hover .p-name { color: rgba(255,255,255,0.65); }
-
-/* VIP */
-.vip-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-.vip-foto { position: relative; overflow: hidden; }
-.vip-foto-img { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.5); transition: transform 0.6s; }
+/* VIP PREVIEW */
+.vip-preview { display: grid; grid-template-columns: 1fr 1fr; }
+.vip-foto { position: relative; min-height: 560px; overflow: hidden; }
+.vip-foto-img { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.45); transition: transform 0.8s; }
 .vip-foto:hover .vip-foto-img { transform: scale(1.03); }
-.vip-foto-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 60%, rgba(0,0,0,0.85) 100%); }
-.vip-foto-label { position: absolute; bottom: 32px; left: 32px; font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 0.06em; color: var(--wit); line-height: 0.95; }
-.vip-foto-label em { font-style: normal; color: var(--groen); }
-.vip-content { background: var(--donker); padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
-.vip-feats { display: flex; flex-direction: column; margin: 28px 0 36px; }
-.vip-feat { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.vip-feat:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
-.vip-ico { width: 38px; height: 38px; background: var(--groen-dim); border: 1px solid var(--groen-rand); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-top: 2px; }
-.vip-ft { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
-.vip-fd { font-size: 12px; color: var(--grijs); line-height: 1.55; }
-.vip-box { background: var(--paneel); border: 1px solid var(--groen-rand); border-top: 3px solid var(--groen); padding: 28px 24px; }
-.vip-box-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 8px; }
-.vip-box-h { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; line-height: 1.05; margin-bottom: 12px; }
-.vip-box-t { font-size: 12px; color: var(--grijs); line-height: 1.6; margin-bottom: 22px; }
+.vip-foto-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 50%, rgba(0,0,0,0.9) 100%); }
+.vip-foto-label { position: absolute; bottom: 36px; left: 36px; }
+.vip-foto-label-title { font-family: 'Bebas Neue', sans-serif; font-size: 60px; letter-spacing: 0.04em; color: var(--wit); line-height: 0.92; }
+.vip-foto-label-title em { font-style: normal; color: var(--groen); }
+.vip-right { background: var(--donker); padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
 
-/* FOOTER */
-footer { background: #000; border-top: 3px solid var(--groen); padding: 64px 48px 36px; }
-.ft-grid { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 52px; }
-.ft-logo img { height: 56px; width: auto; margin-bottom: 16px; display: block; }
-.ft-tag { font-size: 13px; color: var(--grijs); line-height: 1.65; max-width: 260px; margin-bottom: 16px; }
-.ft-contact { font-size: 12px; color: var(--grijs); line-height: 1.9; }
-.ft-contact a { color: var(--groen); text-decoration: none; }
-.ft-col-h { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.1em; color: var(--wit); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--groen-rand); }
-.ft-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.ft-links a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s; }
-.ft-links a:hover { color: var(--groen); }
-.ft-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 12px; }
-.ft-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; }
-.ft-social { display: flex; gap: 20px; }
-.ft-social a { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
-.ft-social a:hover { color: var(--groen); }
+.vip-formule {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  transition: padding-left 0.2s;
+}
+.vip-formule:hover { padding-left: 8px; }
+.vip-formule:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+.vip-formule-naam { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; margin-bottom: 4px; }
+.vip-formule-info { font-size: 12px; color: var(--grijs); }
 
-/* LOADING */
-.loading { text-align: center; padding: 40px; color: var(--grijs); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; }
+/* PARTNERS SECTIE */
+.partners-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 3px; }
+.partner-cell { background: var(--paneel); height: 80px; display: flex; align-items: center; justify-content: center; padding: 0 16px; border: 1px solid rgba(255,255,255,0.03); transition: background 0.2s, border-color 0.2s; }
+.partner-cell:hover { background: var(--paneel2); border-color: var(--groen-rand); }
+.partner-cell a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.partner-cell img { max-height: 48px; max-width: 88%; object-fit: contain; filter: grayscale(1) brightness(0.5); transition: filter 0.3s; }
+.partner-cell:hover img { filter: grayscale(0) brightness(1); }
+.partner-cell .p-name { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center; transition: color 0.2s; }
+.partner-cell:hover .p-name { color: rgba(255,255,255,0.7); }
 
 /* RESPONSIVE */
 @media (max-width: 1100px) {
-  .stats { grid-template-columns: repeat(2,1fr); }
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
   .prog-grid { grid-template-columns: 1fr 1fr; }
   .nieuws-grid { grid-template-columns: 1fr 1fr; }
   .n-card.feat { grid-column: span 2; }
   .foto-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px; }
   .foto-item:first-child { grid-row: auto; }
-  .part-grid { grid-template-columns: repeat(4,1fr); }
-  .vip-split { grid-template-columns: 1fr; }
-  .vip-foto { min-height: 340px; position: relative; }
-  .ft-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .partners-grid { grid-template-columns: repeat(4,1fr); }
+  .vip-preview { grid-template-columns: 1fr; }
+  .vip-foto { min-height: 360px; }
   .hero-sp { display: none; }
-  nav { padding: 0 24px; }
-  .hero-content { padding: 0 24px 60px; }
-  .sec { padding: 72px 24px; }
+  .hero-countdown { display: none; }
   .sfeer-content { padding: 0 24px; }
 }
-@media (max-width: 700px) {
-  nav { padding: 0 16px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .hero-countdown { display: none; }
-  .hero-content { padding: 0 16px 52px; }
-  .hero-logo { height: clamp(60px, 18vw, 90px); }
-  .hero-meta { gap: 6px 16px; }
+
+@media (max-width: 768px) {
+  .hero-content { padding: 0 16px 60px; }
+  .hero-logo { height: clamp(64px, 20vw, 100px); }
+  .hero-meta { gap: 6px 20px; }
   .hero-ctas { flex-direction: column; }
-  .btn-groen, .btn-ghost { width: 100%; text-align: center; }
-  .stats { grid-template-columns: repeat(2,1fr); }
-  .stat { padding: 22px 16px; }
+  .hero-ctas .btn { text-align: center; justify-content: center; }
+  .stats-bar { grid-template-columns: repeat(2,1fr); }
+  .stat-item { padding: 24px 18px; }
   .stat-num { font-size: 44px; }
-  .sec { padding: 52px 16px; }
-  .sec-h { font-size: clamp(38px, 10vw, 56px); margin-bottom: 32px; }
-  .sec-row { flex-direction: column; align-items: flex-start; gap: 16px; }
   .prog-grid { grid-template-columns: 1fr; }
-  .sfeer { height: 55vh; }
   .sfeer-content { padding: 0 16px; }
-  .sfeer-quote { font-size: clamp(34px, 8vw, 52px); }
   .nieuws-grid { grid-template-columns: 1fr; }
   .n-card.feat { grid-column: auto; }
   .foto-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px; }
-  .reach-grid { grid-template-columns: 1fr; }
-  .part-grid { grid-template-columns: repeat(2,1fr); }
-  .p-cell { height: 58px; }
-  .vip-split { grid-template-columns: 1fr; }
-  .vip-foto { min-height: 280px; }
-  .vip-content { padding: 36px 16px; }
-  .ft-grid { grid-template-columns: 1fr; gap: 28px; }
-  footer { padding: 44px 16px 28px; }
-  .ft-bottom { flex-direction: column; align-items: flex-start; }
+  .partners-grid { grid-template-columns: repeat(3,1fr); }
+  .vip-right { padding: 40px 20px; }
+}
+
+@media (max-width: 480px) {
+  .partners-grid { grid-template-columns: repeat(2,1fr); }
 }
 </style>
 </head>
 <body>
 
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker" id="topbarTicker">
+    Diegem Cross · 30 december 2026 · Telenet Superprestige · Avondcross onder kunstlicht
+  </div>
+  <div class="topbar-social">
+    <a href="#" data-social="facebook" target="_blank" rel="noopener">Facebook</a>
+    <a href="#" data-social="instagram" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" data-social="twitter" target="_blank" rel="noopener">X / Twitter</a>
+  </div>
+</div>
+
+<!-- NAVIGATIE -->
 <nav>
-  <a class="nav-logo" href="#" id="nav-logo-link">
-    <img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross" id="nav-logo-img">
-  </a>
-  <ul class="nav-links">
-    <li><a href="#programma">Programma</a></li>
-    <li><a href="#info">Info</a></li>
-    <li><a href="#bereikbaarheid">Bereikbaarheid</a></li>
-    <li><a href="#vip">VIP</a></li>
-    <li><a href="#nieuws">Nieuws</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <div class="nav-logo">
+    <a href="index.html">
+      <img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross">
+    </a>
+  </div>
+
+  <ul class="nav-menu">
+    <li><a href="programma.html">Programma</a></li>
+    <li>
+      <a href="info.html">Info <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="deelnemers.html">Deelnemers</a>
+        <a href="inschrijvingen.html">Inschrijvingen</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="affiche.html">Affiche</a>
+        <a href="pers.html">Pers</a>
+        <a href="technische-gids.html">Technische gids</a>
+        <a href="reglement.html">Reglement</a>
+        <a href="uitslagen.html">Uitslagen</a>
+        <a href="erelijst.html">Erelijst</a>
+      </div>
+    </li>
+    <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+    <li>
+      <a href="vip.html">VIP <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="vip.html">VIP-formules</a>
+        <a href="sponsor.html">Word sponsor</a>
+      </div>
+    </li>
+    <li><a href="nieuws.html">Nieuws</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li>
+      <a href="contact.html">Contact <span class="arrow">▾</span></a>
+      <div class="dropdown">
+        <a href="contact.html">Contact</a>
+        <a href="bestuur.html">Bestuur</a>
+      </div>
+    </li>
   </ul>
-  <div class="nav-right">
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-    <a class="nav-ticket" href="#" id="ticket-link">Tickets</a>
   </div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#programma" onclick="toggleMenu()">Programma</a>
-  <a href="#info" onclick="toggleMenu()">Info</a>
-  <a href="#bereikbaarheid" onclick="toggleMenu()">Bereikbaarheid</a>
-  <a href="#vip" onclick="toggleMenu()">VIP</a>
-  <a href="#nieuws" onclick="toggleMenu()">Nieuws</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a class="mob-ticket" href="#" id="mob-ticket-link">Koop tickets</a>
-</div>
+<!-- MOBILE MENU -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="programma.html">Programma</a>
+  <a href="info.html">Info</a>
+  <a href="deelnemers.html" class="sub-link">→ Deelnemers</a>
+  <a href="inschrijvingen.html" class="sub-link">→ Inschrijvingen</a>
+  <a href="parcours.html" class="sub-link">→ Parcours</a>
+  <a href="erelijst.html" class="sub-link">→ Erelijst</a>
+  <a href="bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="vip.html">VIP & Hospitality</a>
+  <a href="nieuws.html">Nieuws</a>
+  <a href="media.html">Media</a>
+  <a href="contact.html">Contact</a>
+  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+</nav>
 
-<section class="hero">
-  <div class="hero-img" id="hero-img"></div>
+<!-- HERO -->
+<section class="hero" style="margin-top:0; padding-top:0;">
+  <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
+
   <div class="hero-sp">
     <span class="hero-sp-label">Onderdeel van</span>
     <span class="hero-sp-name">Telenet Superprestige</span>
     <span class="hero-sp-manche">Manche 7 · 2026–2027</span>
   </div>
+
   <div class="hero-content">
-    <div class="hero-sup">Avondcross · Kunstlicht · Diegem</div>
-    <img class="hero-logo" src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross" id="hero-logo">
+    <div class="hero-badge">Avondcross · Kunstlicht · Diegem</div>
+    <img class="hero-logo"
+      src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png"
+      alt="Diegem Cross">
     <div class="hero-meta">
-      <div class="hero-meta-item"><strong id="hero-datum">30 december 2026</strong></div>
-      <div class="hero-meta-item"><strong id="hero-editie">51ste editie</strong></div>
+      <div class="hero-meta-item"><strong data-datum>30 december 2026</strong></div>
+      <div class="hero-meta-item"><strong><span data-editie>51ste</span> editie</strong></div>
       <div class="hero-meta-item"><strong>Dorpscentrum Diegem</strong></div>
       <div class="hero-meta-item"><strong>Sint-Anna-Vooruit</strong></div>
     </div>
     <div class="hero-ctas">
-      <a class="btn-groen" href="#" id="hero-ticket">Koop tickets</a>
-      <a class="btn-ghost" href="#programma">Bekijk programma</a>
+      <a class="btn btn-groen btn-lg" href="#" data-ticket>Koop tickets</a>
+      <a class="btn btn-ghost btn-lg" href="programma.html">Bekijk programma</a>
     </div>
   </div>
+
   <div class="hero-countdown">
     <div class="countdown-label">Aftellen tot de start</div>
     <div class="countdown-units">
-      <div class="countdown-box"><span class="countdown-num" id="cd-days">000</span><span class="countdown-sub">Dagen</span></div>
-      <div class="countdown-box"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-sub">Uur</span></div>
-      <div class="countdown-box"><span class="countdown-num" id="cd-min">00</span><span class="countdown-sub">Min</span></div>
-      <div class="countdown-box"><span class="countdown-num" id="cd-sec">00</span><span class="countdown-sub">Sec</span></div>
+      <div class="countdown-box"><span class="countdown-num" id="cd-d">000</span><span class="countdown-sub">Dagen</span></div>
+      <div class="countdown-box"><span class="countdown-num" id="cd-h">00</span><span class="countdown-sub">Uur</span></div>
+      <div class="countdown-box"><span class="countdown-num" id="cd-m">00</span><span class="countdown-sub">Min</span></div>
+      <div class="countdown-box"><span class="countdown-num" id="cd-s">00</span><span class="countdown-sub">Sec</span></div>
     </div>
   </div>
-  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
+<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item">Diegem Cross · <span id="ticker-datum">30 december 2026</span></span>
-    <span class="ticker-item"><span id="ticker-editie">51ste editie</span></span>
+    <span class="ticker-item">Diegem Cross · <span data-datum>30 december 2026</span></span>
+    <span class="ticker-item"><span data-editie>51ste</span> editie</span>
     <span class="ticker-item">Avondcross onder kunstlicht</span>
     <span class="ticker-item">Telenet Superprestige · Manche 7</span>
     <span class="ticker-item">Elite mannen · Elite dames · Juniores</span>
-    <span class="ticker-item">Dorpscentrum Diegem</span>
-    <span class="ticker-item">Wielerclub Sint-Anna-Vooruit</span>
-    <span class="ticker-item">Diegem Cross · <span id="ticker-datum2">30 december 2026</span></span>
-    <span class="ticker-item"><span id="ticker-editie2">51ste editie</span></span>
+    <span class="ticker-item">Dorpscentrum Diegem · Sint-Anna-Vooruit</span>
+    <span class="ticker-item">Diegem Cross · <span data-datum>30 december 2026</span></span>
+    <span class="ticker-item"><span data-editie>51ste</span> editie</span>
     <span class="ticker-item">Avondcross onder kunstlicht</span>
     <span class="ticker-item">Telenet Superprestige · Manche 7</span>
     <span class="ticker-item">Elite mannen · Elite dames · Juniores</span>
-    <span class="ticker-item">Dorpscentrum Diegem</span>
-    <span class="ticker-item">Wielerclub Sint-Anna-Vooruit</span>
+    <span class="ticker-item">Dorpscentrum Diegem · Sint-Anna-Vooruit</span>
   </div>
 </div>
 
-<div class="stats">
-  <div class="stat"><div class="stat-num">51<sup>ste</sup></div><div class="stat-lbl">Editie Diegem Cross</div></div>
-  <div class="stat"><div class="stat-num">1975</div><div class="stat-lbl">Eerste editie</div></div>
-  <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Koersen op één avond</div></div>
-  <div class="stat"><div class="stat-num">8<sup>k+</sup></div><div class="stat-lbl">Toeschouwers verwacht</div></div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item" data-animate>
+    <div class="stat-num">51<sup>ste</sup></div>
+    <div class="stat-lbl">Editie Diegem Cross</div>
+  </div>
+  <div class="stat-item" data-animate>
+    <div class="stat-num">1975</div>
+    <div class="stat-lbl">Eerste editie</div>
+  </div>
+  <div class="stat-item" data-animate>
+    <div class="stat-num">3</div>
+    <div class="stat-lbl">Koersen op één avond</div>
+  </div>
+  <div class="stat-item" data-animate>
+    <div class="stat-num">8<sup>k+</sup></div>
+    <div class="stat-lbl">Toeschouwers verwacht</div>
+  </div>
 </div>
 
-<section class="sec" id="programma">
-  <div class="sec-lbl">Wedstrijdprogramma</div>
-  <h2 class="sec-h" id="prog-datum">30 december 2026</h2>
-  <div class="prog-grid" id="prog-grid">
-    <div class="loading">Programma laden...</div>
+<!-- PROGRAMMA PREVIEW -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">Wedstrijdprogramma</div>
+        <h2 class="sec-title" data-datum>30 december 2026</h2>
+      </div>
+      <a class="btn btn-ghost" href="programma.html">Volledig programma</a>
+    </div>
+    <div class="prog-grid" id="progGrid">
+      <div class="loading-state">Programma laden...</div>
+    </div>
   </div>
 </section>
 
-<section class="sfeer">
-  <div class="sfeer-img" id="sfeer-img"></div>
+<!-- SFEER BANNER -->
+<section class="sfeer-banner">
+  <div class="sfeer-img" id="sfeerImg"></div>
   <div class="sfeer-overlay"></div>
   <div class="sfeer-content">
     <div class="sfeer-quote">Voel je op<br>het <em>parcours.</em></div>
     <div class="sfeer-sub">Elk jaar trekt Diegem Cross duizenden toeschouwers naar het dorpscentrum voor de meest spectaculaire avondcross van het seizoen — onder de spots, met de wereldtop op meters afstand.</div>
+    <a class="btn btn-groen" href="media.html">Bekijk de sfeer</a>
   </div>
 </section>
 
-<section class="sec sec-alt" id="info">
-  <div class="sec-lbl">Beelden van het parcours</div>
-  <h2 class="sec-h">Diegem Cross<br>in beeld</h2>
-  <div class="foto-grid">
-    <div class="foto-item"><img src="https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg" alt="Cross 2024"><div class="foto-overlay"><div class="foto-overlay-year">2024</div></div></div>
-    <div class="foto-item"><img src="https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg" alt="Cross 2023"><div class="foto-overlay"><div class="foto-overlay-year">2023</div></div></div>
-    <div class="foto-item"><img src="https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg" alt="Cross 2022"><div class="foto-overlay"><div class="foto-overlay-year">2022</div></div></div>
-    <div class="foto-item"><img src="https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg" alt="Cross 2019"><div class="foto-overlay"><div class="foto-overlay-year">2019</div></div></div>
-    <div class="foto-item"><img src="https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg" alt="Cross 2018"><div class="foto-overlay"><div class="foto-overlay-year">2018</div></div></div>
+<!-- FOTO GALERIJ -->
+<section class="sec sec-alt">
+  <div class="container">
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">Beelden van het parcours</div>
+        <h2 class="sec-title">Diegem Cross<br>in beeld</h2>
+      </div>
+      <a class="btn btn-ghost" href="media.html">Alle foto's</a>
+    </div>
+    <div class="foto-grid">
+      <div class="foto-item">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg" alt="Cross 2024" loading="lazy">
+        <div class="foto-jaar"><div class="foto-jaar-num">2024</div></div>
+      </div>
+      <div class="foto-item">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg" alt="Cross 2023" loading="lazy">
+        <div class="foto-jaar"><div class="foto-jaar-num">2023</div></div>
+      </div>
+      <div class="foto-item">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg" alt="Cross 2022" loading="lazy">
+        <div class="foto-jaar"><div class="foto-jaar-num">2022</div></div>
+      </div>
+      <div class="foto-item">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg" alt="Cross 2019" loading="lazy">
+        <div class="foto-jaar"><div class="foto-jaar-num">2019</div></div>
+      </div>
+      <div class="foto-item">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg" alt="Cross 2018" loading="lazy">
+        <div class="foto-jaar"><div class="foto-jaar-num">2018</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="sec" id="nieuws">
-  <div class="sec-row">
+<!-- NIEUWS -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">Laatste nieuws</div>
+        <h2 class="sec-title">Nieuws &amp;<br>updates</h2>
+      </div>
+      <a class="btn btn-ghost" href="nieuws.html">Alle nieuws</a>
+    </div>
+    <div class="nieuws-grid" id="nieuwsGrid">
+      <div class="loading-state">Nieuws laden...</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIP PREVIEW -->
+<section class="vip-preview">
+  <div class="vip-foto">
+    <div class="vip-foto-img" id="vipImg"></div>
+    <div class="vip-foto-overlay"></div>
+    <div class="vip-foto-label">
+      <div class="vip-foto-label-title">VIP &amp;<br><em>Hospitality</em></div>
+    </div>
+  </div>
+  <div class="vip-right">
+    <div class="sec-label">Exclusief</div>
+    <h2 class="sec-title" style="margin-bottom:32px;">Beleef de cross<br>van binnenuit</h2>
+    <div id="vipFormules">
+      <div class="vip-formule">
+        <div>
+          <div class="vip-formule-naam">VIP-Van der Valk</div>
+          <div class="vip-formule-info">Hotel Van der Valk Brussels Airport</div>
+        </div>
+        <span class="badge badge-uitverkocht">Sold out</span>
+      </div>
+      <div class="vip-formule">
+        <div>
+          <div class="vip-formule-naam">VIP-Gold</div>
+          <div class="vip-formule-info">Zaal GC 't Kwadrant, op het parcours</div>
+        </div>
+        <span class="badge badge-uitverkocht">Sold out</span>
+      </div>
+      <div class="vip-formule">
+        <div>
+          <div class="vip-formule-naam">VIP-Silver</div>
+          <div class="vip-formule-info">Zaal GC 't Kwadrant, op het parcours</div>
+        </div>
+        <span class="badge badge-uitverkocht">Sold out</span>
+      </div>
+      <div class="vip-formule">
+        <div>
+          <div class="vip-formule-naam">VIP-Bar</div>
+          <div class="vip-formule-info">Zaal Gildenhuis, op het parcours</div>
+        </div>
+        <span class="badge badge-uitverkocht">Sold out</span>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;">
+      <a class="btn btn-groen" href="vip.html">Meer info VIP</a>
+      <a class="btn btn-ghost-groen" href="sponsor.html">Word sponsor</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="sec sec-alt">
+  <div class="container">
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">Partners &amp; Sponsors</div>
+        <h2 class="sec-title">Onze partners</h2>
+      </div>
+    </div>
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Partners Diegem Cross</p>
+    <div class="partners-grid" id="partnersGrid" style="margin-bottom:24px;">
+      <div class="loading-state">Laden...</div>
+    </div>
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Sponsors Telenet Superprestige</p>
+    <div class="partners-grid" id="spGrid">
+      <div class="loading-state">Laden...</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
     <div>
-      <div class="sec-lbl">Laatste nieuws</div>
-      <h2 class="sec-h">Nieuws &amp;<br>updates</h2>
-    </div>
-    <a class="btn-ghost" href="#">Alle nieuws</a>
-  </div>
-  <div class="nieuws-grid" id="nieuws-grid">
-    <div class="loading">Nieuws laden...</div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="bereikbaarheid">
-  <div class="sec-lbl">Hoe geraken?</div>
-  <h2 class="sec-h">Bereikbaarheid</h2>
-  <div class="reach-grid">
-    <div class="r-card"><div class="r-icon">🚂</div><div class="r-title">Trein</div><div class="r-text">Station Diegem ligt op wandelafstand van het parcours. Raadpleeg belgiantrain.be voor actuele dienstregelingen en routes.</div></div>
-    <div class="r-card"><div class="r-icon">🚌</div><div class="r-title">Bus</div><div class="r-text">Diegem is bereikbaar via diverse De Lijn buslijnen. Raadpleeg delijn.be voor routes en tijden op de dag zelf.</div></div>
-    <div class="r-card"><div class="r-icon">🚗</div><div class="r-title">Auto</div><div class="r-text">Volg de voorziene signalisatie richting Diegem centrum. Parkeerplaatsen voor toeschouwers zijn voorzien in de omgeving.</div></div>
-  </div>
-</section>
-
-<section class="sec" id="sponsors">
-  <div class="sec-lbl">Partners &amp; Sponsors</div>
-  <h2 class="sec-h">Onze partners</h2>
-  <div class="part-label">Partners Diegem Cross</div>
-  <div class="part-grid" id="partners-grid"><div class="loading">Partners laden...</div></div>
-  <div class="part-label" style="margin-top:8px;">Sponsors Telenet Superprestige</div>
-  <div class="part-grid" id="superprestige-grid"><div class="loading">Sponsors laden...</div></div>
-</section>
-
-<section class="sec sec-alt" id="vip" style="padding:0;">
-  <div class="vip-split">
-    <div class="vip-foto">
-      <div class="vip-foto-img" id="vip-img"></div>
-      <div class="vip-foto-overlay"></div>
-      <div class="vip-foto-label">VIP &amp;<br><em>Hospitality</em></div>
-    </div>
-    <div class="vip-content">
-      <div class="sec-lbl">Exclusief</div>
-      <h2 class="sec-h" style="margin-bottom:0;">Beleef de cross<br>van binnenuit</h2>
-      <div class="vip-feats">
-        <div class="vip-feat"><div class="vip-ico">🥂</div><div><div class="vip-ft">All-inclusive catering</div><div class="vip-fd">Volledig verzorgd diner en open bar in de VIP-tent tijdens het evenement.</div></div></div>
-        <div class="vip-feat"><div class="vip-ico">🎯</div><div><div class="vip-ft">Exclusief uitzicht</div><div class="vip-fd">Beste plaatsen met gegarandeerd zicht op de finish en cruciale passages.</div></div></div>
-        <div class="vip-feat"><div class="vip-ico">🏆</div><div><div class="vip-ft">Podiumervaring</div><div class="vip-fd">Aanwezig bij de prijsuitreiking en ontmoet de winnaars van dichtbij.</div></div></div>
-        <div class="vip-feat"><div class="vip-ico">🎪</div><div><div class="vip-ft">Ambiancetent</div><div class="vip-fd">Live muziek en entertainment voor en na de koersen.</div></div></div>
+      <div class="footer-logo">
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross">
       </div>
-      <div class="vip-box">
-        <div class="vip-box-tag">★ Word sponsor</div>
-        <div class="vip-box-h">Associeer uw merk met Diegem Cross</div>
-        <div class="vip-box-t">Bereik duizenden toeschouwers live en een breed online publiek. Contacteer ons voor onze sponsorformules.</div>
-        <a class="btn-groen" href="#contact" style="display:block;text-align:center;" id="vip-contact">Meer info aanvragen</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="ft-grid">
-    <div>
-      <div class="ft-logo">
-        <img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross" id="footer-logo">
-      </div>
-      <div class="ft-tag">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
-      <div class="ft-contact">
-        <a href="#" id="footer-email">info@diegemcross.be</a><br>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
+      <div class="footer-contact">
+        <a href="#" data-email>info@diegemcross.be</a><br>
         Wielerclub Sint-Anna-Vooruit Diegem
       </div>
     </div>
     <div>
-      <div class="ft-col-h">Navigatie</div>
-      <ul class="ft-links">
-        <li><a href="#programma">Programma</a></li>
-        <li><a href="#info">Info &amp; Deelnemers</a></li>
-        <li><a href="#bereikbaarheid">Bereikbaarheid</a></li>
-        <li><a href="#vip">VIP &amp; Hospitality</a></li>
-        <li><a href="#">Media</a></li>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="programma.html">Programma</a></li>
+        <li><a href="info.html">Info &amp; Deelnemers</a></li>
+        <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="media.html">Media</a></li>
       </ul>
     </div>
     <div>
-      <div class="ft-col-h">Info</div>
-      <ul class="ft-links">
-        <li><a href="#">Parcours</a></li>
-        <li><a href="#">Inschrijvingen</a></li>
-        <li><a href="#">Reglement</a></li>
-        <li><a href="#">Technische gids</a></li>
-        <li><a href="#">Erelijst &amp; Uitslagen</a></li>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="inschrijvingen.html">Inschrijvingen</a></li>
+        <li><a href="reglement.html">Reglement</a></li>
+        <li><a href="technische-gids.html">Technische gids</a></li>
+        <li><a href="erelijst.html">Erelijst &amp; Uitslagen</a></li>
       </ul>
     </div>
     <div>
-      <div class="ft-col-h">Contact</div>
-      <ul class="ft-links">
-        <li><a href="#">Bestuur</a></li>
-        <li><a href="#">Pers</a></li>
-        <li><a href="#">Word sponsor</a></li>
-        <li><a href="#">Sitemap</a></li>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="bestuur.html">Bestuur</a></li>
+        <li><a href="pers.html">Pers</a></li>
+        <li><a href="sponsor.html">Word sponsor</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
-  <div class="ft-bottom">
-    <span class="ft-copy">© 2026 Wielerclub Sint-Anna-Vooruit Diegem · Cookie Policy · Privacy Policy</span>
-    <div class="ft-social">
-      <a href="#" id="social-facebook">Facebook</a>
-      <a href="#" id="social-instagram">Instagram</a>
-      <a href="#" id="social-twitter">Twitter / X</a>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Wielerclub Sint-Anna-Vooruit Diegem · Cookie Policy · Privacy Policy</span>
+    <div class="footer-social">
+      <a href="#" data-social="facebook" target="_blank">Facebook</a>
+      <a href="#" data-social="instagram" target="_blank">Instagram</a>
+      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
     </div>
   </div>
 </footer>
 
+<!-- GOOGLE TRANSLATE (automatisch) -->
+<div id="google_translate_element" style="display:none;"></div>
 <script>
-// ─── GITHUB CONFIG ───────────────────────────────────────────────
-const GITHUB_USER = 'DiegemCross';
-const GITHUB_REPO = 'Diegem-Cross---Website';
-const GITHUB_BRANCH = 'main';
-const RAW = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${GITHUB_BRANCH}`;
-
-// ─── CONTENT LADEN ───────────────────────────────────────────────
-async function fetchJSON(path) {
-  try {
-    const r = await fetch(`${RAW}/${path}?t=${Date.now()}`);
-    if (!r.ok) return null;
-    return r.json();
-  } catch { return null; }
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'nl',
+    includedLanguages: 'fr,en,nl',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
 }
 
-async function fetchText(path) {
-  try {
-    const r = await fetch(`${RAW}/${path}?t=${Date.now()}`);
-    if (!r.ok) return null;
-    return r.text();
-  } catch { return null; }
+function setLang(lang) {
+  localStorage.setItem('dc_lang', lang);
+  const s = document.cookie.split(';').find(c => c.trim().startsWith('googtrans='));
+  if (lang === 'nl') {
+    document.cookie = 'googtrans=/nl/nl; path=/; domain=.' + location.hostname;
+  } else {
+    document.cookie = `googtrans=/nl/${lang}; path=/; domain=.${location.hostname}`;
+  }
+  location.reload();
 }
 
-function parseFrontmatter(text) {
-  if (!text || !text.startsWith('---')) return { data: {}, body: text || '' };
-  const end = text.indexOf('---', 3);
-  if (end === -1) return { data: {}, body: text };
-  const fm = text.slice(3, end).trim();
-  const body = text.slice(end + 3).trim();
-  const data = {};
-  fm.split('\n').forEach(line => {
-    const i = line.indexOf(':');
-    if (i === -1) return;
-    const key = line.slice(0, i).trim();
-    const val = line.slice(i + 1).trim().replace(/^["']|["']$/g, '');
-    data[key] = val;
-  });
-  return { data, body };
-}
+// Taal toepassen bij laden
+const savedLang = localStorage.getItem('dc_lang') || 'nl';
+document.querySelectorAll('.topbar-lang a').forEach(a => {
+  a.classList.toggle('active', a.href.includes('lang=' + savedLang));
+});
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-async function fetchDir(path) {
-  try {
-    const r = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`);
-    if (!r.ok) return [];
-    return r.json();
-  } catch { return []; }
-}
-
-// ─── INSTELLINGEN LADEN ──────────────────────────────────────────
-async function loadInstellingen() {
-  const data = await fetchJSON('content/instellingen/algemeen.json');
-  if (!data) return;
+<script src="js/main.js"></script>
+<script>
+(async () => {
+  const s = await applySettings();
 
   // Hero foto
-  if (data.hero_foto) {
-    document.getElementById('hero-img').style.backgroundImage = `url('${data.hero_foto}')`;
-  } else {
-    document.getElementById('hero-img').style.backgroundImage = `url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg')`;
+  if (s.hero_foto) {
+    document.getElementById('heroBg').style.backgroundImage = `url('${s.hero_foto}')`;
+  }
+  if (s.sfeer_foto) {
+    document.getElementById('sfeerImg').style.backgroundImage = `url('${s.sfeer_foto}')`;
+  }
+  if (s.vip_foto) {
+    document.getElementById('vipImg').style.backgroundImage = `url('${s.vip_foto}')`;
   }
 
-  // Sfeer foto
-  const sfeerEl = document.getElementById('sfeer-img');
-  if (sfeerEl) sfeerEl.style.backgroundImage = `url('${data.sfeer_foto || data.hero_foto || ''}')`;
+  // Countdown
+  startCountdown('2026-12-30T17:00:00');
 
-  // VIP foto
-  const vipEl = document.getElementById('vip-img');
-  if (vipEl) vipEl.style.backgroundImage = `url('${data.vip_foto || data.hero_foto || ''}')`;
-
-  // Datum & editie
-  if (data.datum) {
-    document.getElementById('hero-datum').textContent = data.datum;
-    document.getElementById('prog-datum').textContent = data.datum;
-    document.getElementById('ticker-datum').textContent = data.datum;
-    document.getElementById('ticker-datum2').textContent = data.datum;
-  }
-  if (data.editie) {
-    document.getElementById('hero-editie').textContent = data.editie + ' editie';
-    document.getElementById('ticker-editie').textContent = data.editie + ' editie';
-    document.getElementById('ticker-editie2').textContent = data.editie + ' editie';
-  }
-
-  // Ticketlink
-  if (data.ticket_url) {
-    ['ticket-link','hero-ticket','mob-ticket-link'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.href = data.ticket_url;
-    });
-  }
-
-  // Email
-  if (data.email) {
-    const el = document.getElementById('footer-email');
-    if (el) { el.href = `mailto:${data.email}`; el.textContent = data.email; }
-  }
-
-  // Socials
-  if (data.facebook) { const el = document.getElementById('social-facebook'); if(el) el.href = data.facebook; }
-  if (data.instagram) { const el = document.getElementById('social-instagram'); if(el) el.href = data.instagram; }
-  if (data.twitter) { const el = document.getElementById('social-twitter'); if(el) el.href = data.twitter; }
-}
-
-// ─── PROGRAMMA LADEN ─────────────────────────────────────────────
-async function loadProgramma() {
-  const grid = document.getElementById('prog-grid');
+  // Programma laden
+  const progGrid = document.getElementById('progGrid');
   const files = await fetchDir('content/programma');
-  if (!files.length) {
-    // Fallback
-    grid.innerHTML = `
-      <div class="prog-card" data-n="01"><div class="prog-time">17:00 — Aanvang</div><div class="prog-name">Juniores</div><div class="prog-cat">Mannen · Onder 19 jaar</div></div>
-      <div class="prog-card" data-n="02"><div class="prog-time">18:30 — Kunstlicht aan</div><div class="prog-name">Elite Dames</div><div class="prog-cat">Dames Elite + U23</div></div>
-      <div class="prog-card" data-n="03"><div class="prog-time">20:00 — Prime time</div><div class="prog-name">Elite Mannen</div><div class="prog-cat">Mannen Elite + U23 · Superprestige</div></div>`;
-    return;
-  }
-  const mdFiles = files.filter(f => f.name.endsWith('.md'));
+  const mdFiles = files.filter(f => f.name && f.name.endsWith('.md'));
   const items = [];
   for (const f of mdFiles) {
     const text = await fetchText(`content/programma/${f.name}`);
-    if (!text) continue;
-    const { data } = parseFrontmatter(text);
-    items.push(data);
+    if (text) { const { data } = parseFM(text); items.push(data); }
   }
-  items.sort((a, b) => (parseInt(a.volgorde) || 99) - (parseInt(b.volgorde) || 99));
-  grid.innerHTML = items.map((item, i) => `
-    <div class="prog-card" data-n="${String(i+1).padStart(2,'0')}">
+  items.sort((a, b) => (parseInt(a.volgorde)||99) - (parseInt(b.volgorde)||99));
+
+  const fallback = [
+    { starttijd:'17:00', starttijd_label:'Aanvang', naam:'Juniores', categorie:'Mannen · Onder 19 jaar', volgorde:1 },
+    { starttijd:'18:30', starttijd_label:'Kunstlicht aan', naam:'Elite Dames', categorie:'Dames Elite + U23', volgorde:2 },
+    { starttijd:'20:00', starttijd_label:'Prime time', naam:'Elite Mannen', categorie:'Mannen Elite + U23 · Superprestige', volgorde:3 }
+  ];
+
+  const progData = items.length ? items : fallback;
+  progGrid.innerHTML = progData.map((item, i) => `
+    <div class="prog-card" data-n="${String(i+1).padStart(2,'0')}" data-animate>
       <div class="prog-time">${item.starttijd || ''} ${item.starttijd_label ? '— ' + item.starttijd_label : ''}</div>
       <div class="prog-name">${item.naam || ''}</div>
       <div class="prog-cat">${item.categorie || ''}</div>
     </div>`).join('');
-}
 
-// ─── NIEUWS LADEN ────────────────────────────────────────────────
-async function loadNieuws() {
-  const grid = document.getElementById('nieuws-grid');
-  const files = await fetchDir('content/nieuws');
-  if (!files.length) {
-    grid.innerHTML = `
-      <div class="n-card feat">
-        <img class="n-foto" src="https://www.diegemcross.be/wp-content/uploads/2025/09/50-jaar-300x300.png" alt="">
-        <div class="n-body"><div class="n-date">08 september 2025</div><div class="n-title">Diegem Cross 2026 — 51ste editie op 30 december!</div><div class="n-text">Op 30 december 2026 verwelkomt Diegem Cross opnieuw de wereldtop van het veldrijden in het dorpscentrum.</div><a class="n-link" href="#">Lees meer</a></div>
-      </div>
-      <div class="n-card">
-        <img class="n-foto" src="https://www.diegemcross.be/wp-content/uploads/2024/10/Posts-2025-1-300x300.png" alt="">
-        <div class="n-body"><div class="n-date">08 september 2025</div><div class="n-title">Avondcross ook in 2026</div><div class="n-text">Ook in 2026 volledig onder kunstlicht.</div><a class="n-link" href="#">Lees meer</a></div>
-      </div>
-      <div class="n-card">
-        <img class="n-foto" src="https://www.diegemcross.be/wp-content/uploads/2023/12/Winnaar-Elite-e1757405894946-300x300.png" alt="">
-        <div class="n-body"><div class="n-date">30 december 2025</div><div class="n-title">Del Grosso wint jubileumeditie 2025</div><div class="n-text">Na een spannend duel wint Tibor Del Grosso de 50ste gouden editie.</div><a class="n-link" href="#">Lees meer</a></div>
-      </div>`;
-    return;
-  }
-  const mdFiles = files.filter(f => f.name.endsWith('.md'));
-  const items = [];
-  for (const f of mdFiles) {
+  // Nieuws laden
+  const nieuwsGrid = document.getElementById('nieuwsGrid');
+  const nFiles = await fetchDir('content/nieuws');
+  const nMd = nFiles.filter(f => f.name && f.name.endsWith('.md'));
+  const nItems = [];
+  for (const f of nMd) {
     const text = await fetchText(`content/nieuws/${f.name}`);
-    if (!text) continue;
-    const { data } = parseFrontmatter(text);
-    if (data.status === 'concept') continue;
-    items.push(data);
+    if (text) { const { data } = parseFM(text); if(data.status !== 'concept') nItems.push(data); }
   }
-  // Sorteer op datum (nieuwste eerst)
-  items.sort((a, b) => {
+  nItems.sort((a, b) => {
     const da = a.datum ? a.datum.split('/').reverse().join('-') : '';
     const db = b.datum ? b.datum.split('/').reverse().join('-') : '';
     return db.localeCompare(da);
   });
-  const top3 = items.slice(0, 3);
-  grid.innerHTML = top3.map((item, i) => `
-    <div class="n-card ${i === 0 ? 'feat' : ''}">
-      ${item.foto ? `<img class="n-foto" src="${item.foto}" alt="${item.title || ''}">` : ''}
+  const top3 = nItems.slice(0, 3);
+
+  const fallbackN = [
+    { title:'Diegem Cross 2026 — 51ste editie op 30 december!', datum:'08/09/2025', foto:'https://www.diegemcross.be/wp-content/uploads/2025/09/50-jaar-300x300.png', samenvatting:'Op 30 december 2026 verwelkomt Diegem Cross opnieuw de wereldtop. Bart Kaell live in de ambiancetent!' },
+    { title:'Avondcross ook in 2026', datum:'08/09/2025', foto:'https://www.diegemcross.be/wp-content/uploads/2024/10/Posts-2025-1-300x300.png', samenvatting:'Ook in 2026 volledig onder kunstlicht — de unieke sfeer blijft gegarandeerd.' },
+    { title:'Del Grosso wint jubileumeditie 2025', datum:'30/12/2025', foto:'https://www.diegemcross.be/wp-content/uploads/2023/12/Winnaar-Elite-e1757405894946-300x300.png', samenvatting:'Na een spannend duel wint Tibor Del Grosso de 50ste gouden editie.' }
+  ];
+
+  const nData = top3.length ? top3 : fallbackN;
+  nieuwsGrid.innerHTML = nData.map((item, i) => `
+    <div class="n-card ${i===0?'feat':''}" data-animate>
+      ${item.foto ? `<div class="n-foto-wrap"><img class="n-foto" src="${item.foto}" alt="${item.title||''}" loading="lazy"></div>` : ''}
       <div class="n-body">
-        <div class="n-date">${item.datum || ''}</div>
-        <div class="n-title">${item.title || ''}</div>
-        <div class="n-text">${item.samenvatting || ''}</div>
-        <a class="n-link" href="#">Lees meer</a>
+        <div class="n-date">${item.datum||''}</div>
+        <div class="n-title">${item.title||''}</div>
+        <div class="n-text">${item.samenvatting||''}</div>
+        <a class="n-link" href="nieuws.html">Lees meer</a>
       </div>
     </div>`).join('');
-}
 
-// ─── SPONSORS LADEN ──────────────────────────────────────────────
-async function loadSponsors() {
-  const partGrid = document.getElementById('partners-grid');
-  const spGrid = document.getElementById('superprestige-grid');
-  const files = await fetchDir('content/sponsors');
-
-  if (!files.length) {
-    // Fallback tekst-gebaseerd
-    const partners = ['Belorta','Bevers','Van der Valk','Coca-Cola','Rombouts','Gem. Machelen','Group BRS','Conversal','MGH','Esprit ICT','ACEG','Werkkledij.be'];
-    const sps = ['Telenet','Maes Pils','Play Sports','Electro Depot','Sunseeker Elite','Prik & Tik','AD Garage','Isolatiestock','SportLED','Assa Abloy','Kärcher','Delrue'];
-    partGrid.innerHTML = partners.map(n => `<div class="p-cell"><span class="p-name">${n}</span></div>`).join('');
-    spGrid.innerHTML = sps.map(n => `<div class="p-cell"><span class="p-name">${n}</span></div>`).join('');
-    return;
-  }
-
-  const mdFiles = files.filter(f => f.name.endsWith('.md'));
-  const items = [];
-  for (const f of mdFiles) {
-    const text = await fetchText(`content/sponsors/${f.name}`);
-    if (!text) continue;
-    const { data } = parseFrontmatter(text);
-    items.push(data);
-  }
-  items.sort((a, b) => (parseInt(a.volgorde)||99) - (parseInt(b.volgorde)||99));
-
-  const partners = items.filter(i => i.categorie === 'partner');
-  const sps = items.filter(i => i.categorie === 'superprestige');
-
-  function renderSponsor(item) {
-    const inner = item.logo
-      ? `<img src="${item.logo}" alt="${item.naam || ''}">`
-      : `<span class="p-name">${item.naam || ''}</span>`;
-    return `<div class="p-cell">${item.website ? `<a href="${item.website}" target="_blank">${inner}</a>` : inner}</div>`;
-  }
-
-  partGrid.innerHTML = partners.length ? partners.map(renderSponsor).join('') : '<div class="loading">Geen partners gevonden</div>';
-  spGrid.innerHTML = sps.length ? sps.map(renderSponsor).join('') : '<div class="loading">Geen sponsors gevonden</div>';
-}
-
-// ─── COUNTDOWN ───────────────────────────────────────────────────
-function updateCountdown() {
-  const target = new Date('2026-12-30T17:00:00');
-  const now = new Date();
-  const diff = target - now;
-  if (diff <= 0) return;
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-days').textContent = String(d).padStart(3,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-min').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-sec').textContent = String(s).padStart(2,'0');
-}
-
-// ─── HAMBURGER ───────────────────────────────────────────────────
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-
-// ─── NETLIFY IDENTITY ─────────────────────────────────────────────
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on('init', user => {
-    if (!user) {
-      window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
-    }
-  });
-}
-
-// ─── INIT ────────────────────────────────────────────────────────
-loadInstellingen();
-loadProgramma();
-loadNieuws();
-loadSponsors();
-updateCountdown();
-setInterval(updateCountdown, 1000);
+  // Partners laden
+  await loadSponsors(
+    document.getElementById('partnersGrid'),
+    document.getElementById('spGrid')
+  );
+})();
 </script>
+
 </body>
 </html>

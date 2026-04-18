@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIP & Hospitality &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.vip-formules{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-bottom:48px;}
+.vip-formule-card{background:var(--paneel);border-top:3px solid var(--groen);padding:40px 36px;}
+.vip-formule-card.sold{border-top-color:rgba(255,255,255,0.15);opacity:0.7;}
+.vip-badge-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.vip-naam{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:0.04em;line-height:1;margin-bottom:8px;}
+.vip-locatie{font-size:13px;color:var(--groen);font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px;}
+.vip-schema{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
+.vip-schema-item{display:flex;gap:16px;font-size:13px;}
+.vip-schema-tijd{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.08em;color:var(--groen);min-width:52px;}
+.vip-schema-desc{color:var(--grijs);}
+.vip-inclus{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.06);}
+.vip-inclus-title{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--grijs);margin-bottom:12px;}
+.vip-inclus-items{display:flex;flex-direction:column;gap:6px;}
+.vip-inclus-item{font-size:13px;color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px;}
+.vip-inclus-item::before{content:'✓';color:var(--groen);font-weight:700;}
+.sponsor-cta{background:var(--paneel);border:1px solid var(--groen-rand);border-top:3px solid var(--groen);padding:56px 48px;text-align:center;}
+@media(max-width:768px){.vip-formules{grid-template-columns:1fr;}.sponsor-cta{padding:36px 24px;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="#" data-social="facebook" target="_blank">Facebook</a>
+    <a href="#" data-social="instagram" target="_blank">Instagram</a>
+    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="info.html" >Info <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="deelnemers.html">Deelnemers</a>
+        <a href="inschrijvingen.html">Inschrijvingen</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="affiche.html">Affiche</a>
+        <a href="pers.html">Pers</a>
+        <a href="technische-gids.html">Technische gids</a>
+        <a href="reglement.html">Reglement</a>
+        <a href="uitslagen.html">Uitslagen</a>
+        <a href="erelijst.html">Erelijst</a>
+      </div></li>
+    <li><a href="bereikbaarheid.html" >Bereikbaarheid</a></li>
+    <li><a href="vip.html" class="active">VIP <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="vip.html">VIP-formules</a>
+        <a href="sponsor.html">Word sponsor</a>
+      </div></li>
+    <li><a href="nieuws.html" >Nieuws</a></li>
+    <li><a href="media.html" >Media</a></li>
+    <li><a href="contact.html" >Contact <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="contact.html">Contact</a>
+        <a href="bestuur.html">Bestuur</a>
+      </div></li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="programma.html">Programma</a>
+  <a href="info.html">Info</a>
+  <a href="bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="vip.html">VIP &amp; Hospitality</a>
+  <a href="nieuws.html">Nieuws</a>
+  <a href="media.html">Media</a>
+  <a href="contact.html">Contact</a>
+  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+</nav>
+<section class="page-hero">
+  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Exclusief genieten</div>
+    <h1>VIP &amp;<br>Hospitality</h1>
+  </div>
+</section>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">&rsaquo;</span><span class="current">VIP &amp; Hospitality</span></div>
+<section class="sec">
+  <div class="container">
+    <div class="sec-label">Exclusief genieten</div>
+    <h2 class="sec-title">VIP-formules</h2>
+    <p style="font-size:15px;color:var(--grijs);line-height:1.7;max-width:600px;margin-bottom:48px;">
+      Ontdek ons VIP-programma met vier verschillende formules. Geniet van een exclusieve sfeer, 
+      catering en de perfecte gelegenheid om het evenement van dichtbij mee te maken.
+    </p>
+    <div class="vip-formules" id="vipFormules">
+      <!-- Dynamisch of fallback -->
+      <div class="vip-formule-card sold">
+        <div class="vip-badge-row">
+          <div></div>
+          <span class="badge badge-uitverkocht">Sold out</span>
+        </div>
+        <div class="vip-naam">VIP-Van der Valk</div>
+        <div class="vip-locatie">Hotel Van der Valk Brussels Airport</div>
+        <div class="vip-schema">
+          <div class="vip-schema-item"><span class="vip-schema-tijd">16:30</span><span class="vip-schema-desc">Ontvangst met receptie</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">17:00</span><span class="vip-schema-desc">Luxe VIP-Buffet</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">21:30</span><span class="vip-schema-desc">Dessertbuffet</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">23:00</span><span class="vip-schema-desc">Einde VIP</span></div>
+        </div>
+        <div class="vip-inclus">
+          <div class="vip-inclus-title">Inbegrepen</div>
+          <div class="vip-inclus-items">
+            <div class="vip-inclus-item">Toegang tot het parcours</div>
+            <div class="vip-inclus-item">VIP-bus naar en van het parcours (18:00&ndash;22:30)</div>
+            <div class="vip-inclus-item">Parking Hotel Van der Valk</div>
+          </div>
+        </div>
+      </div>
+      <div class="vip-formule-card sold">
+        <div class="vip-badge-row">
+          <div></div>
+          <span class="badge badge-uitverkocht">Sold out</span>
+        </div>
+        <div class="vip-naam">VIP-Gold</div>
+        <div class="vip-locatie">Zaal GC 't Kwadrant &mdash; op het parcours</div>
+        <div class="vip-schema">
+          <div class="vip-schema-item"><span class="vip-schema-tijd">15:30</span><span class="vip-schema-desc">Receptie</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">16:00</span><span class="vip-schema-desc">VIP-GOLD diner</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">20:00</span><span class="vip-schema-desc">VIP-SILVER buffet</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">23:30</span><span class="vip-schema-desc">Einde VIP-GOLD</span></div>
+        </div>
+        <div class="vip-inclus">
+          <div class="vip-inclus-title">Inbegrepen</div>
+          <div class="vip-inclus-items">
+            <div class="vip-inclus-item">Toegang tot het parcours</div>
+            <div class="vip-inclus-item">VIP-Parking per 2 kaarten</div>
+          </div>
+        </div>
+      </div>
+      <div class="vip-formule-card sold">
+        <div class="vip-badge-row">
+          <div></div>
+          <span class="badge badge-uitverkocht">Sold out</span>
+        </div>
+        <div class="vip-naam">VIP-Silver</div>
+        <div class="vip-locatie">Zaal GC 't Kwadrant &mdash; op het parcours</div>
+        <div class="vip-schema">
+          <div class="vip-schema-item"><span class="vip-schema-tijd">20:00</span><span class="vip-schema-desc">VIP-SILVER buffet</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">23:30</span><span class="vip-schema-desc">Einde VIP-SILVER</span></div>
+        </div>
+        <div class="vip-inclus">
+          <div class="vip-inclus-title">Inbegrepen</div>
+          <div class="vip-inclus-items">
+            <div class="vip-inclus-item">Toegang tot het parcours</div>
+            <div class="vip-inclus-item">VIP-Parking per 2 kaarten</div>
+          </div>
+        </div>
+      </div>
+      <div class="vip-formule-card sold">
+        <div class="vip-badge-row">
+          <div></div>
+          <span class="badge badge-uitverkocht">Sold out</span>
+        </div>
+        <div class="vip-naam">VIP-Bar</div>
+        <div class="vip-locatie">Zaal Gildenhuis &mdash; op het parcours</div>
+        <div class="vip-schema">
+          <div class="vip-schema-item"><span class="vip-schema-tijd">20:00</span><span class="vip-schema-desc">VIP-BAR buffet</span></div>
+          <div class="vip-schema-item"><span class="vip-schema-tijd">23:30</span><span class="vip-schema-desc">Einde VIP-BAR</span></div>
+        </div>
+        <div class="vip-inclus">
+          <div class="vip-inclus-title">Inbegrepen</div>
+          <div class="vip-inclus-items">
+            <div class="vip-inclus-item">Toegang tot het parcours</div>
+            <div class="vip-inclus-item">VIP-Parking per 4 kaarten</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sponsor-cta">
+      <div class="sec-label" style="justify-content:center;">Samenwerking</div>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);letter-spacing:0.04em;margin-bottom:20px;">Word sponsor van Diegem Cross</h2>
+      <p style="font-size:15px;color:var(--grijs);line-height:1.7;max-width:560px;margin:0 auto 36px;">
+        Bereik duizenden toeschouwers live en een breed online publiek. 
+        Neem contact op voor onze sponsorformules op maat van uw budget.
+      </p>
+      <a class="btn btn-groen btn-lg" href="contact.html">Meer info aanvragen</a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
+      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="programma.html">Programma</a></li>
+        <li><a href="info.html">Info &amp; Deelnemers</a></li>
+        <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="inschrijvingen.html">Inschrijvingen</a></li>
+        <li><a href="reglement.html">Reglement</a></li>
+        <li><a href="technische-gids.html">Technische gids</a></li>
+        <li><a href="erelijst.html">Erelijst &amp; Uitslagen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="bestuur.html">Bestuur</a></li>
+        <li><a href="pers.html">Pers</a></li>
+        <li><a href="sponsor.html">Word sponsor</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="#" data-social="facebook" target="_blank">Facebook</a>
+      <a href="#" data-social="instagram" target="_blank">Instagram</a>
+      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+    </div>
+  </div>
+</footer>
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="js/main.js"></script>
+<script>
+(async()=>{
+  await applySettings();
+  const s = await getSettings();
+  const h = document.getElementById('pageHeroImg');
+  if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
+})();
+</script>
+
+</body>
+</html>

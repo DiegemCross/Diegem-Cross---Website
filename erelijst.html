@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erelijst &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.ere-split{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.ere-col{background:var(--paneel);padding:40px 36px;}
+.ere-col-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.06em;color:var(--groen);margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--groen-rand);}
+.ere-list{list-style:none;display:flex;flex-direction:column;}
+.ere-item{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.ere-item:last-child{border-bottom:none;}
+.ere-year{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--groen);min-width:52px;letter-spacing:0.04em;}
+.ere-naam{font-size:14px;font-weight:600;letter-spacing:0.04em;color:var(--wit);}
+.ere-item.highlight{background:rgba(0,170,19,0.06);margin:0 -36px;padding-left:36px;padding-right:36px;}
+.ere-item.highlight .ere-naam{color:var(--groen);}
+@media(max-width:768px){.ere-split{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="#" data-social="facebook" target="_blank">Facebook</a>
+    <a href="#" data-social="instagram" target="_blank">Instagram</a>
+    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="programma.html">Programma</a></li>
+    <li><a href="info.html" class="active">Info <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="deelnemers.html">Deelnemers</a>
+        <a href="inschrijvingen.html">Inschrijvingen</a>
+        <a href="parcours.html">Parcours</a>
+        <a href="affiche.html">Affiche</a>
+        <a href="pers.html">Pers</a>
+        <a href="technische-gids.html">Technische gids</a>
+        <a href="reglement.html">Reglement</a>
+        <a href="uitslagen.html">Uitslagen</a>
+        <a href="erelijst.html">Erelijst</a>
+      </div></li>
+    <li><a href="bereikbaarheid.html" >Bereikbaarheid</a></li>
+    <li><a href="vip.html" >VIP <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="vip.html">VIP-formules</a>
+        <a href="sponsor.html">Word sponsor</a>
+      </div></li>
+    <li><a href="nieuws.html" >Nieuws</a></li>
+    <li><a href="media.html" >Media</a></li>
+    <li><a href="contact.html" >Contact <span class="arrow">&#9662;</span></a><div class="dropdown">
+        <a href="contact.html">Contact</a>
+        <a href="bestuur.html">Bestuur</a>
+      </div></li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="programma.html">Programma</a>
+  <a href="info.html">Info</a>
+  <a href="bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="vip.html">VIP &amp; Hospitality</a>
+  <a href="nieuws.html">Nieuws</a>
+  <a href="media.html">Media</a>
+  <a href="contact.html">Contact</a>
+  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+</nav>
+<section class="page-hero">
+  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Historiek</div>
+    <h1>Erelijst</h1>
+  </div>
+</section>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">&rsaquo;</span><a href="info.html">Info</a><span class="sep">&rsaquo;</span><span class="current">Erelijst</span></div>
+<section class="sec">
+  <div class="container">
+    <div class="sec-label">Historiek</div>
+    <h2 class="sec-title">Erelijst<br>1975 &mdash; heden</h2>
+    <div class="ere-split">
+      <div class="ere-col">
+        <div class="ere-col-title">Mannen Elite</div>
+        <ul class="ere-list"><li class="ere-item  highlight"><span class="ere-year">2025</span><span class="ere-naam">Tibor DEL GROSSO</span></li>
+<li class="ere-item"><span class="ere-year">2024</span><span class="ere-naam">Laurens SWEECK</span></li>
+<li class="ere-item"><span class="ere-year">2023</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2022</span><span class="ere-naam">Wout VAN AERT</span></li>
+<li class="ere-item"><span class="ere-year">2019</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2018</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2017</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2016</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2015</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2014</span><span class="ere-naam">Mathieu VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">2013</span><span class="ere-naam">Sven NYS</span></li>
+<li class="ere-item"><span class="ere-year">2012</span><span class="ere-naam">Niels ALBERT</span></li>
+<li class="ere-item"><span class="ere-year">2011</span><span class="ere-naam">Niels ALBERT</span></li>
+<li class="ere-item"><span class="ere-year">2010</span><span class="ere-naam">Niels ALBERT</span></li>
+<li class="ere-item"><span class="ere-year">2009</span><span class="ere-naam">Niels ALBERT</span></li>
+<li class="ere-item"><span class="ere-year">2008</span><span class="ere-naam">Zdenek STYBAR</span></li>
+<li class="ere-item"><span class="ere-year">2007</span><span class="ere-naam">Sven NYS</span></li>
+<li class="ere-item"><span class="ere-year">2006</span><span class="ere-naam">Sven NYS</span></li>
+<li class="ere-item"><span class="ere-year">2005</span><span class="ere-naam">Gerben DE KNEGT</span></li>
+<li class="ere-item"><span class="ere-year">2004</span><span class="ere-naam">Erwin VERVECKEN</span></li>
+<li class="ere-item"><span class="ere-year">2003</span><span class="ere-naam">Bart WELLENS</span></li>
+<li class="ere-item"><span class="ere-year">2002</span><span class="ere-naam">Mario DECLERCQ</span></li>
+<li class="ere-item"><span class="ere-year">2001</span><span class="ere-naam">Erwin VERVECKEN</span></li>
+<li class="ere-item"><span class="ere-year">2000</span><span class="ere-naam">Sven NYS</span></li>
+<li class="ere-item"><span class="ere-year">1999</span><span class="ere-naam">Richard GROENENDAAL</span></li>
+<li class="ere-item"><span class="ere-year">1998</span><span class="ere-naam">Sven NYS</span></li>
+<li class="ere-item"><span class="ere-year">1997</span><span class="ere-naam">Adrie VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">1996</span><span class="ere-naam">Daniele PONTONI</span></li>
+<li class="ere-item"><span class="ere-year">1995</span><span class="ere-naam">Daniele PONTONI</span></li>
+<li class="ere-item"><span class="ere-year">1994</span><span class="ere-naam">Adrie VAN DER POEL</span></li>
+<li class="ere-item"><span class="ere-year">1993</span><span class="ere-naam">Daniele PONTONI</span></li>
+<li class="ere-item"><span class="ere-year">1992</span><span class="ere-naam">Marc JANSSENS</span></li>
+<li class="ere-item"><span class="ere-year">1991</span><span class="ere-naam">Danny DE BIE</span></li>
+<li class="ere-item"><span class="ere-year">1990</span><span class="ere-naam">Staf VAN BOUWEL</span></li>
+<li class="ere-item"><span class="ere-year">1989</span><span class="ere-naam">Danny DE BIE</span></li>
+<li class="ere-item"><span class="ere-year">1988</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1987</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1986</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1985</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1984</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1983</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1982</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1981</span><span class="ere-naam">Roger DE VLAEMINCK</span></li>
+<li class="ere-item"><span class="ere-year">1980</span><span class="ere-naam">Roland LIBOTON</span></li>
+<li class="ere-item"><span class="ere-year">1979</span><span class="ere-naam">Roger DE VLAEMINCK</span></li>
+<li class="ere-item"><span class="ere-year">1978</span><span class="ere-naam">Rein GROENENDAAL</span></li>
+<li class="ere-item"><span class="ere-year">1977</span><span class="ere-naam">Bert VERMEIRE</span></li>
+<li class="ere-item"><span class="ere-year">1976</span><span class="ere-naam">Albert VAN DAMME</span></li>
+<li class="ere-item"><span class="ere-year">1975</span><span class="ere-naam">Albert VAN DAMME</span></li></ul>
+      </div>
+      <div class="ere-col">
+        <div class="ere-col-title">Vrouwen Elite</div>
+        <ul class="ere-list"><li class="ere-item  highlight"><span class="ere-year">2025</span><span class="ere-naam">Puck PIETERSE</span></li>
+<li class="ere-item"><span class="ere-year">2024</span><span class="ere-naam">Lucinda BRAND</span></li>
+<li class="ere-item"><span class="ere-year">2023</span><span class="ere-naam">Puck PIETERSE</span></li>
+<li class="ere-item"><span class="ere-year">2022</span><span class="ere-naam">Puck PIETERSE</span></li>
+<li class="ere-item"><span class="ere-year">2019</span><span class="ere-naam">Annemarie WORST</span></li>
+<li class="ere-item"><span class="ere-year">2018</span><span class="ere-naam">Sanne CANT</span></li>
+<li class="ere-item"><span class="ere-year">2017</span><span class="ere-naam">Sanne CANT</span></li>
+<li class="ere-item"><span class="ere-year">2016</span><span class="ere-naam">Marianne VOS</span></li>
+<li class="ere-item"><span class="ere-year">2015</span><span class="ere-naam">Ellen VAN LOY</span></li>
+<li class="ere-item"><span class="ere-year">2014</span><span class="ere-naam">Marianne VOS</span></li>
+<li class="ere-item"><span class="ere-year">2013</span><span class="ere-naam">Sanne CANT</span></li>
+<li class="ere-item"><span class="ere-year">2012</span><span class="ere-naam">Katerina NASH</span></li>
+<li class="ere-item"><span class="ere-year">2011</span><span class="ere-naam">Marianne VOS</span></li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
+      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="programma.html">Programma</a></li>
+        <li><a href="info.html">Info &amp; Deelnemers</a></li>
+        <li><a href="bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="inschrijvingen.html">Inschrijvingen</a></li>
+        <li><a href="reglement.html">Reglement</a></li>
+        <li><a href="technische-gids.html">Technische gids</a></li>
+        <li><a href="erelijst.html">Erelijst &amp; Uitslagen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="bestuur.html">Bestuur</a></li>
+        <li><a href="pers.html">Pers</a></li>
+        <li><a href="sponsor.html">Word sponsor</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="#" data-social="facebook" target="_blank">Facebook</a>
+      <a href="#" data-social="instagram" target="_blank">Instagram</a>
+      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+    </div>
+  </div>
+</footer>
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="js/main.js"></script>
+<script>
+(async()=>{
+  await applySettings();
+  const s = await getSettings();
+  const h = document.getElementById('pageHeroImg');
+  if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
+})();
+</script>
+
+</body>
+</html>
