@@ -300,6 +300,43 @@
 @media (max-width: 480px) {
   .partners-grid { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ── HERO SLIDESHOW ── */
+.hero-slideshow { position: absolute; inset: 0; }
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  animation: slowzoom 8s ease-out forwards;
+}
+.slide.active { opacity: 1; }
+
+.slide-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  gap: 8px;
+}
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.slide-dot.active {
+  background: var(--groen);
+  border-color: var(--groen);
+  transform: scale(1.2);
+}
+
 </style>
 </head>
 <body>
@@ -390,7 +427,14 @@
 
 <!-- HERO -->
 <section class="hero" style="margin-top:0; padding-top:0;">
-  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="slide active" style="background-image:url('/images/uploads/0B5A6159.jpg');background-position:center 20%;"></div>
+    <div class="slide" style="background-image:url('/images/uploads/0B5A5380.jpg');background-position:center 30%;"></div>
+    <div class="slide" style="background-image:url('/images/uploads/2024 Diegem Cross_TurboCross-04.jpg');background-position:center 40%;"></div>
+    <div class="slide" style="background-image:url('/images/uploads/8L1A3447.jpg');background-position:center 35%;"></div>
+    <div class="slide" style="background-image:url('/images/uploads/8T7A7650 (1).jpg');background-position:center 40%;"></div>
+  </div>
+  <div class="slide-dots" id="slideDots"></div>
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
 
@@ -708,10 +752,8 @@ document.querySelectorAll('.topbar-lang a').forEach(a => {
 (async () => {
   const s = await applySettings();
 
-  // Hero foto
-  if (s.hero_foto) {
-    document.getElementById('heroBg').style.backgroundImage = `url('${s.hero_foto}')`;
-  }
+  // Slideshow initialiseren
+  initSlideshow();
   if (s.sfeer_foto) {
     document.getElementById('sfeerImg').style.backgroundImage = `url('${s.sfeer_foto}')`;
   }
@@ -787,6 +829,39 @@ document.querySelectorAll('.topbar-lang a').forEach(a => {
     document.getElementById('spGrid')
   );
 })();
+
+// ── SLIDESHOW ────────────────────────────────────
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('slideDots');
+  if (!slides.length) return;
+
+  let current = 0;
+
+  // Dots aanmaken
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsEl.children[current].classList.remove('active');
+    // Reset zoom animatie
+    slides[current].style.animation = 'none';
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsEl.children[current].classList.add('active');
+    // Herstart zoom animatie
+    void slides[current].offsetWidth;
+    slides[current].style.animation = '';
+  }
+
+  // Auto-play elke 5 seconden
+  setInterval(() => goTo(current + 1), 5000);
+}
 </script>
 
 </body>
