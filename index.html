@@ -177,7 +177,7 @@
 .stat-lbl { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grijs); margin-top: 6px; }
 
 /* PROGRAMMA PREVIEW */
-.prog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
+.prog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; min-width: 0; }
 .prog-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 32px 28px; position: relative; overflow: hidden; transition: background 0.3s; }
 .prog-card:hover { background: var(--paneel2); }
 .prog-card::after { content: attr(data-n); position: absolute; bottom: -16px; right: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 110px; color: rgba(0,170,19,0.04); line-height: 1; pointer-events: none; }
@@ -525,17 +525,17 @@
     </div>
     <div class="prog-grid" id="progGrid">
       <div class="prog-card" data-n="01">
-        <div class="prog-time">17:00 — Aanvang</div>
+        <div class="prog-time">17:00</div>
         <div class="prog-name">Junioren</div>
         <div class="prog-cat">Mannen &middot; Categorie Junioren</div>
       </div>
       <div class="prog-card" data-n="02">
-        <div class="prog-time">18:30 — Kunstlicht aan</div>
+        <div class="prog-time">18:30</div>
         <div class="prog-name">Elite &amp; U23 Dames</div>
         <div class="prog-cat">Dames Elite + U23 &middot; Telenet Superprestige</div>
       </div>
       <div class="prog-card" data-n="03">
-        <div class="prog-time">20:00 — Prime time</div>
+        <div class="prog-time">20:00</div>
         <div class="prog-name">Elite &amp; U23 Heren</div>
         <div class="prog-cat">Heren Elite + U23 &middot; Superprestige Manche 7</div>
       </div>
