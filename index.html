@@ -744,7 +744,244 @@ document.querySelectorAll('.topbar-lang a').forEach(a => {
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<script src="/Diegem-Cross---Website/js/main.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════
+   DIEGEM CROSS — GEDEELD JAVASCRIPT
+   Navigatie, content laden, Google Translate
+═══════════════════════════════════════════════════ */
+
+// ── GITHUB CONFIG ──────────────────────────────────
+const DC = {
+  user: 'DiegemCross',
+  repo: 'Diegem-Cross---Website',
+  branch: 'main',
+  raw: 'https://raw.githubusercontent.com/DiegemCross/Diegem-Cross---Website/main'
+};
+
+// ── HAMBURGER MENU ─────────────────────────────────
+function toggleMenu() {
+  const mob = document.getElementById('mobileNav');
+  const ham = document.getElementById('hamburger');
+  if (!mob || !ham) return;
+  mob.classList.toggle('open');
+  ham.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+}
+
+// Sluit menu bij klik op link
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.mobile-nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      const mob = document.getElementById('mobileNav');
+      const ham = document.getElementById('hamburger');
+      if (mob) mob.classList.remove('open');
+      if (ham) ham.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Actieve pagina markeren
+  const path = window.location.pathname.split('/').filter(Boolean).pop() || 'index.html';
+  document.querySelectorAll('.nav-menu a, .mobile-nav a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href && (href.includes(path) || (path === 'index.html' && href === '/'))) {
+      a.classList.add('active');
+    }
+  });
+
+  // Fade-in animaties triggeren
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+});
+
+// ── CONTENT HELPERS ────────────────────────────────
+async function fetchText(path) {
+  try {
+    const r = await fetch(`${DC.raw}/${path}?t=${Date.now()}`);
+    if (!r.ok) return null;
+    return r.text();
+  } catch { return null; }
+}
+
+async function fetchJSON(path) {
+  try {
+    const r = await fetch(`${DC.raw}/${path}?t=${Date.now()}`);
+    if (!r.ok) return null;
+    return r.json();
+  } catch { return null; }
+}
+
+async function fetchDir(path) {
+  try {
+    const r = await fetch(`https://api.github.com/repos/${DC.user}/${DC.repo}/contents/${path}?ref=${DC.branch}&t=${Date.now()}`);
+    if (!r.ok) return [];
+    return r.json();
+  } catch { return []; }
+}
+
+function parseFM(text) {
+  if (!text || !text.startsWith('---')) return { data: {}, body: text || '' };
+  const end = text.indexOf('---', 3);
+  if (end === -1) return { data: {}, body: text };
+  const fm = text.slice(3, end).trim();
+  const body = text.slice(end + 3).trim();
+  const data = {};
+  fm.split('\n').forEach(line => {
+    const i = line.indexOf(':');
+    if (i === -1) return;
+    const key = line.slice(0, i).trim();
+    let val = line.slice(i + 1).trim().replace(/^["']|["']$/g, '');
+    data[key] = val;
+  });
+  return { data, body };
+}
+
+// ── INSTELLINGEN LADEN ─────────────────────────────
+let _settings = null;
+
+async function getSettings() {
+  if (_settings) return _settings;
+  const data = await fetchJSON('content/instellingen/algemeen.json');
+  _settings = data || {
+    datum: '30 december 2026',
+    editie: '51ste',
+    hero_foto: 'https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg',
+    sfeer_foto: 'https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg',
+    vip_foto: 'https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg',
+    ticket_url: '#',
+    email: 'info@diegemcross.be',
+    facebook: 'https://www.facebook.com/DiegemCross/',
+    instagram: 'https://www.instagram.com/diegemcross/',
+    twitter: 'https://twitter.com/DiegemCross'
+  };
+  return _settings;
+}
+
+async function applySettings() {
+  const s = await getSettings();
+
+  // Ticketlinks
+  document.querySelectorAll('[data-ticket]').forEach(el => {
+    if (s.ticket_url) el.href = s.ticket_url;
+  });
+
+  // Socials
+  if (s.facebook) document.querySelectorAll('[data-social="facebook"]').forEach(el => el.href = s.facebook);
+  if (s.instagram) document.querySelectorAll('[data-social="instagram"]').forEach(el => el.href = s.instagram);
+  if (s.twitter) document.querySelectorAll('[data-social="twitter"]').forEach(el => el.href = s.twitter);
+
+  // Email
+  if (s.email) {
+    document.querySelectorAll('[data-email]').forEach(el => {
+      el.href = `mailto:${s.email}`;
+      el.textContent = s.email;
+    });
+  }
+
+  // Datum & editie
+  if (s.datum) document.querySelectorAll('[data-datum]').forEach(el => el.textContent = s.datum);
+  if (s.editie) document.querySelectorAll('[data-editie]').forEach(el => el.textContent = s.editie);
+
+  return s;
+}
+
+// ── SPONSORS LADEN ─────────────────────────────────
+async function loadSponsors(partnerEl, spEl) {
+  const files = await fetchDir('content/sponsors');
+  const mdFiles = files.filter(f => f.name && f.name.endsWith('.md'));
+
+  // Fallback data
+  const fallbackPartners = [
+    { naam: 'Belorta', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/belorta-v01-1.png', website: 'https://belorta.be', categorie: 'partner' },
+    { naam: 'Bevers', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/bevers-v01.png', website: 'https://www.beversbevers.be', categorie: 'partner' },
+    { naam: 'Van der Valk', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/van-der-valk-v01.png', website: 'https://www.valk.com', categorie: 'partner' },
+    { naam: 'Coca-Cola', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/Coca-v01.png', website: 'https://www.coca-cola.be', categorie: 'partner' },
+    { naam: 'Rombouts', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/rombouts-v01.png', website: 'https://www.rombouts.com', categorie: 'partner' },
+    { naam: 'Gem. Machelen', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/machelenv01.png', website: 'https://www.machelen.be', categorie: 'partner' },
+    { naam: 'Group BRS', logo: 'https://www.diegemcross.be/wp-content/uploads/2023/10/Brs-v01.png', website: 'https://www.groupbrs.be', categorie: 'partner' },
+    { naam: 'Conversal', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/Conversal-v01.png', website: 'https://www.conversal.be', categorie: 'partner' },
+    { naam: 'MGH', logo: 'https://www.diegemcross.be/wp-content/uploads/2020/04/Partner-mgh.png', website: 'http://www.mgh.be', categorie: 'partner' },
+    { naam: 'Esprit ICT', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-182516.png', website: 'https://esprit-ict.nl', categorie: 'partner' },
+    { naam: 'ACEG', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183029.png', website: 'https://aceg.be', categorie: 'partner' },
+    { naam: 'Werkkledij', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183307.png', website: 'https://werkkledij.be', categorie: 'partner' }
+  ];
+
+  const fallbackSP = [
+    { naam: 'Telenet', logo: 'https://www.diegemcross.be/wp-content/uploads/2023/10/Telenet.png', website: 'https://www.telenet.be', categorie: 'superprestige' },
+    { naam: 'Maes Pils', logo: 'https://www.diegemcross.be/wp-content/uploads/2020/04/Maes-Pils.webp', website: 'https://maes.be', categorie: 'superprestige' },
+    { naam: 'Play Sports', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/87.png', website: 'https://www.playsports.be', categorie: 'superprestige' },
+    { naam: 'Electro Depot', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/ElectroDepot.png', website: 'https://www.electrodepot.be', categorie: 'superprestige' },
+    { naam: 'Sunseeker Elite', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-191512.png', website: 'https://sunseekerelite.be', categorie: 'superprestige' },
+    { naam: 'Prik & Tik', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/PrikTik-3.png', website: 'https://www.prikentik.be', categorie: 'superprestige' },
+    { naam: 'AD Garage', logo: 'https://www.diegemcross.be/wp-content/uploads/2023/10/Logos-website_AD-Garage.png', website: 'https://www.ad-belgium.be', categorie: 'superprestige' },
+    { naam: 'Isolatiestock', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/Isolatiestock.png', website: 'https://www.isolatiestock.be', categorie: 'superprestige' },
+    { naam: 'SportLED', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/SporLED.png', website: 'https://www.sportled.nl', categorie: 'superprestige' },
+    { naam: 'Assa Abloy', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/AssaAbloy.png', website: 'https://www.assaabloy.com', categorie: 'superprestige' },
+    { naam: 'Kärcher', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/karcher.png', website: 'https://www.kaercher.com', categorie: 'superprestige' },
+    { naam: 'Delrue', logo: 'https://www.diegemcross.be/wp-content/uploads/2023/10/Kader_superprestige__delrue.png', website: 'https://metaalhandel.be', categorie: 'superprestige' }
+  ];
+
+  let items = [];
+  if (mdFiles.length) {
+    for (const f of mdFiles) {
+      const text = await fetchText(`content/sponsors/${f.name}`);
+      if (text) {
+        const { data } = parseFM(text);
+        items.push(data);
+      }
+    }
+    items.sort((a, b) => (parseInt(a.volgorde) || 99) - (parseInt(b.volgorde) || 99));
+  } else {
+    items = [...fallbackPartners, ...fallbackSP];
+  }
+
+  const partners = items.filter(i => i.categorie === 'partner');
+  const sp = items.filter(i => i.categorie === 'superprestige');
+
+  function renderCell(item) {
+    const inner = item.logo
+      ? `<img src="${item.logo}" alt="${item.naam || ''}" loading="lazy">`
+      : `<span class="p-name">${item.naam || ''}</span>`;
+    return `<div class="footer-partner-cell">${item.website ? `<a href="${item.website}" target="_blank" rel="noopener">${inner}</a>` : inner}</div>`;
+  }
+
+  if (partnerEl) partnerEl.innerHTML = (partners.length ? partners : fallbackPartners).map(renderCell).join('');
+  if (spEl) spEl.innerHTML = (sp.length ? sp : fallbackSP).map(renderCell).join('');
+}
+
+// ── COUNTDOWN ──────────────────────────────────────
+function startCountdown(targetDate) {
+  function update() {
+    const diff = new Date(targetDate) - new Date();
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const el = (id) => document.getElementById(id);
+    if (el('cd-d')) el('cd-d').textContent = String(d).padStart(3, '0');
+    if (el('cd-h')) el('cd-h').textContent = String(h).padStart(2, '0');
+    if (el('cd-m')) el('cd-m').textContent = String(m).padStart(2, '0');
+    if (el('cd-s')) el('cd-s').textContent = String(s).padStart(2, '0');
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+</script>
 <script>
 (async () => {
   const s = await applySettings();
