@@ -3,22 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programma &mdash; Diegem Cross</title>
+<title>Programma — Diegem Cross</title>
 <link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css">
 <style>
-.prog-page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:48px;}
-.prog-card-full{background:var(--paneel);border-top:3px solid var(--groen);padding:40px 32px;position:relative;overflow:hidden;}
-.prog-card-full::after{content:attr(data-n);position:absolute;bottom:-20px;right:16px;font-family:'Bebas Neue',sans-serif;font-size:140px;color:rgba(0,170,19,0.04);line-height:1;pointer-events:none;}
-.prog-time{font-size:11px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--groen);margin-bottom:16px;}
-.prog-name-big{font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:0.04em;margin-bottom:8px;line-height:1;}
-.prog-cat-big{font-size:14px;color:var(--grijs);margin-bottom:20px;}
-.prog-detail{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;}
-.affiche-box{background:var(--paneel);border:1px solid var(--groen-rand);padding:40px;text-align:center;}
-.affiche-box img{max-width:400px;margin:0 auto 24px;}
-@media(max-width:768px){.prog-page-grid{grid-template-columns:1fr;}}
+/* ── WEDSTRIJDEN ── */
+.wedstrijden {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 64px;
+}
+
+.wedstrijd-card {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 0;
+  background: var(--paneel);
+  border-left: 4px solid var(--groen);
+  transition: background 0.3s;
+  overflow: hidden;
+}
+
+.wedstrijd-card:hover { background: var(--paneel2); }
+
+.wedstrijd-tijd {
+  background: var(--zwart);
+  padding: 40px 36px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  text-align: center;
+}
+
+.wedstrijd-uur {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: var(--groen);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.wedstrijd-uur-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grijs);
+  margin-top: 6px;
+  display: block;
+}
+
+.wedstrijd-info {
+  padding: 36px 40px;
+}
+
+.wedstrijd-nummer {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0,170,19,0.5);
+  margin-bottom: 10px;
+}
+
+.wedstrijd-naam {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 44px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.wedstrijd-cat {
+  font-size: 14px;
+  color: var(--grijs);
+  letter-spacing: 0.04em;
+}
+
+.wedstrijd-tag {
+  padding: 32px 40px;
+  text-align: right;
+}
+
+/* ── AMBIANCETENT ── */
+.ambiance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-bottom: 48px;
+}
+
+.ambiance-card {
+  background: var(--paneel);
+  padding: 48px 40px;
+  border-top: 3px solid var(--groen);
+  position: relative;
+  overflow: hidden;
+}
+
+.ambiance-card::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(0,170,19,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ambiance-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.ambiance-naam {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.ambiance-desc {
+  font-size: 14px;
+  color: var(--grijs);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.ambiance-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--groen-dim);
+  border: 1px solid var(--groen-rand);
+  color: var(--groen);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+}
+
+.ambiance-soon::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--groen);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ── TIJDLIJN ── */
+.tijdlijn {
+  position: relative;
+  padding: 0 0 0 48px;
+  margin-bottom: 64px;
+}
+
+.tijdlijn::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--groen), rgba(0,170,19,0.1));
+}
+
+.tijdlijn-item {
+  position: relative;
+  padding: 0 0 32px 24px;
+}
+
+.tijdlijn-item::before {
+  content: '';
+  position: absolute;
+  left: -43px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--groen);
+  border: 2px solid var(--zwart);
+  box-shadow: 0 0 0 3px rgba(0,170,19,0.25);
+}
+
+.tijdlijn-tijd {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--groen);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.tijdlijn-text {
+  font-size: 14px;
+  color: var(--grijs);
+}
+
+.tijdlijn-text strong { color: var(--wit); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .wedstrijd-card {
+    grid-template-columns: 1fr;
+    border-left: none;
+    border-top: 4px solid var(--groen);
+  }
+  .wedstrijd-tijd {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-align: left;
+  }
+  .wedstrijd-uur { font-size: 40px; }
+  .wedstrijd-info { padding: 24px; }
+  .wedstrijd-naam { font-size: 36px; }
+  .wedstrijd-tag { padding: 0 24px 24px; text-align: left; }
+  .ambiance-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
+
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-lang">
     <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
@@ -27,19 +242,23 @@
   </div>
   <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
   <div class="topbar-social">
-    <a href="#" data-social="facebook" target="_blank">Facebook</a>
-    <a href="#" data-social="instagram" target="_blank">Instagram</a>
-    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
   </div>
 </div>
 
+<!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <a href="/Diegem-Cross---Website/index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+    <a href="/Diegem-Cross---Website/index.html">
+      <img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross">
+    </a>
   </div>
   <ul class="nav-menu">
-    <li><a href="/Diegem-Cross---Website/programma.html"class="active">Programma</a></li>
-    <li><a href="/Diegem-Cross---Website/info.html" >Info <span class="arrow">&#9662;</span></a><div class="dropdown">
+    <li><a href="/Diegem-Cross---Website/programma.html" class="active">Programma</a></li>
+    <li>
+      <a href="/Diegem-Cross---Website/info.html">Info <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
         <a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a>
         <a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a>
         <a href="/Diegem-Cross---Website/parcours.html">Parcours</a>
@@ -49,71 +268,200 @@
         <a href="/Diegem-Cross---Website/reglement.html">Reglement</a>
         <a href="/Diegem-Cross---Website/uitslagen.html">Uitslagen</a>
         <a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a>
-      </div></li>
-    <li><a href="/Diegem-Cross---Website/bereikbaarheid.html" >Bereikbaarheid</a></li>
-    <li><a href="/Diegem-Cross---Website/vip.html" >VIP <span class="arrow">&#9662;</span></a><div class="dropdown">
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+    <li>
+      <a href="/Diegem-Cross---Website/vip.html">VIP <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
         <a href="/Diegem-Cross---Website/vip.html">VIP-formules</a>
         <a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a>
-      </div></li>
-    <li><a href="/Diegem-Cross---Website/nieuws.html" >Nieuws</a></li>
-    <li><a href="/Diegem-Cross---Website/media.html" >Media</a></li>
-    <li><a href="/Diegem-Cross---Website/contact.html" >Contact <span class="arrow">&#9662;</span></a><div class="dropdown">
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/nieuws.html">Nieuws</a></li>
+    <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+    <li>
+      <a href="/Diegem-Cross---Website/contact.html">Contact <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
         <a href="/Diegem-Cross---Website/contact.html">Contact</a>
         <a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a>
-      </div></li>
+      </div>
+    </li>
   </ul>
   <div style="display:flex;align-items:center;">
-    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <a class="btn btn-groen nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
 <nav class="mobile-nav" id="mobileNav">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
   <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-  <a href="/Diegem-Cross---Website/info.html">Info</a>
   <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
   <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
   <a href="/Diegem-Cross---Website/nieuws.html">Nieuws</a>
   <a href="/Diegem-Cross---Website/media.html">Media</a>
   <a href="/Diegem-Cross---Website/contact.html">Contact</a>
-  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
 </nav>
+
+<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <div class="page-hero-label">Wedstrijddag</div>
-    <h1>Programma</h1>
+    <h1>Programma<br>2026</h1>
   </div>
 </section>
-<div class="breadcrumb"><a href="/Diegem-Cross---Website/index.html">Home</a><span class="sep">&rsaquo;</span><span class="current">Programma</span></div>
+
+<div class="breadcrumb">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <span class="sep">&rsaquo;</span>
+  <span class="current">Programma</span>
+</div>
+
+<!-- WEDSTRIJDEN -->
 <section class="sec">
   <div class="container">
-    <div class="sec-label">Volledig overzicht</div>
-    <h2 class="sec-title">Wedstrijddag<br><span data-datum>30 december 2026</span></h2>
-    <div class="prog-page-grid" id="progPageGrid">
-      <div class="loading-state">Programma laden...</div>
+    <div class="sec-title-row">
+      <div>
+        <div class="sec-label">30 december 2026</div>
+        <h2 class="sec-title">Wedstrijd&shy;programma</h2>
+      </div>
     </div>
-    <div class="divider" style="margin:48px 0;"></div>
-    <div class="sec-label">Officiële affiche</div>
-    <h3 class="sec-title" style="font-size:clamp(32px,4vw,56px);margin-bottom:32px;">Affiche 2026</h3>
-    <div class="affiche-box">
-      <img src="https://www.diegemcross.be/wp-content/uploads/2025/10/Programma.png" alt="Programma Diegem Cross 2026" id="aficheImg">
-      <a class="btn btn-groen" href="https://www.diegemcross.be/wp-content/uploads/2025/10/Programma.png" target="_blank">Download affiche</a>
+
+    <div class="wedstrijden">
+
+      <!-- JUNIOREN -->
+      <div class="wedstrijd-card" data-animate>
+        <div class="wedstrijd-tijd">
+          <span class="wedstrijd-uur">17<sup style="font-size:28px;">u00</sup></span>
+          <span class="wedstrijd-uur-label">Aanvang</span>
+        </div>
+        <div class="wedstrijd-info">
+          <div class="wedstrijd-nummer">Wedstrijd 1 / 3</div>
+          <div class="wedstrijd-naam">Junioren</div>
+          <div class="wedstrijd-cat">Mannen &middot; Categorie Junioren (onder 19 jaar)</div>
+        </div>
+        <div class="wedstrijd-tag">
+          <span class="badge badge-groen">Meer info volgt</span>
+        </div>
+      </div>
+
+      <!-- ELITE DAMES -->
+      <div class="wedstrijd-card" data-animate>
+        <div class="wedstrijd-tijd">
+          <span class="wedstrijd-uur">18<sup style="font-size:28px;">u30</sup></span>
+          <span class="wedstrijd-uur-label">Kunstlicht aan</span>
+        </div>
+        <div class="wedstrijd-info">
+          <div class="wedstrijd-nummer">Wedstrijd 2 / 3</div>
+          <div class="wedstrijd-naam">Elite &amp; U23 Dames</div>
+          <div class="wedstrijd-cat">Dames Elite + U23 &middot; Telenet Superprestige</div>
+        </div>
+        <div class="wedstrijd-tag">
+          <span class="badge badge-groen">Meer info volgt</span>
+        </div>
+      </div>
+
+      <!-- ELITE HEREN -->
+      <div class="wedstrijd-card" data-animate>
+        <div class="wedstrijd-tijd">
+          <span class="wedstrijd-uur">20<sup style="font-size:28px;">u00</sup></span>
+          <span class="wedstrijd-uur-label">Prime time</span>
+        </div>
+        <div class="wedstrijd-info">
+          <div class="wedstrijd-nummer">Wedstrijd 3 / 3</div>
+          <div class="wedstrijd-naam">Elite &amp; U23 Heren</div>
+          <div class="wedstrijd-cat">Heren Elite + U23 &middot; Telenet Superprestige &middot; Manche 7</div>
+        </div>
+        <div class="wedstrijd-tag">
+          <span class="badge badge-groen">Meer info volgt</span>
+        </div>
+      </div>
+
     </div>
+
+    <!-- TIJDLIJN -->
+    <div class="sec-label">Volledig dagprogramma</div>
+    <h2 class="sec-title" style="font-size:clamp(32px,4vw,56px);margin-bottom:40px;">Dag van de cross</h2>
+
+    <div class="tijdlijn">
+      <div class="tijdlijn-item">
+        <div class="tijdlijn-tijd">Vanaf 15:00</div>
+        <div class="tijdlijn-text"><strong>Poorten open</strong> &mdash; Toeschouwers welkom</div>
+      </div>
+      <div class="tijdlijn-item">
+        <div class="tijdlijn-tijd">17:00</div>
+        <div class="tijdlijn-text"><strong>Junioren</strong> &mdash; Start eerste wedstrijd</div>
+      </div>
+      <div class="tijdlijn-item">
+        <div class="tijdlijn-tijd">18:30</div>
+        <div class="tijdlijn-text"><strong>Kunstlicht aan &mdash; Elite &amp; U23 Dames</strong></div>
+      </div>
+      <div class="tijdlijn-item">
+        <div class="tijdlijn-tijd">20:00</div>
+        <div class="tijdlijn-text"><strong>Elite &amp; U23 Heren</strong> &mdash; Telenet Superprestige Manche 7</div>
+      </div>
+      <div class="tijdlijn-item">
+        <div class="tijdlijn-tijd">Doorlopend</div>
+        <div class="tijdlijn-text"><strong>Ambiancetent</strong> &mdash; DJ &amp; special guest &mdash; meer info volgt</div>
+      </div>
+    </div>
+
+    <!-- AMBIANCETENT -->
+    <div class="sec-label">Entertainment</div>
+    <h2 class="sec-title" style="font-size:clamp(32px,4vw,56px);margin-bottom:32px;">Ambiancetent</h2>
+
+    <div class="ambiance-grid">
+      <div class="ambiance-card" data-animate>
+        <span class="ambiance-icon">&#127926;</span>
+        <div class="ambiance-naam">DJ &mdash; Doorlopend</div>
+        <div class="ambiance-desc">
+          De ambiancetent draait op volle toeren met een professionele DJ die de sfeer erin houdt van begin tot eind. De perfecte omkadering voor de avondcross onder kunstlicht.
+        </div>
+        <span class="ambiance-soon">Naam DJ binnenkort bekend</span>
+      </div>
+      <div class="ambiance-card" data-animate>
+        <span class="ambiance-icon">&#127908;</span>
+        <div class="ambiance-naam">Special Guest</div>
+        <div class="ambiance-desc">
+          Ook dit jaar verwelkomen we een bijzondere special guest in de ambiancetent. Wie het wordt, houden we nog even geheim — maar het wordt de moeite waard!
+        </div>
+        <span class="ambiance-soon">Aankondiging volgt binnenkort</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="background:var(--paneel);border-top:3px solid var(--groen);padding:48px 40px;text-align:center;" data-animate>
+      <div class="sec-label" style="justify-content:center;">Mis niets</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4vw,52px);letter-spacing:0.04em;margin-bottom:16px;">Volg ons voor de laatste updates</h3>
+      <p style="font-size:14px;color:var(--grijs);line-height:1.7;max-width:480px;margin:0 auto 32px;">
+        Deelnemerslijsten, tijdschema's en aankondigingen van de ambiancetent worden binnenkort bekendgemaakt. Volg ons op sociale media om niets te missen.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn-groen" href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+        <a class="btn btn-ghost" href="/Diegem-Cross---Website/nieuws.html">Alle nieuws</a>
+      </div>
+    </div>
+
   </div>
 </section>
+
+<!-- FOOTER -->
 <footer>
   <div class="footer-main">
     <div>
       <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
-      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
-      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode.</div>
+      <div class="footer-contact"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a><br>Diegem Cross vzw</div>
     </div>
     <div>
       <div class="footer-col-title">Navigatie</div>
       <ul class="footer-links">
         <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
-        <li><a href="/Diegem-Cross---Website/info.html">Info &amp; Deelnemers</a></li>
         <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
         <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a></li>
         <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
@@ -122,32 +470,28 @@
     <div>
       <div class="footer-col-title">Info</div>
       <ul class="footer-links">
-        <li><a href="/Diegem-Cross---Website/parcours.html">Parcours</a></li>
-        <li><a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a></li>
-        <li><a href="/Diegem-Cross---Website/reglement.html">Reglement</a></li>
-        <li><a href="/Diegem-Cross---Website/technische-gids.html">Technische gids</a></li>
-        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst &amp; Uitslagen</a></li>
+        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></li>
+        <li><a href="/Diegem-Cross---Website/nieuws.html">Nieuws</a></li>
+        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Contact</div>
+      <div class="footer-col-title">Volg ons</div>
       <ul class="footer-links">
-        <li><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></li>
-        <li><a href="/Diegem-Cross---Website/pers.html">Pers</a></li>
-        <li><a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a></li>
-        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
+        <li><a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <span class="footer-copy">&copy; 2026 Diegem Cross vzw &middot; Cookie Policy &middot; Privacy Policy</span>
     <div class="footer-social">
-      <a href="#" data-social="facebook" target="_blank">Facebook</a>
-      <a href="#" data-social="instagram" target="_blank">Instagram</a>
-      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+      <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
     </div>
   </div>
 </footer>
+
 <div id="google_translate_element" style="display:none;"></div>
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
@@ -155,41 +499,5 @@ function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/Diegem-Cross---Website/js/main.js"></script>
-<script>
-(async()=>{
-  try {
-    if(typeof applySettings === 'function') await applySettings();
-    if(typeof getSettings === 'function') {
-      const s = await getSettings();
-      const h = document.getElementById('pageHeroImg');
-      if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
-    }
-  } catch(e) { console.log('Settings error:', e); }
-})();
-</script>
-<script>
-(async()=>{
-  const grid = document.getElementById('progPageGrid');
-  const files = await fetchDir('content/programma');
-  const md = files.filter(f=>f.name&&f.name.endsWith('.md'));
-  const items=[];
-  for(const f of md){const t=await fetchText('content/programma/'+f.name);if(t){const{data}=parseFM(t);items.push(data);}}
-  items.sort((a,b)=>(parseInt(a.volgorde)||99)-(parseInt(b.volgorde)||99));
-  const fb=[
-    {starttijd:'17:00',starttijd_label:'Aanvang',naam:'Juniores',categorie:'Mannen &middot; Onder 19 jaar',volgorde:1},
-    {starttijd:'18:30',starttijd_label:'Kunstlicht aan',naam:'Elite Dames',categorie:'Dames Elite + U23',volgorde:2},
-    {starttijd:'20:00',starttijd_label:'Prime time',naam:'Elite Mannen',categorie:'Mannen Elite + U23 &middot; Superprestige',volgorde:3}
-  ];
-  const data=items.length?items:fb;
-  grid.innerHTML=data.map((item,i)=>`
-    <div class="prog-card-full" data-n="${String(i+1).padStart(2,'0')}">
-      <div class="prog-time">${item.starttijd||''} ${item.starttijd_label?'&mdash; '+item.starttijd_label:''}</div>
-      <div class="prog-name-big">${item.naam||''}</div>
-      <div class="prog-cat-big">${item.categorie||''}</div>
-    </div>`).join('');
-  const s=await getSettings();
-  if(s.affiche_foto){document.getElementById('aficheImg').src=s.affiche_foto;}
-})();
-</script>
 </body>
 </html>
