@@ -832,35 +832,35 @@ document.querySelectorAll('.topbar-lang a').forEach(a => {
 
 // ── SLIDESHOW ────────────────────────────────────
 function initSlideshow() {
-  const slides = document.querySelectorAll('.slide');
+  const slides = document.querySelectorAll('#heroSlideshow .slide');
   const dotsEl = document.getElementById('slideDots');
-  if (!slides.length) return;
+  if (!slides.length || !dotsEl) return;
 
   let current = 0;
+  let timer = null;
 
   // Dots aanmaken
+  dotsEl.innerHTML = '';
   slides.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
-    dot.addEventListener('click', () => goTo(i));
+    dot.addEventListener('click', () => { clearInterval(timer); goTo(i); startTimer(); });
     dotsEl.appendChild(dot);
   });
 
   function goTo(n) {
     slides[current].classList.remove('active');
-    dotsEl.children[current].classList.remove('active');
-    // Reset zoom animatie
-    slides[current].style.animation = 'none';
-    current = (n + slides.length) % slides.length;
+    if (dotsEl.children[current]) dotsEl.children[current].classList.remove('active');
+    current = ((n % slides.length) + slides.length) % slides.length;
     slides[current].classList.add('active');
-    dotsEl.children[current].classList.add('active');
-    // Herstart zoom animatie
-    void slides[current].offsetWidth;
-    slides[current].style.animation = '';
+    if (dotsEl.children[current]) dotsEl.children[current].classList.add('active');
   }
 
-  // Auto-play elke 5 seconden
-  setInterval(() => goTo(current + 1), 5000);
+  function startTimer() {
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  startTimer();
 }
 </script>
 
