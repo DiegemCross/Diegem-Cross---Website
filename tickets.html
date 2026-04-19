@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tickets — Diegem Cross</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.tickets-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--zwart);
+  position: relative;
+  overflow: hidden;
+}
+.tickets-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,170,19,0.08) 0%, transparent 70%);
+}
+.tickets-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 48px 24px;
+  max-width: 640px;
+}
+.tickets-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  display: block;
+}
+.tickets-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
+  letter-spacing: 0.04em;
+  color: var(--wit);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.tickets-sub {
+  font-size: 16px;
+  color: var(--grijs);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.tickets-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--groen-dim);
+  border: 1px solid var(--groen-rand);
+  color: var(--groen);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  margin-bottom: 40px;
+}
+.tickets-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--groen);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.5)} }
+.tickets-date {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--groen);
+  letter-spacing: 0.08em;
+  margin-bottom: 32px;
+}
+</style>
+</head>
+<body style="padding-top:0;">
+
+<div class="tickets-hero">
+  <div class="tickets-content">
+    <div class="tickets-badge">Diegem Cross 2026</div>
+    <h1 class="tickets-title">Tickets</h1>
+    <div class="tickets-date">30 december 2026</div>
+    <p class="tickets-sub">
+      De ticketverkoop voor Diegem Cross 2026 start binnenkort.<br>
+      Houd onze website en sociale media in de gaten voor meer informatie.
+    </p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-groen btn-lg" href="index.html">Terug naar home</a>
+      <a class="btn btn-ghost btn-lg" href="https://www.facebook.com/DiegemCross/" target="_blank">Volg ons op Facebook</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
