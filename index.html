@@ -444,8 +444,7 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-badge">Avondcross · Kunstlicht · Diegem</div>
-    <img class="hero-logo"
+  <img class="hero-logo"
       src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png"
       alt="Diegem Cross">
     <div class="hero-meta">
@@ -760,7 +759,29 @@ document.querySelectorAll('.topbar-lang a').forEach(a => {
   }
 
   // Countdown
-  startCountdown('2026-12-30T15:00:00');
+  // Countdown direct hier
+  (function() {
+    function updateCD() {
+      var target = new Date('2026-12-30T15:00:00');
+      var now = new Date();
+      var diff = target - now;
+      if (diff <= 0) return;
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      var ed = document.getElementById('cd-d');
+      var eh = document.getElementById('cd-h');
+      var em = document.getElementById('cd-m');
+      var es = document.getElementById('cd-s');
+      if (ed) ed.textContent = String(d).padStart(3,'0');
+      if (eh) eh.textContent = String(h).padStart(2,'0');
+      if (em) em.textContent = String(m).padStart(2,'0');
+      if (es) es.textContent = String(s).padStart(2,'0');
+    }
+    updateCD();
+    setInterval(updateCD, 1000);
+  })();
 
   // Programma laden
   const progGrid = document.getElementById('progGrid');
