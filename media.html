@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media &amp; Foto's — Diegem Cross</title>
+<title>Media &amp; Foto's &mdash; Diegem Cross</title>
 <link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css">
 <style>
-/* ── MEDIA OVERZICHT (albums) ── */
 .albums-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3px;
   margin-bottom: 64px;
 }
-
 .album-card {
   position: relative;
   aspect-ratio: 4/3;
@@ -21,7 +19,6 @@
   cursor: pointer;
   background: var(--paneel);
 }
-
 .album-card img {
   width: 100%;
   height: 100%;
@@ -30,12 +27,10 @@
   filter: brightness(0.65);
   transition: transform 0.5s ease, filter 0.4s;
 }
-
 .album-card:hover img {
   transform: scale(1.06);
   filter: brightness(0.9);
 }
-
 .album-overlay {
   position: absolute;
   inset: 0;
@@ -45,7 +40,6 @@
   justify-content: flex-end;
   padding: 18px;
 }
-
 .album-jaar {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 32px;
@@ -53,7 +47,6 @@
   color: var(--wit);
   line-height: 1;
 }
-
 .album-count {
   font-size: 11px;
   font-weight: 700;
@@ -62,18 +55,9 @@
   color: var(--groen);
   margin-top: 4px;
 }
-
 .album-card:hover .album-jaar { color: var(--groen); }
-
-/* ── ALBUM DETAIL VIEW ── */
-.album-detail {
-  display: none;
-}
-
-.album-detail.active {
-  display: block;
-}
-
+.album-detail { display: none; }
+.album-detail.active { display: block; }
 .album-detail-header {
   display: flex;
   align-items: center;
@@ -82,7 +66,6 @@
   flex-wrap: wrap;
   gap: 16px;
 }
-
 .album-back {
   display: inline-flex;
   align-items: center;
@@ -94,25 +77,19 @@
   text-transform: uppercase;
   color: var(--groen);
   cursor: pointer;
-  transition: gap 0.2s;
 }
-
-.album-back::before { content: '←'; }
-.album-back:hover { gap: 12px; }
-
+.album-back::before { content: '\2190'; }
 .fotos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3px;
 }
-
 .foto-thumb {
   aspect-ratio: 4/3;
   overflow: hidden;
   cursor: pointer;
   background: var(--paneel);
 }
-
 .foto-thumb img {
   width: 100%;
   height: 100%;
@@ -121,13 +98,10 @@
   filter: brightness(0.8);
   transition: transform 0.4s ease, filter 0.3s;
 }
-
 .foto-thumb:hover img {
   transform: scale(1.06);
   filter: brightness(1);
 }
-
-/* ── LIGHTBOX ── */
 .lightbox {
   display: none;
   position: fixed;
@@ -138,53 +112,42 @@
   justify-content: center;
   flex-direction: column;
 }
-
-.lightbox.open {
-  display: flex;
-}
-
+.lightbox.open { display: flex; }
 .lightbox-img {
   max-width: 90vw;
   max-height: 85vh;
   object-fit: contain;
   display: block;
 }
-
 .lightbox-close {
   position: absolute;
   top: 24px;
   right: 32px;
-  font-size: 32px;
+  font-size: 40px;
   color: var(--wit);
   cursor: pointer;
   background: none;
   border: none;
   line-height: 1;
   opacity: 0.7;
-  transition: opacity 0.2s;
 }
-
 .lightbox-close:hover { opacity: 1; }
-
 .lightbox-nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 40px;
+  font-size: 48px;
   color: var(--wit);
   cursor: pointer;
   background: rgba(0,0,0,0.5);
   border: none;
   padding: 16px 20px;
   opacity: 0.7;
-  transition: opacity 0.2s;
   line-height: 1;
 }
-
 .lightbox-nav:hover { opacity: 1; }
 .lightbox-prev { left: 16px; }
 .lightbox-next { right: 16px; }
-
 .lightbox-counter {
   margin-top: 16px;
   font-size: 12px;
@@ -193,27 +156,12 @@
   text-transform: uppercase;
   color: var(--grijs);
 }
-
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-  .albums-grid { grid-template-columns: repeat(3, 1fr); }
-  .fotos-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .albums-grid { grid-template-columns: repeat(2, 1fr); }
-  .fotos-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 480px) {
-  .albums-grid { grid-template-columns: repeat(2, 1fr); }
-  .fotos-grid { grid-template-columns: repeat(2, 1fr); }
-}
+@media (max-width: 1100px) { .albums-grid { grid-template-columns: repeat(3, 1fr); } .fotos-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .albums-grid { grid-template-columns: repeat(2, 1fr); } .fotos-grid { grid-template-columns: repeat(2, 1fr); } }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-lang">
     <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
@@ -222,13 +170,11 @@
   </div>
   <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
   <div class="topbar-social">
-    <a href="#" data-social="facebook" target="_blank">Facebook</a>
-    <a href="#" data-social="instagram" target="_blank">Instagram</a>
-    <a href="#" data-social="twitter" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
   </div>
 </div>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <a href="/Diegem-Cross---Website/index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
@@ -239,13 +185,9 @@
       <a href="/Diegem-Cross---Website/info.html">Info <span class="arrow">&#9662;</span></a>
       <div class="dropdown">
         <a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a>
-        <a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a>
         <a href="/Diegem-Cross---Website/parcours.html">Parcours</a>
-        <a href="/Diegem-Cross---Website/affiche.html">Affiche</a>
         <a href="/Diegem-Cross---Website/pers.html">Pers</a>
-        <a href="/Diegem-Cross---Website/technische-gids.html">Technische gids</a>
         <a href="/Diegem-Cross---Website/reglement.html">Reglement</a>
-        <a href="/Diegem-Cross---Website/uitslagen.html">Uitslagen</a>
         <a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a>
       </div>
     </li>
@@ -268,25 +210,24 @@
     </li>
   </ul>
   <div style="display:flex;align-items:center;">
-    <a class="btn btn-groen nav-ticket" href="#" data-ticket>Tickets</a>
+    <a class="btn btn-groen nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <nav class="mobile-nav" id="mobileNav">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
   <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-  <a href="/Diegem-Cross---Website/info.html">Info</a>
   <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
-  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
+  <a href="/Diegem-Cross---Website/vip.html">VIP</a>
   <a href="/Diegem-Cross---Website/nieuws.html">Nieuws</a>
   <a href="/Diegem-Cross---Website/media.html">Media</a>
   <a href="/Diegem-Cross---Website/contact.html">Contact</a>
-  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
+  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
 </nav>
 
-<!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-img" id="pageHeroImg"></div>
+  <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
     <div class="page-hero-label">Fotogalerij</div>
@@ -300,11 +241,9 @@
   <span class="current">Media</span>
 </div>
 
-<!-- CONTENT -->
 <section class="sec">
   <div class="container">
 
-    <!-- ALBUMS OVERZICHT -->
     <div id="albumsView">
       <div class="sec-title-row">
         <div>
@@ -312,12 +251,115 @@
           <h2 class="sec-title">Fotogalerij<br>Diegem Cross</h2>
         </div>
       </div>
-      <div class="albums-grid" id="albumsGrid">
-        <div class="loading-state">Albums laden...</div>
+      <div class="albums-grid">
+      <div class="album-card" onclick='openAlbum("2024", ["https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-83.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-62.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-55.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-54.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-52.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-27.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Dames-05.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-051.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-067.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_524.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-017.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-012.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-010.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-008.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3783-4-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3861-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_FeestTent-17.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_FeestTent-51.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_506.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_513.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_465.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_457.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_533.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_445.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_419.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_355.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_09.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_337.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/20250112-DiegemCross-Tussenin-en-Sfeer-33.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_TurboCross-05.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_TurboCross-41.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/20250112-DiegemCross-Tussenin-en-Sfeer-08.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/diegemcross2024_520.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_FeestTent-25.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-107.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-091.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3669-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3631-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3509-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3433-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3457-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3477-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3400-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3097-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/DSC_3122-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Junioren-05.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080.jpg" alt="Cross 2024" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2024</div>
+          <div class="album-count">47 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2023", ["https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8925.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8822.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8801.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8792.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8716.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001107-1-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001651-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001327-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001555-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001550-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001231-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/Balkjes-Diegem-Cross-logo-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001212-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001207-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001201-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001151-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001059-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001146-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/LQ_71-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_000929-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8680.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg" alt="Cross 2023" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2023</div>
+          <div class="album-count">22 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2022", ["https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_87-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_68-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_60-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_33-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_11-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_9-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg" alt="Cross 2022" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2022</div>
+          <div class="album-count">7 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2019", ["https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/29-HJ20191229-23868431.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/25-HJ20191229-23867839.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/21-HJ20191229-23867357.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/17-HJ20191229-23866737.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/13-HJ20191229-23866153.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg" alt="Cross 2019" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2019</div>
+          <div class="album-count">6 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2018", ["https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/18-HJ20181230-23844452-280x180.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/34-HJ20181230-23846397.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/30-HJ20181230-23845917.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/26-HJ20181230-23845465.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/22-HJ20181230-23844881.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg" alt="Cross 2018" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2018</div>
+          <div class="album-count">6 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2017", ["https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806182.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806166.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806150.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806130.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806182.jpg" alt="Cross 2017" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2017</div>
+          <div class="album-count">4 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2016", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2016-13.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-11.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-9.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-7.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-5.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-3.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2016-1.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2016-13.jpg" alt="Cross 2016" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2016</div>
+          <div class="album-count">7 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2015", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-Mathieu-van-der-Poel-meet.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-Mathieu-van-der-Poel.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-cross-diegem.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-cross-diegem-2.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-Mathieu-van-der-Poel-meet.jpg" alt="Cross 2015" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2015</div>
+          <div class="album-count">4 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2014", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-143404-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-140814-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-135855-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-133854-compressor-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-143404-compressor-scaled.jpg" alt="Cross 2014" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2014</div>
+          <div class="album-count">4 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2013", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-18009-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-17851-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-17695-compressor-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-18009-compressor-scaled.jpg" alt="Cross 2013" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2013</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2012", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320049239-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320048985-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320048811-compressor-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320049239-compressor-scaled.jpg" alt="Cross 2012" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2012</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2011", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033906-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033717-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033542-compressor-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033906-compressor-scaled.jpg" alt="Cross 2011" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2011</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2010", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5264-compressor.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5200-compressor.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5175-compressor.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5264-compressor.jpg" alt="Cross 2010" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2010</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2009", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7307-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7280-compressor-scaled.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7253-compressor-scaled.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7307-compressor-scaled.jpg" alt="Cross 2009" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2009</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
+      <div class="album-card" onclick='openAlbum("2008", ["https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem101.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem087.jpg", "https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem079.jpg"])'>
+        <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem101.jpg" alt="Cross 2008" loading="lazy">
+        <div class="album-overlay">
+          <div class="album-jaar">Cross 2008</div>
+          <div class="album-count">3 foto's</div>
+        </div>
+      </div>
       </div>
     </div>
 
-    <!-- ALBUM DETAIL -->
     <div id="albumDetail" class="album-detail">
       <div class="album-detail-header">
         <div>
@@ -326,15 +368,12 @@
         </div>
         <div class="album-back" onclick="showAlbums()">Terug naar overzicht</div>
       </div>
-      <div class="fotos-grid" id="fotosGrid">
-        <div class="loading-state">Foto's laden...</div>
-      </div>
+      <div class="fotos-grid" id="fotosGrid"></div>
     </div>
 
   </div>
 </section>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</button>
@@ -343,50 +382,43 @@
   <div class="lightbox-counter" id="lightboxCounter"></div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-main">
     <div>
       <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
-      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
-      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode.</div>
+      <div class="footer-contact"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a><br>Diegem Cross vzw</div>
     </div>
     <div>
       <div class="footer-col-title">Navigatie</div>
       <ul class="footer-links">
         <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
-        <li><a href="/Diegem-Cross---Website/info.html">Info &amp; Deelnemers</a></li>
         <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
         <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="/Diegem-Cross---Website/nieuws.html">Nieuws</a></li>
         <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Info</div>
       <ul class="footer-links">
-        <li><a href="/Diegem-Cross---Website/parcours.html">Parcours</a></li>
-        <li><a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a></li>
-        <li><a href="/Diegem-Cross---Website/reglement.html">Reglement</a></li>
-        <li><a href="/Diegem-Cross---Website/technische-gids.html">Technische gids</a></li>
-        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst &amp; Uitslagen</a></li>
+        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></li>
+        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Contact</div>
+      <div class="footer-col-title">Volg ons</div>
       <ul class="footer-links">
-        <li><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></li>
-        <li><a href="/Diegem-Cross---Website/pers.html">Pers</a></li>
-        <li><a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a></li>
-        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
+        <li><a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <span class="footer-copy">&copy; 2026 Diegem Cross vzw &middot; Cookie Policy &middot; Privacy Policy</span>
     <div class="footer-social">
-      <a href="#" data-social="facebook" target="_blank">Facebook</a>
-      <a href="#" data-social="instagram" target="_blank">Instagram</a>
-      <a href="#" data-social="twitter" target="_blank">Twitter / X</a>
+      <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
     </div>
   </div>
 </footer>
@@ -395,74 +427,24 @@
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
 function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/Diegem-Cross---Website/js/main.js"></script>
 <script>
-let currentFotos = [];
-let currentFotoIndex = 0;
+var currentFotos = [];
+var currentIndex = 0;
 
-// ── ALBUMS LADEN ──────────────────────────────────
-async function loadAlbums() {
-  const grid = document.getElementById('albumsGrid');
-
-  // Haal alle JSON bestanden op uit content/media
-  const files = await fetchDir('content/media');
-  const jsonFiles = files.filter(f => f.name && f.name.endsWith('.json'));
-
-  let albums = [];
-  for (const f of jsonFiles) {
-    const data = await fetchJSON(`content/media/${f.name}`);
-    if (data && data.jaar) albums.push(data);
-  }
-
-  // Fallback als geen bestanden gevonden
-  if (!albums.length) {
-    albums = [
-      { jaar: '2024', omslag: 'https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg'] },
-      { jaar: '2023', omslag: 'https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg'] },
-      { jaar: '2022', omslag: 'https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg'] },
-      { jaar: '2019', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg'] },
-      { jaar: '2018', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg'] },
-      { jaar: '2017', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806182.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/01/20171230-23806182.jpg'] },
-      { jaar: '2016', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2016-13.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2016-13.jpg'] },
-      { jaar: '2015', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-Mathieu-van-der-Poel-meet.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2015foto-Mathieu-van-der-Poel-meet.jpg'] },
-      { jaar: '2014', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-143404-compressor-scaled.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2014PDC20141228-143404-compressor-scaled.jpg'] },
-      { jaar: '2013', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-18009-compressor-scaled.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2013PDC20131229-18009-compressor-scaled.jpg'] },
-      { jaar: '2012', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320049239-compressor-scaled.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2012PPRESS320049239-compressor-scaled.jpg'] },
-      { jaar: '2011', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033906-compressor-scaled.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2011PPRESS140033906-compressor-scaled.jpg'] },
-      { jaar: '2010', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5264-compressor.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2010DSC_5264-compressor.jpg'] },
-      { jaar: '2009', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7307-compressor-scaled.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2009_HLV7307-compressor-scaled.jpg'] },
-      { jaar: '2008', omslag: 'https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem101.jpg', fotos: ['https://www.diegemcross.be/wp-content/uploads/2020/05/2008specialdiegem101.jpg'] }
-    ];
-  }
-
-  // Sorteer nieuwste eerst
-  albums.sort((a, b) => parseInt(b.jaar) - parseInt(a.jaar));
-
-  grid.innerHTML = albums.map(album => `
-    <div class="album-card" onclick="openAlbum('${album.jaar}', ${JSON.stringify(album.fotos).replace(/'/g, "&#39;")})">
-      <img src="${album.omslag}" alt="Cross ${album.jaar}" loading="lazy">
-      <div class="album-overlay">
-        <div class="album-jaar">Cross ${album.jaar}</div>
-        <div class="album-count">${album.fotos.length} foto${album.fotos.length !== 1 ? "'s" : ''}</div>
-      </div>
-    </div>`).join('');
-}
-
-// ── ALBUM OPENEN ──────────────────────────────────
 function openAlbum(jaar, fotos) {
   currentFotos = fotos;
   document.getElementById('albumsView').style.display = 'none';
   document.getElementById('albumDetail').classList.add('active');
-  document.getElementById('detailTitel').textContent = `Cross ${jaar}`;
+  document.getElementById('detailTitel').textContent = 'Cross ' + jaar;
   window.scrollTo(0, 0);
-
-  const grid = document.getElementById('fotosGrid');
-  grid.innerHTML = fotos.map((foto, i) => `
-    <div class="foto-thumb" onclick="openLightbox(${i})">
-      <img src="${foto}" alt="Cross ${jaar} foto ${i+1}" loading="lazy">
-    </div>`).join('');
+  var grid = document.getElementById('fotosGrid');
+  grid.innerHTML = fotos.map(function(foto, i) {
+    return '<div class="foto-thumb" onclick="openLightbox(' + i + ')"><img src="' + foto + '" alt="foto" loading="lazy"></div>';
+  }).join('');
 }
 
 function showAlbums() {
@@ -470,12 +452,11 @@ function showAlbums() {
   document.getElementById('albumDetail').classList.remove('active');
 }
 
-// ── LIGHTBOX ──────────────────────────────────────
-function openLightbox(index) {
-  currentFotoIndex = index;
-  updateLightbox();
+function openLightbox(i) {
+  currentIndex = i;
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
+  updateLightbox();
 }
 
 function closeLightbox() {
@@ -484,36 +465,24 @@ function closeLightbox() {
 }
 
 function navLightbox(dir) {
-  currentFotoIndex = (currentFotoIndex + dir + currentFotos.length) % currentFotos.length;
+  currentIndex = (currentIndex + dir + currentFotos.length) % currentFotos.length;
   updateLightbox();
 }
 
 function updateLightbox() {
-  document.getElementById('lightboxImg').src = currentFotos[currentFotoIndex];
-  document.getElementById('lightboxCounter').textContent = `${currentFotoIndex + 1} / ${currentFotos.length}`;
+  document.getElementById('lightboxImg').src = currentFotos[currentIndex];
+  document.getElementById('lightboxCounter').textContent = (currentIndex + 1) + ' / ' + currentFotos.length;
 }
 
-// Keyboard navigatie
-document.addEventListener('keydown', e => {
+document.addEventListener('keydown', function(e) {
   if (!document.getElementById('lightbox').classList.contains('open')) return;
   if (e.key === 'ArrowRight') navLightbox(1);
   if (e.key === 'ArrowLeft') navLightbox(-1);
   if (e.key === 'Escape') closeLightbox();
 });
-
-// Klik buiten foto sluit lightbox
-document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === document.getElementById('lightbox')) closeLightbox();
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
 });
-
-// ── INIT ──────────────────────────────────────────
-(async () => {
-  await applySettings();
-  const s = await getSettings();
-  const h = document.getElementById('pageHeroImg');
-  if (h && s.hero_foto) h.style.backgroundImage = `url('${s.hero_foto}')`;
-  await loadAlbums();
-})();
 </script>
 </body>
 </html>
