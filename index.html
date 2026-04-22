@@ -258,8 +258,8 @@
 .partner-cell { background: var(--paneel); height: 80px; display: flex; align-items: center; justify-content: center; padding: 0 16px; border: 1px solid rgba(255,255,255,0.03); transition: background 0.2s, border-color 0.2s; }
 .partner-cell:hover { background: var(--paneel2); border-color: var(--groen-rand); }
 .partner-cell a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
-.partner-cell img { max-height: 48px; max-width: 88%; object-fit: contain; filter: grayscale(1) brightness(0.5); transition: filter 0.3s; }
-.partner-cell:hover img { filter: grayscale(0) brightness(1); }
+.partner-cell img { max-height: 48px; max-width: 88%; object-fit: contain; transition: filter 0.3s; }
+.partner-cell:hover img {  }
 .partner-cell .p-name { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center; transition: color 0.2s; }
 .partner-cell:hover .p-name { color: rgba(255,255,255,0.7); }
 
@@ -523,7 +523,7 @@
       </div>
       <a class="btn btn-ghost" href="/Diegem-Cross---Website/programma.html">Volledig programma</a>
     </div>
-    <div class="prog-grid" id="progGrid">
+    <div class="prog-grid" id="progGrid" style="display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:3px;">
       <div class="prog-card" data-n="01">
         <div class="prog-time">17:00</div>
         <div class="prog-name">Junioren</div>
@@ -564,24 +564,24 @@
       </div>
       <a class="btn btn-ghost" href="/Diegem-Cross---Website/media.html">Alle foto's</a>
     </div>
-    <div class="foto-grid">
-      <div class="foto-item">
+    <div class="foto-grid" id="fotoGrid">
+      <div class="foto-item" onclick="location.href='/Diegem-Cross---Website/media.html#2024'" style="cursor:pointer;">
         <img src="https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg" alt="Cross 2024" loading="lazy">
         <div class="foto-jaar"><div class="foto-jaar-num">2024</div></div>
       </div>
-      <div class="foto-item">
+      <div class="foto-item" onclick="location.href='/Diegem-Cross---Website/media.html#2023'" style="cursor:pointer;">
         <img src="https://www.diegemcross.be/wp-content/uploads/2024/02/20231229_001634-e1743182868859.jpg" alt="Cross 2023" loading="lazy">
         <div class="foto-jaar"><div class="foto-jaar-num">2023</div></div>
       </div>
-      <div class="foto-item">
+      <div class="foto-item" onclick="location.href='/Diegem-Cross---Website/media.html#2022'" style="cursor:pointer;">
         <img src="https://www.diegemcross.be/wp-content/uploads/2023/01/LQ_105-scaled-e1743183061244.jpg" alt="Cross 2022" loading="lazy">
         <div class="foto-jaar"><div class="foto-jaar-num">2022</div></div>
       </div>
-      <div class="foto-item">
+      <div class="foto-item" onclick="location.href='/Diegem-Cross---Website/media.html#2019'" style="cursor:pointer;">
         <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/33-HJ20191229-23868811.jpg" alt="Cross 2019" loading="lazy">
         <div class="foto-jaar"><div class="foto-jaar-num">2019</div></div>
       </div>
-      <div class="foto-item">
+      <div class="foto-item" onclick="location.href='/Diegem-Cross---Website/media.html#2018'" style="cursor:pointer;">
         <img src="https://www.diegemcross.be/wp-content/uploads/2020/05/37-HJ20181230-23846791.jpg" alt="Cross 2018" loading="lazy">
         <div class="foto-jaar"><div class="foto-jaar-num">2018</div></div>
       </div>
@@ -691,7 +691,7 @@
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Partners Diegem Cross</p>
     <div class="partners-grid" id="partnersGrid" style="margin-bottom:24px;">
-      <div class="partner-cell"><a href="https://belorta.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/belorta-v01-1.png" alt="Belorta" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.beversbevers.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/bevers-v01.png" alt="Bevers" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.valk.com" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/van-der-valk-v01.png" alt="Van der Valk" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.coca-cola.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/Coca-v01.png" alt="Coca-Cola" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.rombouts.com" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/rombouts-v01.png" alt="Rombouts" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.machelen.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/machelenv01.png" alt="Gem. Machelen" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.groupbrs.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2023/10/Brs-v01.png" alt="Group BRS" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.conversal.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/Conversal-v01.png" alt="Conversal" loading="lazy"></a></div><div class="partner-cell"><a href="http://www.mgh.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Partner-mgh.png" alt="MGH" loading="lazy"></a></div><div class="partner-cell"><a href="https://esprit-ict.nl" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-182516.png" alt="Esprit ICT" loading="lazy"></a></div><div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183029.png" alt="ACEG" loading="lazy"></a></div><div class="partner-cell"><a href="https://werkkledij.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183307.png" alt="Werkkledij.be" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://belorta.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/belorta-v01-1.png" alt="Belorta" loading="lazy"></a></div><div class="partner-cell"><a href="https://www.groupbrs.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2023/10/Brs-v01.png" alt="Group BRS" loading="lazy"></a></div><div class="partner-cell"><a href="http://www.mgh.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Partner-mgh.png" alt="MGH" loading="lazy"></a></div><div class="partner-cell"><a href="https://esprit-ict.nl" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-182516.png" alt="Esprit ICT" loading="lazy"></a></div><div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183029.png" alt="ACEG" loading="lazy"></a></div><div class="partner-cell"><a href="https://werkkledij.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183307.png" alt="Werkkledij.be" loading="lazy"></a></div>
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Sponsors Telenet Superprestige</p>
     <div class="partners-grid" id="spGrid">
@@ -946,13 +946,7 @@ async function loadSponsors(partnerEl, spEl) {
   // Fallback data
   const fallbackPartners = [
     { naam: 'Belorta', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/belorta-v01-1.png', website: 'https://belorta.be', categorie: 'partner' },
-    { naam: 'Bevers', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/bevers-v01.png', website: 'https://www.beversbevers.be', categorie: 'partner' },
-    { naam: 'Van der Valk', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/van-der-valk-v01.png', website: 'https://www.valk.com', categorie: 'partner' },
-    { naam: 'Coca-Cola', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/Coca-v01.png', website: 'https://www.coca-cola.be', categorie: 'partner' },
-    { naam: 'Rombouts', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/rombouts-v01.png', website: 'https://www.rombouts.com', categorie: 'partner' },
-    { naam: 'Gem. Machelen', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/machelenv01.png', website: 'https://www.machelen.be', categorie: 'partner' },
     { naam: 'Group BRS', logo: 'https://www.diegemcross.be/wp-content/uploads/2023/10/Brs-v01.png', website: 'https://www.groupbrs.be', categorie: 'partner' },
-    { naam: 'Conversal', logo: 'https://www.diegemcross.be/wp-content/uploads/2022/10/Conversal-v01.png', website: 'https://www.conversal.be', categorie: 'partner' },
     { naam: 'MGH', logo: 'https://www.diegemcross.be/wp-content/uploads/2020/04/Partner-mgh.png', website: 'http://www.mgh.be', categorie: 'partner' },
     { naam: 'Esprit ICT', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-182516.png', website: 'https://esprit-ict.nl', categorie: 'partner' },
     { naam: 'ACEG', logo: 'https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183029.png', website: 'https://aceg.be', categorie: 'partner' },

@@ -309,6 +309,20 @@ function navLightbox(dir){currentIndex=(currentIndex+dir+currentFotos.length)%cu
 function updateLightbox(){document.getElementById('lightboxImg').src=currentFotos[currentIndex];document.getElementById('lightboxCounter').textContent=(currentIndex+1)+' / '+currentFotos.length;}
 document.addEventListener('keydown',function(e){if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='ArrowRight')navLightbox(1);if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='Escape')closeLightbox();});
 document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox();});
+
+// Deep-link: open album direct via URL hash (bv. media.html#2023)
+window.addEventListener('DOMContentLoaded', function() {
+  var hash = window.location.hash.replace('#','');
+  if (hash) {
+    // Zoek de album card met dat jaar en klik erop
+    var cards = document.querySelectorAll('.album-card');
+    cards.forEach(function(card) {
+      if (card.querySelector('.album-jaar') && card.querySelector('.album-jaar').textContent.includes(hash)) {
+        card.click();
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
