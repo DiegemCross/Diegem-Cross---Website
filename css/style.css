@@ -576,11 +576,11 @@ footer {
   max-height: 30px;
   max-width: 80px;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.4);
+  
   transition: filter 0.3s;
 }
 
-.footer-partner-cell:hover img { filter: grayscale(0) brightness(0.9); }
+
 
 .footer-partner-cell .p-name {
   font-size: 10px;
