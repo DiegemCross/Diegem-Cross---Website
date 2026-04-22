@@ -1032,30 +1032,25 @@ function startCountdown(targetDate) {
   // Countdown
   
 
-  // Programma laden
-  const progGrid = document.getElementById('progGrid');
-  const files = await fetchDir('content/programma');
-  const mdFiles = files.filter(f => f.name && f.name.endsWith('.md'));
-  const items = [];
-  for (const f of mdFiles) {
-    const text = await fetchText(`content/programma/${f.name}`);
-    if (text) { const { data } = parseFM(text); items.push(data); }
+  // Programma - hard-coded, geen API nodig
+  if (document.getElementById('progGrid')) {
+    document.getElementById('progGrid').innerHTML = `
+      <div class="prog-card" data-n="01" data-animate>
+        <div class="prog-time">17:00</div>
+        <div class="prog-name">Junioren</div>
+        <div class="prog-cat">Mannen &middot; Categorie Junioren</div>
+      </div>
+      <div class="prog-card" data-n="02" data-animate>
+        <div class="prog-time">18:30</div>
+        <div class="prog-name">Elite &amp; U23 Dames</div>
+        <div class="prog-cat">Dames Elite + U23 &middot; Telenet Superprestige</div>
+      </div>
+      <div class="prog-card" data-n="03" data-animate>
+        <div class="prog-time">20:00</div>
+        <div class="prog-name">Elite &amp; U23 Heren</div>
+        <div class="prog-cat">Heren Elite + U23 &middot; Superprestige Manche 7</div>
+      </div>`;
   }
-  items.sort((a, b) => (parseInt(a.volgorde)||99) - (parseInt(b.volgorde)||99));
-
-  const fallback = [
-    { starttijd:'17:00', starttijd_label:'Aanvang', naam:'Juniores', categorie:'Mannen · Onder 19 jaar', volgorde:1 },
-    { starttijd:'18:30', starttijd_label:'Kunstlicht aan', naam:'Elite Dames', categorie:'Dames Elite + U23', volgorde:2 },
-    { starttijd:'20:00', starttijd_label:'Prime time', naam:'Elite Mannen', categorie:'Mannen Elite + U23 · Superprestige', volgorde:3 }
-  ];
-
-  const progData = items.length ? items : fallback;
-  progGrid.innerHTML = progData.map((item, i) => `
-    <div class="prog-card" data-n="${String(i+1).padStart(2,'0')}" data-animate>
-      <div class="prog-time">${item.starttijd || ''} ${item.starttijd_label ? '— ' + item.starttijd_label : ''}</div>
-      <div class="prog-name">${item.naam || ''}</div>
-      <div class="prog-cat">${item.categorie || ''}</div>
-    </div>`).join('');
 
   // Nieuws laden
   const nieuwsGrid = document.getElementById('nieuwsGrid');
