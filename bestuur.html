@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bestuur &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css">
+<style>
+.bestuur-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 3px; margin-bottom: 48px; }
+.bestuur-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 40px 36px; }
+.bestuur-functie { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 12px; }
+.bestuur-naam { font-family: 'Bebas Neue', sans-serif; font-size: 40px; letter-spacing: 0.04em; line-height: 1; margin-bottom: 20px; }
+.bestuur-contact { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+.bestuur-contact-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--grijs); }
+.bestuur-contact-item a { color: var(--grijs); text-decoration: none; transition: color 0.2s; }
+.bestuur-contact-item a:hover { color: var(--groen); }
+.bestuur-contact-icon { font-size: 14px; color: var(--groen); width: 18px; flex-shrink: 0; }
+@media (max-width: 768px) { .bestuur-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/Diegem-Cross---Website/index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+    <li><a href="/Diegem-Cross---Website/info.html">Info <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a>
+        <a href="/Diegem-Cross---Website/parcours.html">Parcours</a>
+        <a href="/Diegem-Cross---Website/pers.html">Pers</a>
+        <a href="/Diegem-Cross---Website/reglement.html">Reglement</a>
+        <a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+    <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/vip.html">VIP-formules</a>
+        <a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+    <li><a href="/Diegem-Cross---Website/contact.html">Contact <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+        <a href="/Diegem-Cross---Website/bestuur.html" class="active">Bestuur</a>
+      </div>
+    </li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
+  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
+  <a href="/Diegem-Cross---Website/media.html">Media</a>
+  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+  <a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a>
+  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Organisatie</div>
+    <h1>Bestuur<br>Diegem Cross</h1>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <span class="sep">&rsaquo;</span>
+  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+  <span class="sep">&rsaquo;</span>
+  <span class="current">Bestuur</span>
+</div>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-label">Organisatie</div>
+    <h2 class="sec-title" style="margin-bottom:48px;">Het bestuur</h2>
+
+    <div class="bestuur-grid">
+
+      <div class="bestuur-card">
+        <div class="bestuur-functie">Voorzitter</div>
+        <div class="bestuur-naam">Peter Bosschaerts</div>
+        <div class="bestuur-contact">
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">✉</span>
+            <a href="mailto:peter@diegemcross.be">peter@diegemcross.be</a>
+          </div>
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">☎</span>
+            <a href="tel:+32477416251">+32 477 41 62 51</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bestuur-card">
+        <div class="bestuur-functie">Ondervoorzitter</div>
+        <div class="bestuur-naam">Wender Decré</div>
+        <div class="bestuur-contact">
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">✉</span>
+            <a href="mailto:wender@diegemcross.be">wender@diegemcross.be</a>
+          </div>
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">☎</span>
+            <a href="tel:+32467008208">+32 467 00 82 08</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bestuur-card">
+        <div class="bestuur-functie">Penningmeester</div>
+        <div class="bestuur-naam">Koen Vanpoucke</div>
+        <div class="bestuur-contact">
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">✉</span>
+            <a href="mailto:koen@diegemcross.be">koen@diegemcross.be</a>
+          </div>
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">☎</span>
+            <a href="tel:+32472429154">+32 472 42 91 54</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bestuur-card">
+        <div class="bestuur-functie">Secretaris &amp; IT</div>
+        <div class="bestuur-naam">Ruben Bosschaerts</div>
+        <div class="bestuur-contact">
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">✉</span>
+            <a href="mailto:ruben@diegemcross.be">ruben@diegemcross.be</a>
+          </div>
+          <div class="bestuur-contact-item">
+            <span class="bestuur-contact-icon">☎</span>
+            <a href="tel:+32468146566">+32 468 14 65 66</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;padding:40px;background:var(--paneel);border-top:3px solid var(--groen);">
+      <div class="sec-label" style="justify-content:center;">Algemeen contact</div>
+      <p style="font-size:15px;color:var(--grijs);margin:12px 0 24px;">Voor algemene vragen kan u ook terecht via ons contactformulier.</p>
+      <a class="btn btn-groen" href="/Diegem-Cross---Website/contact.html">Naar contactpagina</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode.</div>
+      <div class="footer-contact"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a><br>Diegem Cross vzw</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+        <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></li>
+        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
+        <li><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Volg ons</div>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Diegem Cross vzw &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="/Diegem-Cross---Website/js/main.js"></script>
+</body>
+</html>
