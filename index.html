@@ -919,9 +919,9 @@ async function applySettings() {
   });
 
   // Socials
-  if (s.facebook) document.querySelectorAll('[data-social="facebook"]').forEach(el => el.href = s.facebook);
+  if (s.facebook) document.querySelectorAll('[="facebook"]').forEach(el => el.href = s.facebook);
   if (s.instagram) document.querySelectorAll('[data-social="instagram"]').forEach(el => el.href = s.instagram);
-  if (s.twitter) document.querySelectorAll('[data-social="twitter"]').forEach(el => el.href = s.twitter);
+ 
 
   // Email
   if (s.email) {
