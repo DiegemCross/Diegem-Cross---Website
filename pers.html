@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pers &amp; Accreditaties &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css">
+<style>
+.pers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 32px; }
+.pers-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 40px 36px; }
+.pers-card-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+.pers-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; margin-bottom: 12px; }
+.pers-card p { font-size: 14px; color: var(--grijs); line-height: 1.7; margin-bottom: 16px; }
+.pers-card address { font-style: normal; font-size: 14px; color: var(--wit); line-height: 1.7; }
+.disclaimer-blok { background: var(--paneel); border-left: 4px solid var(--groen); padding: 36px 40px; margin-bottom: 32px; }
+.disclaimer-blok h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.04em; margin-bottom: 16px; color: var(--groen); }
+.disclaimer-blok p { font-size: 13px; color: var(--grijs); line-height: 1.8; }
+.info-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.info-item:last-child { border-bottom: none; }
+.info-item-icon { font-size: 20px; color: var(--groen); flex-shrink: 0; margin-top: 2px; }
+.info-item-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--groen); margin-bottom: 4px; }
+.info-item-value { font-size: 14px; color: var(--wit); line-height: 1.6; }
+.info-item-value a { color: var(--groen); text-decoration: none; }
+@media (max-width: 768px) { .pers-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/Diegem-Cross---Website/index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+    <li><a href="/Diegem-Cross---Website/info.html" class="active">Info <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a>
+        <a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a>
+        <a href="/Diegem-Cross---Website/parcours.html">Parcours</a>
+        <a href="/Diegem-Cross---Website/pers.html">Pers</a>
+        <a href="/Diegem-Cross---Website/reglement.html">Reglement</a>
+        <a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+    <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/vip.html">VIP-formules</a>
+        <a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+    <li><a href="/Diegem-Cross---Website/contact.html">Contact <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+        <a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a>
+      </div>
+    </li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
+  <a href="/Diegem-Cross---Website/info.html">Info</a>
+  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
+  <a href="/Diegem-Cross---Website/media.html">Media</a>
+  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2024/02/1R9A8673-280x180.jpg');background-position:center 40%;"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Media &amp; Pers</div>
+    <h1>Pers &amp;<br>Accreditaties</h1>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <span class="sep">&rsaquo;</span>
+  <a href="/Diegem-Cross---Website/info.html">Info</a>
+  <span class="sep">&rsaquo;</span>
+  <span class="current">Pers</span>
+</div>
+
+<section class="sec">
+  <div class="container">
+
+    <div class="sec-label">Mediainfo 2026</div>
+    <h2 class="sec-title" style="margin-bottom:40px;">Informatie voor<br>de pers</h2>
+
+    <!-- PRAKTISCHE INFO -->
+    <div class="pers-grid">
+
+      <div class="pers-card">
+        <span class="pers-card-icon">📋</span>
+        <h3>Persaccreditatie</h3>
+        <p>Accreditaties voor Diegem Cross worden beheerd via Telenet Superprestige. Vraag jouw accreditatie aan via de officiële website van de Superprestige.</p>
+        <a href="https://www.superprestigecyclocross.be/nl/pers" target="_blank" class="btn btn-groen">Accreditatie aanvragen</a>
+      </div>
+
+      <div class="pers-card">
+        <span class="pers-card-icon">📍</span>
+        <h3>Praktische info</h3>
+        <div class="info-item">
+          <span class="info-item-icon">🏫</span>
+          <div>
+            <div class="info-item-label">Perszaal</div>
+            <div class="info-item-value">School GISO<br>Watermolenstraat 33, 1831 Diegem</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-item-icon">🚗</span>
+          <div>
+            <div class="info-item-label">Persparking</div>
+            <div class="info-item-value">Zaventemsesteenweg<br>(ingang langs Haachtsesteenweg), 1831 Diegem</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-item-icon">✉</span>
+          <div>
+            <div class="info-item-label">Contact pers</div>
+            <div class="info-item-value"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DISCLAIMER BEELDMATERIAAL -->
+    <div class="disclaimer-blok">
+      <h3>&#9432; Gebruik van beeldmateriaal</h3>
+      <p>
+        Door deel te nemen aan of aanwezig te zijn op Diegem Cross verleent u de organisatie (Diegem Cross vzw) het onherroepelijk, niet-exclusief en royalty-vrij recht om alle foto's, video-opnames en ander audiovisueel materiaal waarop u herkenbaar bent, te gebruiken voor promotionele, redactionele en communicatiedoeleinden, zonder dat hiervoor een vergoeding verschuldigd is. Dit recht omvat publicatie via alle media, waaronder sociale media, drukwerk en digitale kanalen, zonder beperking in tijd of geografisch gebied.
+      </p>
+    </div>
+
+    <!-- FOTOARCHIEF -->
+    <div style="background:var(--paneel);border-top:3px solid var(--groen);padding:40px;margin-bottom:32px;">
+      <div class="sec-label">Fotoarchief</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;margin-bottom:16px;">Beeldmateriaal vorige edities</h3>
+      <p style="font-size:14px;color:var(--grijs);line-height:1.7;margin-bottom:24px;">
+        Persmateriaal en foto's van vorige edities van Diegem Cross zijn beschikbaar in onze mediagalerij. Voor hoge resolutie beelden of specifieke aanvragen kunt u contact opnemen via <a href="mailto:info@diegemcross.be" style="color:var(--groen);">info@diegemcross.be</a>.
+      </p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn btn-groen" href="/Diegem-Cross---Website/media.html">Bekijk fotogalerij</a>
+        <a class="btn btn-ghost" href="mailto:info@diegemcross.be">Beelden opvragen</a>
+      </div>
+    </div>
+
+    <!-- EVENEMENT INFO -->
+    <div style="background:var(--paneel);padding:40px;">
+      <div class="sec-label">Over het evenement</div>
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.04em;margin-bottom:20px;">Diegem Cross in cijfers</h3>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3px;">
+        <div style="background:var(--donker);padding:28px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--groen);letter-spacing:0.04em;line-height:1;">51<sup style="font-size:24px;">ste</sup></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--grijs);margin-top:8px;">Editie in 2026</div>
+        </div>
+        <div style="background:var(--donker);padding:28px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--groen);letter-spacing:0.04em;line-height:1;">1975</div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--grijs);margin-top:8px;">Eerste editie</div>
+        </div>
+        <div style="background:var(--donker);padding:28px;text-align:center;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--groen);letter-spacing:0.04em;line-height:1;">100<sup style="font-size:24px;">%</sup></div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--grijs);margin-top:8px;">Avondcross onder kunstlicht</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode.</div>
+      <div class="footer-contact"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a><br>Diegem Cross vzw</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+        <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></li>
+        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
+        <li><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Volg ons</div>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Diegem Cross vzw &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="/Diegem-Cross---Website/js/main.js"></script>
+</body>
+</html>

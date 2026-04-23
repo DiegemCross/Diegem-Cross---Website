@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Info &mdash; Diegem Cross</title>
+<link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css">
+<style>
+.info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-bottom: 48px; }
+.info-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 36px; display: flex; flex-direction: column; gap: 12px; text-decoration: none; color: var(--wit); transition: background 0.3s; }
+.info-card:hover { background: var(--paneel2); }
+.info-card-icon { font-size: 36px; }
+.info-card-titel { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.04em; }
+.info-card-desc { font-size: 13px; color: var(--grijs); line-height: 1.6; flex: 1; }
+.info-card-link { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--groen); }
+@media (max-width: 900px) { .info-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 540px) { .info-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-lang">
+    <a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a>
+    <a href="?lang=fr" onclick="setLang('fr')">FR</a>
+    <a href="?lang=en" onclick="setLang('en')">EN</a>
+  </div>
+  <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
+  <div class="topbar-social">
+    <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/Diegem-Cross---Website/index.html"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></a>
+  </div>
+  <ul class="nav-menu">
+    <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+    <li><a href="/Diegem-Cross---Website/info.html" class="active">Info <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a>
+        <a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a>
+        <a href="/Diegem-Cross---Website/parcours.html">Parcours</a>
+        <a href="/Diegem-Cross---Website/pers.html">Pers</a>
+        <a href="/Diegem-Cross---Website/reglement.html">Reglement</a>
+        <a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+    <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/vip.html">VIP-formules</a>
+        <a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a>
+      </div>
+    </li>
+    <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+    <li><a href="/Diegem-Cross---Website/contact.html">Contact <span class="arrow">&#9662;</span></a>
+      <div class="dropdown">
+        <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+        <a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a>
+      </div>
+    </li>
+  </ul>
+  <div style="display:flex;align-items:center;">
+    <a class="btn btn-groen nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
+  <a href="/Diegem-Cross---Website/info.html">Info</a>
+  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
+  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
+  <a href="/Diegem-Cross---Website/media.html">Media</a>
+  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
+  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-label">Alles over Diegem Cross</div>
+    <h1>Info &amp;<br>Praktisch</h1>
+  </div>
+</section>
+
+<div class="breadcrumb">
+  <a href="/Diegem-Cross---Website/index.html">Home</a>
+  <span class="sep">&rsaquo;</span>
+  <span class="current">Info</span>
+</div>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-label">Overzicht</div>
+    <h2 class="sec-title" style="margin-bottom:40px;">Alles wat je<br>moet weten</h2>
+
+    <div class="info-grid">
+
+      <a class="info-card" href="/Diegem-Cross---Website/deelnemers.html">
+        <span class="info-card-icon">🚴</span>
+        <div class="info-card-titel">Deelnemers</div>
+        <div class="info-card-desc">Startlijsten voor de drie wedstrijden — Junioren, Elite Dames en Elite Heren. Binnenkort beschikbaar.</div>
+        <span class="info-card-link">Bekijk deelnemers →</span>
+      </a>
+
+      <a class="info-card" href="/Diegem-Cross---Website/inschrijvingen.html">
+        <span class="info-card-icon">📝</span>
+        <div class="info-card-titel">Inschrijvingen</div>
+        <div class="info-card-desc">Inschrijven voor Diegem Cross gebeurt online via Cycling Vlaanderen. Inschrijvingen openen binnenkort.</div>
+        <span class="info-card-link">Meer info →</span>
+      </a>
+
+      <a class="info-card" href="/Diegem-Cross---Website/parcours.html">
+        <span class="info-card-icon">🗺️</span>
+        <div class="info-card-titel">Parcours</div>
+        <div class="info-card-desc">Het parcours slingert door het dorpscentrum van Diegem. Volledig onder kunstlicht voor een unieke sfeer.</div>
+        <span class="info-card-link">Bekijk parcours →</span>
+      </a>
+
+      <a class="info-card" href="/Diegem-Cross---Website/pers.html">
+        <span class="info-card-icon">📸</span>
+        <div class="info-card-titel">Pers &amp; Accreditaties</div>
+        <div class="info-card-desc">Info over persaccreditaties, perszaal, persparking en het gebruik van beeldmateriaal.</div>
+        <span class="info-card-link">Naar persinfo →</span>
+      </a>
+
+      <a class="info-card" href="/Diegem-Cross---Website/reglement.html">
+        <span class="info-card-icon">📋</span>
+        <div class="info-card-titel">Reglement</div>
+        <div class="info-card-desc">Het officiële reglement van de Telenet Superprestige — puntenverdeling, eindklassement en prijzengeld.</div>
+        <span class="info-card-link">Lees reglement →</span>
+      </a>
+
+      <a class="info-card" href="/Diegem-Cross---Website/erelijst.html">
+        <span class="info-card-icon">🏆</span>
+        <div class="info-card-titel">Erelijst</div>
+        <div class="info-card-desc">Alle winnaars van Diegem Cross van 1975 tot heden. Een indrukwekkende palmares van de grootste namen in het veldrijden.</div>
+        <span class="info-card-link">Bekijk erelijst →</span>
+      </a>
+
+    </div>
+
+    <!-- OVER DIEGEM CROSS -->
+    <div style="background:var(--paneel);border-top:3px solid var(--groen);padding:48px 40px;">
+      <div class="sec-label">Geschiedenis</div>
+      <h2 class="sec-title" style="font-size:clamp(32px,4vw,52px);margin-bottom:24px;">Cyclocross in Diegem</h2>
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:48px;align-items:start;">
+        <div>
+          <p style="font-size:15px;color:var(--grijs);line-height:1.8;margin-bottom:20px;">
+            Diegem Cross is een van de meest iconische cyclocrosswedstrijden van het Belgische veldrijdseizoen. Sinds 1975 trekt het evenement elk jaar op 30 december de wereldtop naar het dorpscentrum van Diegem, deelgemeente van Machelen in Vlaams-Brabant.
+          </p>
+          <p style="font-size:15px;color:var(--grijs);line-height:1.8;margin-bottom:20px;">
+            Wat Diegem Cross uniek maakt, is de avondsfeer onder kunstlicht. Het parcours slingert door het centrum van het dorp, omringd door duizenden enthousiaste toeschouwers die de renners op meters afstand aanmoedigen. De combinatie van kunstlicht, kerstperiode en topniveau maakt van Diegem Cross een onmisbaar evenement in de veldritkalender.
+          </p>
+          <p style="font-size:15px;color:var(--grijs);line-height:1.8;">
+            Sinds 1982 maakt Diegem Cross deel uit van de Telenet Superprestige — een van de meest prestigieuze veldritcompetities ter wereld. In 2026 vindt de 51ste editie plaats op 30 december, als Manche 7 van de Telenet Superprestige 2026-2027.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;">
+          <div style="background:var(--donker);padding:24px;text-align:center;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--groen);line-height:1;">1975</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-top:6px;">Eerste editie</div>
+          </div>
+          <div style="background:var(--donker);padding:24px;text-align:center;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--groen);line-height:1;">1982</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-top:6px;">Start Superprestige</div>
+          </div>
+          <div style="background:var(--donker);padding:24px;text-align:center;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--groen);line-height:1;">51<sup style="font-size:24px;">ste</sup></div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-top:6px;">Editie in 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem, tijdens de kerstperiode.</div>
+      <div class="footer-contact"><a href="mailto:info@diegemcross.be">info@diegemcross.be</a><br>Diegem Cross vzw</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigatie</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li>
+        <li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li>
+        <li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a></li>
+        <li><a href="/Diegem-Cross---Website/media.html">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></li>
+        <li><a href="/Diegem-Cross---Website/contact.html">Contact</a></li>
+        <li><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Volg ons</div>
+      <ul class="footer-links">
+        <li><a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a></li>
+        <li><a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Diegem Cross vzw &middot; Cookie Policy &middot; Privacy Policy</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/DiegemCross/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/diegemcross/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</footer>
+
+<div id="google_translate_element" style="display:none;"></div>
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
+function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
+function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="/Diegem-Cross---Website/js/main.js"></script>
+</body>
+</html>
