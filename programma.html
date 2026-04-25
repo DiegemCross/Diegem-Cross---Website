@@ -88,14 +88,21 @@
     <div class="sec-label">Volledig overzicht</div>
     <h2 class="sec-title">Wedstrijddag<br><span data-datum>30 december 2026</span></h2>
     <div class="prog-page-grid" id="progPageGrid">
-      <div class="loading-state">Programma laden...</div>
-    </div>
-    <div class="divider" style="margin:48px 0;"></div>
-    <div class="sec-label">Officiële affiche</div>
-    <h3 class="sec-title" style="font-size:clamp(32px,4vw,56px);margin-bottom:32px;">Affiche 2026</h3>
-    <div class="affiche-box">
-      <img src="https://www.diegemcross.be/wp-content/uploads/2025/10/Programma.png" alt="Programma Diegem Cross 2026" id="aficheImg">
-      <a class="btn btn-groen" href="https://www.diegemcross.be/wp-content/uploads/2025/10/Programma.png" target="_blank">Download affiche</a>
+      <div class="prog-card-full" data-n="01">
+        <div class="prog-time">17:00</div>
+        <div class="prog-name-big">Junioren</div>
+        <div class="prog-cat-big">Mannen &middot; Categorie Junioren</div>
+      </div>
+      <div class="prog-card-full" data-n="02">
+        <div class="prog-time">18:30</div>
+        <div class="prog-name-big">Elite &amp; U23 Dames</div>
+        <div class="prog-cat-big">Dames Elite + U23 &middot; Telenet Superprestige</div>
+      </div>
+      <div class="prog-card-full" data-n="03">
+        <div class="prog-time">20:00</div>
+        <div class="prog-name-big">Elite &amp; U23 Heren</div>
+        <div class="prog-cat-big">Heren Elite + U23 &middot; Superprestige Manche 7</div>
+      </div>
     </div>
   </div>
 </section>
@@ -103,8 +110,8 @@
   <div class="footer-main">
     <div>
       <div class="footer-logo"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Logo-1-PMS2423C-achtergrond-1-e1753553699183.png" alt="Diegem Cross"></div>
-      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Wielerclub Sint-Anna-Vooruit Diegem.</div>
-      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Wielerclub Sint-Anna-Vooruit Diegem</div>
+      <div class="footer-tagline">De unieke avondcross met kunstlicht in het dorpscentrum van Diegem. Georganiseerd door Diegem Cross</div>
+      <div class="footer-contact"><a href="#" data-email>info@diegemcross.be</a><br>Diegem Cross</div>
     </div>
     <div>
       <div class="footer-col-title">Navigatie</div>
@@ -137,7 +144,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 Wielerclub Sint-Anna-Vooruit Diegem &middot; Cookie Policy &middot; Privacy Policy</span>
+    <span class="footer-copy">&copy; 2026 Diegem Cross&middot; Cookie Policy &middot; Privacy Policy</span>
     <div class="footer-social">
       <a href="#" data-social="facebook" target="_blank">Facebook</a>
       <a href="#" data-social="instagram" target="_blank">Instagram</a>
@@ -161,30 +168,6 @@ function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang
       if(h && s.hero_foto) h.style.backgroundImage = "url('"+s.hero_foto+"')";
     }
   } catch(e) { console.log('Settings error:', e); }
-})();
-</script>
-<script>
-(async()=>{
-  const grid = document.getElementById('progPageGrid');
-  const files = await fetchDir('content/programma');
-  const md = files.filter(f=>f.name&&f.name.endsWith('.md'));
-  const items=[];
-  for(const f of md){const t=await fetchText('content/programma/'+f.name);if(t){const{data}=parseFM(t);items.push(data);}}
-  items.sort((a,b)=>(parseInt(a.volgorde)||99)-(parseInt(b.volgorde)||99));
-  const fb=[
-    {starttijd:'17:00',starttijd_label:'Aanvang',naam:'Juniores',categorie:'Mannen &middot; Onder 19 jaar',volgorde:1},
-    {starttijd:'18:30',starttijd_label:'Kunstlicht aan',naam:'Elite Dames',categorie:'Dames Elite + U23',volgorde:2},
-    {starttijd:'20:00',starttijd_label:'Prime time',naam:'Elite Mannen',categorie:'Mannen Elite + U23 &middot; Superprestige',volgorde:3}
-  ];
-  const data=items.length?items:fb;
-  grid.innerHTML=data.map((item,i)=>`
-    <div class="prog-card-full" data-n="${String(i+1).padStart(2,'0')}">
-      <div class="prog-time">${item.starttijd||''} ${item.starttijd_label?'&mdash; '+item.starttijd_label:''}</div>
-      <div class="prog-name-big">${item.naam||''}</div>
-      <div class="prog-cat-big">${item.categorie||''}</div>
-    </div>`).join('');
-  const s=await getSettings();
-  if(s.affiche_foto){document.getElementById('aficheImg').src=s.affiche_foto;}
 })();
 </script>
 </body>
