@@ -669,45 +669,59 @@ footer {
 }
 /* ══════════════ MOBILE FIXES ══════════════ */
 
-/* Hamburger menu — groter en overzichtelijk */
+/* Hamburger menu volledig scherm en groot */
 .mobile-nav {
-  padding: 80px 0 32px !important;
-  height: 100vh !important;
-  overflow-y: auto !important;
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0 !important;
+  padding-top: 80px;
+  height: 100vh;
+  overflow-y: auto;
 }
 .mobile-nav a {
-  font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 28px !important;
-  letter-spacing: 0.06em !important;
-  padding: 18px 28px !important;
-  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
-  display: block !important;
-  color: var(--wit) !important;
+  font-size: 26px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  padding: 16px 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: #ffffff;
+  display: block;
 }
 .mobile-nav a.sub-link {
-  font-family: 'Barlow Condensed', sans-serif !important;
-  font-size: 16px !important;
-  padding: 12px 28px 12px 44px !important;
-  color: var(--grijs) !important;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  padding: 10px 28px 10px 48px;
+  color: #888888;
 }
-.mobile-nav a:active { color: var(--groen) !important; }
+.mobile-nav a:active { color: #00aa13; }
 .mobile-nav .mob-ticket {
-  margin: 24px 28px 0 !important;
-  text-align: center !important;
-  font-size: 16px !important;
-  padding: 16px !important;
+  margin: 24px 28px;
+  text-align: center;
+  background: #00aa13;
+  color: #000000;
+  font-size: 15px;
+  padding: 14px;
+  font-weight: 700;
 }
 
-/* Ticket knop + fixed nav op mobiel */
+/* Nav fixed + ticket knop altijd zichtbaar op mobiel */
 @media (max-width: 768px) {
-  .topbar { display: none !important; }
-  nav { position: fixed !important; top: 0 !important; z-index: 100 !important; }
-  body { padding-top: 64px !important; }
-  .nav-ticket { display: flex !important; font-size: 12px !important; padding: 8px 14px !important; margin-right: 8px !important; }
-}
-@media (max-width: 480px) {
-  .nav-ticket { font-size: 11px !important; padding: 7px 10px !important; }
+  .topbar { display: none; }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: #000000;
+  }
+  body { padding-top: 60px; }
+  .hero, section.hero { margin-top: 0 !important; }
+  .nav-ticket {
+    display: inline-flex !important;
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+  /* Groen correct op mobiel */
+  .btn-groen, .nav-ticket { background-color: #00aa13 !important; }
+  .badge-groen { background: #00aa13 !important; }
+  .sec-label::before { background: #00aa13 !important; }
+  a[href], .groen, [style*="var(--groen)"] { color: #00aa13; }
 }
