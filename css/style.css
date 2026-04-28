@@ -647,7 +647,7 @@ footer {
   .topbar { padding: 0 16px; }
   .nav-menu { display: none; }
   .hamburger { display: flex; }
-  .nav-ticket { display: none; }
+  .nav-ticket { display: inline-flex; font-size: 11px; padding: 8px 12px; }
   .footer-main { grid-template-columns: 1fr; gap: 28px; }
   .footer-main, .footer-bottom { padding-left: 20px; padding-right: 20px; }
   .footer-partners { padding: 24px 20px; }
@@ -657,6 +657,7 @@ footer {
   .sec { padding: 48px 16px; }
   .sec-sm { padding: 32px 16px; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .scroll-hint { display: none; }
   .sec-title-row { flex-direction: column; align-items: flex-start; }
 }
 
@@ -666,36 +667,4 @@ footer {
   .topbar-lang { order: 1; flex-shrink: 0; }
   .topbar-ticker { order: 2; flex: 1; text-align: center; font-size: 10px; }
   .topbar-social { display: none; }
-}
-/* ══════════ MOBILE FIXES ══════════ */
-@media (max-width: 768px) {
-
-  /* Groen correct — forceer exacte kleur */
-  :root { --groen: #00aa13; }
-
-  /* Scroll hint weg op mobiel */
-  .scroll-hint { display: none; }
-
-  /* Stats netjes op mobiel */
-  .stats-bar {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* Knoppen netjes op mobiel */
-  .hero-ctas {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .hero-ctas .btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* Hamburger menu groter */
-  .mobile-nav a {
-    font-size: 22px;
-    padding: 16px 24px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
 }
