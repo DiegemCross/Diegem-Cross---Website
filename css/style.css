@@ -9,6 +9,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  color-scheme: dark;
   --groen: #00aa13;
   --groen-dim: rgba(0,170,19,0.12);
   --groen-rand: rgba(0,170,19,0.28);
@@ -665,4 +666,48 @@ footer {
   .topbar-lang { order: 1; flex-shrink: 0; }
   .topbar-ticker { order: 2; flex: 1; text-align: center; font-size: 10px; }
   .topbar-social { display: none; }
+}
+/* ══════════════ MOBILE FIXES ══════════════ */
+
+/* Hamburger menu — groter en overzichtelijk */
+.mobile-nav {
+  padding: 80px 0 32px !important;
+  height: 100vh !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+.mobile-nav a {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 28px !important;
+  letter-spacing: 0.06em !important;
+  padding: 18px 28px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+  display: block !important;
+  color: var(--wit) !important;
+}
+.mobile-nav a.sub-link {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 16px !important;
+  padding: 12px 28px 12px 44px !important;
+  color: var(--grijs) !important;
+}
+.mobile-nav a:active { color: var(--groen) !important; }
+.mobile-nav .mob-ticket {
+  margin: 24px 28px 0 !important;
+  text-align: center !important;
+  font-size: 16px !important;
+  padding: 16px !important;
+}
+
+/* Ticket knop + fixed nav op mobiel */
+@media (max-width: 768px) {
+  .topbar { display: none !important; }
+  nav { position: fixed !important; top: 0 !important; z-index: 100 !important; }
+  body { padding-top: 64px !important; }
+  .nav-ticket { display: flex !important; font-size: 12px !important; padding: 8px 14px !important; margin-right: 8px !important; }
+}
+@media (max-width: 480px) {
+  .nav-ticket { font-size: 11px !important; padding: 7px 10px !important; }
 }
