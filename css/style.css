@@ -159,10 +159,10 @@ nav {
 .mobile-nav {
   display: none;
   position: fixed;
-  top: calc(var(--nav-h) + var(--topbar-h));
+  top: 0;
   left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.98);
-  z-index: 190;
+  background: #000000;
+  z-index: 500;
   overflow-y: auto;
   padding: 24px 0 40px;
   flex-direction: column;
@@ -390,8 +390,8 @@ footer { background: #000; border-top: 3px solid #00aa13; }
    RESPONSIVE — MOBIEL (max 768px)
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  :root { --nav-h: 64px; --topbar-h: 0px; }
-
+  :root { --nav-h: 56px; --topbar-h: 0px; }
+.nav-logo img { height: 28px !important; }
   /* Topbar verbergen op mobiel — geeft meer ruimte */
   .topbar { display: none; }
 
