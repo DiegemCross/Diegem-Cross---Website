@@ -93,6 +93,10 @@ nav {
 .nav-logo a { display: block; line-height: 1; }
 .nav-logo img { height: 40px; width: auto; }
 
+@media (max-width: 768px) {
+  .nav-logo img { height: 32px; }
+}
+
 .nav-menu {
   display: flex; align-items: center; gap: 4px; list-style: none;
 }
@@ -386,7 +390,7 @@ footer { background: #000; border-top: 3px solid #00aa13; }
    RESPONSIVE — MOBIEL (max 768px)
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
-  :root { --nav-h: 60px; --topbar-h: 0px; }
+  :root { --nav-h: 64px; --topbar-h: 0px; }
 
   /* Topbar verbergen op mobiel — geeft meer ruimte */
   .topbar { display: none; }
