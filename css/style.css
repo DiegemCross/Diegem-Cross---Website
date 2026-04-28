@@ -667,11 +667,35 @@ footer {
   .topbar-ticker { order: 2; flex: 1; text-align: center; font-size: 10px; }
   .topbar-social { display: none; }
 }
-/* ══════════════ MOBILE FIXES ══════════════ */
+/* ══════════ MOBILE FIXES ══════════ */
+@media (max-width: 768px) {
 
-/* Hamburger menu volledig scherm en groot */
-.mobile-nav {
-  padding-top: 80px;
-  height: 100vh;
-  overflow-y: auto;
+  /* Groen correct — forceer exacte kleur */
+  :root { --groen: #00aa13; }
+
+  /* Scroll hint weg op mobiel */
+  .scroll-hint { display: none; }
+
+  /* Stats netjes op mobiel */
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Knoppen netjes op mobiel */
+  .hero-ctas {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero-ctas .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Hamburger menu groter */
+  .mobile-nav a {
+    font-size: 22px;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
 }
