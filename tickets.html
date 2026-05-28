@@ -1,6 +1,92 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="dark"><title>Tickets &mdash; Diegem Cross</title><link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css"></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="dark"><title>Tickets &mdash; Diegem Cross</title><link rel="stylesheet" href="/Diegem-Cross---Website/css/style.css"><style>
+/* ══════════════════════════════════════
+   UNIVERSAL MOBILE FIX — Diegem Cross
+══════════════════════════════════════ */
+* { box-sizing: border-box; }
+body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+img { max-width: 100%; height: auto; }
+
+@media (max-width: 768px) {
+  /* Padding & spacing */
+  .sec, section { padding: 32px 16px !important; }
+  .sec-sm { padding: 24px 16px !important; }
+  .container { padding: 0 !important; }
+  .breadcrumb { padding: 10px 16px !important; }
+  .page-hero-content { padding: 0 16px 24px !important; }
+  .page-hero { height: 220px !important; }
+  .page-hero h1 { font-size: clamp(32px, 9vw, 56px) !important; }
+
+  /* Grids naar 1 kolom */
+  .grid-2, .grid-3, .grid-4,
+  [style*="grid-template-columns: repeat(2"],
+  [style*="grid-template-columns: repeat(3"],
+  [style*="grid-template-columns: repeat(4"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: 2fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Tabellen scrollbaar */
+  table { display: block; overflow-x: auto; width: 100%; font-size: 13px !important; }
+  table th, table td { padding: 8px 10px !important; white-space: nowrap; }
+
+  /* Grote fonts verkleinen */
+  h1 { font-size: clamp(32px, 9vw, 56px) !important; }
+  h2 { font-size: clamp(26px, 7vw, 44px) !important; }
+  h3 { font-size: clamp(20px, 5vw, 32px) !important; }
+  .sec-title { font-size: clamp(32px, 8vw, 56px) !important; }
+
+  /* VIP specifiek */
+  .vip-preview, .vip-grid { grid-template-columns: 1fr !important; }
+  .vip-foto { min-height: 220px !important; }
+  .vip-right { padding: 28px 16px !important; }
+  .vip-formule { flex-direction: column !important; gap: 8px !important; }
+
+  /* Contact & bestuur */
+  .contact-grid, .bestuur-grid { grid-template-columns: 1fr !important; }
+  .contact-form input, .contact-form textarea, .contact-form select,
+  input[type="text"], input[type="email"], textarea {
+    width: 100% !important; font-size: 16px !important;
+  }
+
+  /* Sponsor */
+  .sponsor-grid, .partners-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+
+  /* Programma */
+  .prog-grid { grid-template-columns: 1fr !important; }
+  .prog-card { padding: 20px 16px !important; }
+
+  /* Erelijst tabel */
+  .erelijst-table { font-size: 12px !important; }
+  
+  /* Bereikbaarheid kaart */
+  .kaart-wrap, .map-wrap, iframe { 
+    width: 100% !important; 
+    max-width: 100% !important;
+    height: 260px !important;
+  }
+
+  /* Flex naar kolom */
+  .hero-ctas, .btn-group { flex-direction: column !important; }
+  .hero-ctas .btn, .btn-group .btn { width: 100% !important; text-align: center !important; justify-content: center !important; }
+
+  /* Sec-title-row */
+  .sec-title-row { flex-direction: column !important; align-items: flex-start !important; }
+
+  /* Footer */
+  .footer-main { grid-template-columns: 1fr !important; gap: 24px !important; padding: 32px 16px !important; }
+  .footer-bottom { padding: 14px 16px !important; flex-direction: column !important; gap: 8px !important; }
+}
+
+@media (max-width: 480px) {
+  .sec, section { padding: 24px 12px !important; }
+  table { font-size: 11px !important; }
+  table th, table td { padding: 6px 8px !important; }
+}
+</style>
+</head>
 <body><div class="topbar">
   <div class="topbar-lang"><a href="?lang=nl" class="active" onclick="setLang('nl')">NL</a><a href="?lang=fr" onclick="setLang('fr')">FR</a><a href="?lang=en" onclick="setLang('en')">EN</a></div>
   <div class="topbar-ticker">Diegem Cross &middot; 30 december 2026 &middot; Telenet Superprestige</div>
@@ -13,7 +99,7 @@
 <!-- MOBILE MENU via js/menu.js -->
 <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,170,19,0.08) 0%,transparent 70%);"></div>
-  <div style="position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:640px;">
+  <div style="position:relative;z-index:2;text-align:center;padding:clamp(16px, 4vw, 48px) 24px;max-width:640px;">
     <div class="badge badge-groen" style="margin-bottom:24px;display:inline-block;">Diegem Cross 2026</div>
     <h1 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,120px);letter-spacing:0.04em;color:#fff;line-height:1;margin-bottom:16px;">Tickets</h1>
     <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,5vw,40px);color:#00aa13;letter-spacing:0.08em;margin-bottom:24px;">30 december 2026</div>
