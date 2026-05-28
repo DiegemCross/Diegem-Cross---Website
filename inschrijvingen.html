@@ -54,16 +54,7 @@
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="/Diegem-Cross---Website/index.html">Home</a>
-  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-  <a href="/Diegem-Cross---Website/info.html">Info</a>
-  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
-  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
-  <a href="/Diegem-Cross---Website/media.html">Media</a>
-  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
-  <a class="mob-ticket btn" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
-</nav>
+<!-- MOBILE MENU via js/menu.js -->
 <section class="page-hero">
   <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
   <div class="page-hero-overlay"></div>
@@ -145,9 +136,10 @@
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
 function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
-function toggleMenu(){document.getElementById('mobileNav').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open');}
+// menu via js/menu.js
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/Diegem-Cross---Website/js/main.js"></script>
+<script src="/Diegem-Cross---Website/js/menu.js"></script>
 </body>
 </html>

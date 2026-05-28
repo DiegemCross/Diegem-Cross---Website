@@ -65,15 +65,7 @@
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-  <a href="/Diegem-Cross---Website/info.html">Info</a>
-  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
-  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
-  <a href="/Diegem-Cross---Website/media.html">Media</a>
-  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
-  <a class="mob-ticket btn" href="#" data-ticket>Koop tickets</a>
-</nav>
+<!-- MOBILE MENU via js/menu.js -->
 <section class="page-hero">
   <div class="page-hero-img" id="pageHeroImg"></div>
   <div class="page-hero-overlay"></div>
@@ -170,5 +162,6 @@ function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang
   } catch(e) { console.log('Settings error:', e); }
 })();
 </script>
+<script src="/Diegem-Cross---Website/js/menu.js"></script>
 </body>
 </html>

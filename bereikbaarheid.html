@@ -27,25 +27,7 @@
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="/Diegem-Cross---Website/index.html">Home</a>
-  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-  <a href="/Diegem-Cross---Website/info.html">Info</a>
-  <a href="/Diegem-Cross---Website/deelnemers.html" class="sub-link">Deelnemers</a>
-  <a href="/Diegem-Cross---Website/inschrijvingen.html" class="sub-link">Inschrijvingen</a>
-  <a href="/Diegem-Cross---Website/parcours.html" class="sub-link">Parcours</a>
-  <a href="/Diegem-Cross---Website/pers.html" class="sub-link">Pers</a>
-  <a href="/Diegem-Cross---Website/reglement.html" class="sub-link">Reglement</a>
-  <a href="/Diegem-Cross---Website/erelijst.html" class="sub-link">Erelijst</a>
-  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
-  <a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
-  <a href="/Diegem-Cross---Website/vip.html" class="sub-link">VIP-formules</a>
-  <a href="/Diegem-Cross---Website/sponsor.html" class="sub-link">Word sponsor</a>
-  <a href="/Diegem-Cross---Website/media.html">Media</a>
-  <a href="/Diegem-Cross---Website/contact.html">Contact</a>
-  <a href="/Diegem-Cross---Website/bestuur.html" class="sub-link">Bestuur</a>
-  <a class="mob-ticket" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
-</nav>
+<!-- MOBILE MENU via js/menu.js -->
 <section class="page-hero">
   <div class="page-hero-img" style="background-image:url('https://www.diegemcross.be/wp-content/uploads/2025/03/2024-Diegem-Cross_Elite-080-1.jpg');"></div>
   <div class="page-hero-overlay"></div>
@@ -144,9 +126,10 @@
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
 function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
-function toggleMenu(){var mob=document.getElementById('mobileNav');var ham=document.getElementById('hamburger');mob.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';}
+// menu via js/menu.js
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script src="/Diegem-Cross---Website/js/main.js"></script>
+<script src="/Diegem-Cross---Website/js/menu.js"></script>
 </body>
 </html>

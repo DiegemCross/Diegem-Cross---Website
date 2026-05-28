@@ -10,16 +10,7 @@
   <ul class="nav-menu"><li><a href="/Diegem-Cross---Website/programma.html">Programma</a></li><li><a href="/Diegem-Cross---Website/info.html">Info <span class="arrow">&#9662;</span></a><div class="dropdown"><a href="/Diegem-Cross---Website/deelnemers.html">Deelnemers</a><a href="/Diegem-Cross---Website/inschrijvingen.html">Inschrijvingen</a><a href="/Diegem-Cross---Website/parcours.html">Parcours</a><a href="/Diegem-Cross---Website/pers.html">Pers</a><a href="/Diegem-Cross---Website/reglement.html">Reglement</a><a href="/Diegem-Cross---Website/erelijst.html">Erelijst</a></div></li><li><a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a></li><li><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality <span class="arrow">&#9662;</span></a><div class="dropdown"><a href="/Diegem-Cross---Website/vip.html">VIP-formules</a><a href="/Diegem-Cross---Website/sponsor.html">Word sponsor</a></div></li><li><a href="/Diegem-Cross---Website/media.html">Media</a></li><li><a href="/Diegem-Cross---Website/contact.html">Contact <span class="arrow">&#9662;</span></a><div class="dropdown"><a href="/Diegem-Cross---Website/contact.html">Contact</a><a href="/Diegem-Cross---Website/bestuur.html">Bestuur</a></div></li></ul>
   <div style="display:flex;align-items:center;"><a class="btn nav-ticket" href="/Diegem-Cross---Website/tickets.html">Tickets</a><button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div>
 </nav>
-<nav class="mobile-nav" id="mobileNav">
-  <a href="/Diegem-Cross---Website/index.html">Home</a><a href="/Diegem-Cross---Website/programma.html">Programma</a><a href="/Diegem-Cross---Website/info.html">Info</a>
-  <a href="/Diegem-Cross---Website/deelnemers.html" class="sub-link">Deelnemers</a><a href="/Diegem-Cross---Website/inschrijvingen.html" class="sub-link">Inschrijvingen</a>
-  <a href="/Diegem-Cross---Website/parcours.html" class="sub-link">Parcours</a><a href="/Diegem-Cross---Website/pers.html" class="sub-link">Pers</a>
-  <a href="/Diegem-Cross---Website/reglement.html" class="sub-link">Reglement</a><a href="/Diegem-Cross---Website/erelijst.html" class="sub-link">Erelijst</a>
-  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a><a href="/Diegem-Cross---Website/vip.html">VIP &amp; Hospitality</a>
-  <a href="/Diegem-Cross---Website/vip.html" class="sub-link">VIP-formules</a><a href="/Diegem-Cross---Website/sponsor.html" class="sub-link">Word sponsor</a>
-  <a href="/Diegem-Cross---Website/media.html">Media</a><a href="/Diegem-Cross---Website/contact.html">Contact</a><a href="/Diegem-Cross---Website/bestuur.html" class="sub-link">Bestuur</a>
-  <a class="mob-ticket" href="/Diegem-Cross---Website/tickets.html">Koop tickets</a>
-</nav>
+<!-- MOBILE MENU via js/menu.js -->
 <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#000;position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,170,19,0.08) 0%,transparent 70%);"></div>
   <div style="position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:640px;">
@@ -45,8 +36,9 @@
 <script>
 function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'nl',includedLanguages:'fr,en,nl',autoDisplay:false},'google_translate_element');}
 function setLang(lang){localStorage.setItem('dc_lang',lang);document.cookie=lang==='nl'?'googtrans=/nl/nl; path=/':'googtrans=/nl/'+lang+'; path=/';location.reload();}
-function toggleMenu(){var mob=document.getElementById('mobileNav');var ham=document.getElementById('hamburger');mob.classList.toggle('open');ham.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';}
+// menu via js/menu.js
 </script>
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script src="/Diegem-Cross---Website/js/main.js"></script></body>
+<script src="/Diegem-Cross---Website/js/main.js"></script><script src="/Diegem-Cross---Website/js/menu.js"></script>
+</body>
 </html>
