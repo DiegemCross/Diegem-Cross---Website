@@ -298,34 +298,17 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU — volledig scherm met alle pagina's -->
-<nav class="mobile-nav" id="mobileNav">
-  <a href="/Diegem-Cross---Website/index.html">Home</a>
-  <a href="/Diegem-Cross---Website/programma.html">Programma</a>
-
-  <span class="mob-section">Info</span>
-  <a href="/Diegem-Cross---Website/info.html" class="mob-sub">Overzicht</a>
-  <a href="/Diegem-Cross---Website/deelnemers.html" class="mob-sub">Deelnemers</a>
-  <a href="/Diegem-Cross---Website/inschrijvingen.html" class="mob-sub">Inschrijvingen</a>
-  <a href="/Diegem-Cross---Website/parcours.html" class="mob-sub">Parcours</a>
-  <a href="/Diegem-Cross---Website/pers.html" class="mob-sub">Pers</a>
-  <a href="/Diegem-Cross---Website/reglement.html" class="mob-sub">Reglement</a>
-  <a href="/Diegem-Cross---Website/erelijst.html" class="mob-sub">Erelijst</a>
-
-  <a href="/Diegem-Cross---Website/bereikbaarheid.html">Bereikbaarheid</a>
-
-  <span class="mob-section">VIP &amp; Hospitality</span>
-  <a href="/Diegem-Cross---Website/vip.html" class="mob-sub">VIP-formules</a>
-  <a href="/Diegem-Cross---Website/sponsor.html" class="mob-sub">Word sponsor</a>
-
-  <a href="/Diegem-Cross---Website/media.html">Media</a>
-
-  <span class="mob-section">Contact</span>
-  <a href="/Diegem-Cross---Website/contact.html" class="mob-sub">Contact</a>
-  <a href="/Diegem-Cross---Website/bestuur.html" class="mob-sub">Bestuur</a>
-
-  <a href="/Diegem-Cross---Website/tickets.html" class="mob-ticket">🎫 Koop tickets</a>
-</nav>
+<!-- MOBILE MENU — volledig custom, geen CSS conflicten -->
+<div id="dcMenu" style="
+  display:none;
+  position:fixed;
+  top:56px;
+  left:0;right:0;bottom:0;
+  background:#000;
+  z-index:9999;
+  overflow-y:auto;
+  flex-direction:column;
+"></div>
 
 <!-- HERO -->
 <section class="hero" style="margin-top:0;padding-top:0;">
@@ -587,22 +570,63 @@ function setLang(lang) {
 
 <script>
 function toggleMenu() {
-  const mob = document.getElementById('mobileNav');
   const ham = document.getElementById('hamburger');
-  if (!mob || !ham) return;
-  mob.classList.toggle('open');
-  ham.classList.toggle('open');
-  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+  const menu = document.getElementById('dcMenu');
+  if (!menu) return;
+  const isOpen = menu.style.display === 'flex';
+  if (isOpen) {
+    menu.style.display = 'none';
+    document.body.style.overflow = '';
+    if (ham) { ham.style.transform = ''; ham.querySelector('span:nth-child(1)').style.transform=''; ham.querySelector('span:nth-child(2)').style.opacity='1'; ham.querySelector('span:nth-child(3)').style.transform=''; }
+  } else {
+    menu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    if (ham) { ham.querySelector('span:nth-child(1)').style.transform='translateY(7px) rotate(45deg)'; ham.querySelector('span:nth-child(2)').style.opacity='0'; ham.querySelector('span:nth-child(3)').style.transform='translateY(-7px) rotate(-45deg)'; }
+  }
 }
 
+// Bouw het menu op
+(function buildMenu() {
+  const menu = document.getElementById('dcMenu');
+  if (!menu) return;
+  const base = '/Diegem-Cross---Website';
+  const items = [
+    { type: 'link', label: 'Home', href: base + '/index.html' },
+    { type: 'link', label: 'Programma', href: base + '/programma.html' },
+    { type: 'section', label: 'Info' },
+    { type: 'sub', label: 'Overzicht info', href: base + '/info.html' },
+    { type: 'sub', label: 'Deelnemers', href: base + '/deelnemers.html' },
+    { type: 'sub', label: 'Inschrijvingen', href: base + '/inschrijvingen.html' },
+    { type: 'sub', label: 'Parcours', href: base + '/parcours.html' },
+    { type: 'sub', label: 'Pers', href: base + '/pers.html' },
+    { type: 'sub', label: 'Reglement', href: base + '/reglement.html' },
+    { type: 'sub', label: 'Erelijst', href: base + '/erelijst.html' },
+    { type: 'link', label: 'Bereikbaarheid', href: base + '/bereikbaarheid.html' },
+    { type: 'section', label: 'VIP & Hospitality' },
+    { type: 'sub', label: 'VIP-formules', href: base + '/vip.html' },
+    { type: 'sub', label: 'Word sponsor', href: base + '/sponsor.html' },
+    { type: 'link', label: 'Media', href: base + '/media.html' },
+    { type: 'section', label: 'Contact' },
+    { type: 'sub', label: 'Contact', href: base + '/contact.html' },
+    { type: 'sub', label: 'Bestuur', href: base + '/bestuur.html' },
+    { type: 'ticket', label: '🎫 Koop tickets', href: base + '/tickets.html' },
+  ];
+  menu.innerHTML = items.map(function(item) {
+    if (item.type === 'section') {
+      return '<div style="font-family:Barlow Condensed,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#00aa13;padding:16px 24px 6px;background:rgba(0,170,19,0.07);border-top:1px solid rgba(0,170,19,0.2);margin-top:4px;">' + item.label + '</div>';
+    }
+    if (item.type === 'sub') {
+      return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;font-family:Barlow Condensed,sans-serif;font-size:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:10px 24px 10px 40px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;">' + item.label + '</a>';
+    }
+    if (item.type === 'ticket') {
+      return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;background:#00aa13;color:#000;font-family:Bebas Neue,sans-serif;font-size:22px;letter-spacing:0.12em;text-transform:uppercase;padding:18px 24px;margin:20px 20px 0;text-align:center;text-decoration:none;border-radius:3px;">' + item.label + '</a>';
+    }
+    return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;font-family:Bebas Neue,sans-serif;font-size:28px;letter-spacing:0.06em;color:#ffffff;padding:13px 24px;border-bottom:1px solid rgba(255,255,255,0.07);text-decoration:none;">' + item.label + '</a>';
+  }).join('');
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.mobile-nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      document.getElementById('mobileNav')?.classList.remove('open');
-      document.getElementById('hamburger')?.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
+  // menu links sluiten via inline onclick
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
