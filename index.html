@@ -203,23 +203,27 @@
   /* ── FOTO GRID ── */
   .foto-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 180px; }
 
-  /* ── PARTNERS: wit, groter, duidelijker ── */
+  /* ── PARTNERS: donker kader, consistente grootte ── */
   .partners-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
   .partner-cell {
-    background: #ffffff !important;
-    height: 88px !important;
-    border-radius: 4px !important;
-    border-color: transparent !important;
-    padding: 12px !important;
+    background: #141414 !important;
+    height: 90px !important;
+    border-radius: 6px !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    padding: 16px !important;
   }
-  .partner-cell:hover { background: #f0f0f0 !important; }
+  .partner-cell:hover {
+    background: #1e1e1e !important;
+    border-color: rgba(0,170,19,0.3) !important;
+  }
   .partner-cell img {
-    max-height: 54px !important;
-    max-width: 90% !important;
-    filter: none !important;
+    max-height: 46px !important;
+    max-width: 85% !important;
+    filter: brightness(1.1) !important;
+    object-fit: contain !important;
   }
 
   /* ── VIP ── */
@@ -325,14 +329,7 @@
 
 <!-- HERO -->
 <section class="hero" style="margin-top:0;padding-top:0;">
-  <div class="hero-slideshow" id="heroSlideshow">
-    <div class="slide active" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/del-grosso-en-nys.jpg.png');background-position:center 35%;"></div>
-    <div class="slide" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/0b5a5380.jpg');background-position:center 30%;"></div>
-    <div class="slide" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/2024-diegem-cross_turbocross-04.jpg');background-position:center 40%;"></div>
-    <div class="slide" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/8l1a3447.jpg');background-position:center 35%;"></div>
-    <div class="slide" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/8t7a7650-1-.jpg');background-position:center 40%;"></div>
-  </div>
-  <div class="slide-dots" id="slideDots"></div>
+  <div class="hero-bg" style="background-image:url('https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/del-grosso-en-nys.jpg.png');background-position:center 35%;"></div>
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
 
