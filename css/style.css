@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; }
 /* ── NAVIGATIE ── */
 nav { position: fixed; top: var(--topbar-h); left: 0; right: 0; z-index: 200; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); border-bottom: 2px solid #00aa13; transition: background 0.3s; }
 .nav-logo a { display: block; line-height: 1; }
-.nav-logo img { height: 52px; width: auto; }
+.nav-logo img { height: auto; width: 110px; }
 .nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; }
 .nav-menu > li { position: relative; }
 .nav-menu > li > a { display: flex; align-items: center; gap: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); padding: 8px 14px; transition: color 0.2s; white-space: nowrap; }
@@ -192,7 +192,7 @@ nav { position: fixed; top: var(--topbar-h); left: 0; right: 0; z-index: 200; he
 /* ── FOOTER ── */
 footer { background: #000; border-top: 3px solid #00aa13; }
 .footer-main { padding: 64px 48px 48px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 52px; }
-.footer-logo img { height: 64px; width: auto; margin-bottom: 20px; }
+.footer-logo img { height: auto; width: 130px; margin-bottom: 20px; }
 .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.52); line-height: 1.7; max-width: 260px; margin-bottom: 20px; }
 .footer-contact { font-size: 13px; color: rgba(255,255,255,0.52); line-height: 2; }
 .footer-contact a { color: #00aa13; }
@@ -243,7 +243,7 @@ footer { background: #000; border-top: 3px solid #00aa13; }
 ══════════════════════════════════════ */
 @media (max-width: 768px) {
   :root { --nav-h: 56px; --topbar-h: 0px; }
-  .nav-logo img { height: 48px !important; }
+  .nav-logo img { height: auto !important; width: 100px !important; }
   .topbar { display: none; }
   body { padding-top: var(--nav-h); }
   nav { padding: 0 16px; top: 0; }
@@ -282,5 +282,5 @@ footer { background: #000; border-top: 3px solid #00aa13; }
 }
 
 @media (max-width: 768px) {
-  .footer-logo img { height: 56px !important; width: auto !important; max-width: 220px !important; }
+  .footer-logo img { height: auto !important; width: 120px !important; max-width: 120px !important; }
 }
