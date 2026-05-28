@@ -280,3 +280,11 @@ footer { background: #000; border-top: 3px solid #00aa13; }
   .mobile-nav .mob-section { padding: 10px 18px 4px; }
   .mobile-nav .sub-link, .mobile-nav .mob-sub { padding: 7px 18px 7px 32px; font-size: 13px; }
 }
+
+@media (max-width: 768px) {
+  .footer-logo img {
+    height: 48px !important;
+    max-width: 160px !important;
+    width: auto !important;
+  }
+}
