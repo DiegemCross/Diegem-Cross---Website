@@ -163,15 +163,20 @@
   /* ── HERO ── */
   .hero-logo { display: none !important; }
   .hero-content { padding: 0 20px 52px !important; }
-  .hero-meta { gap: 6px 16px; margin-bottom: 24px; }
+  .hero-meta {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px 12px;
+    margin-bottom: 24px;
+  }
   .hero-meta-item {
-    font-size: 17px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
-    letter-spacing: 0.06em !important;
+    letter-spacing: 0.04em !important;
     color: rgba(255,255,255,0.95) !important;
   }
-  .hero-meta-item strong { color: #ffffff !important; font-size: 17px !important; }
-  .hero-meta-item::before { width: 18px; }
+  .hero-meta-item strong { color: #ffffff !important; font-size: 14px !important; }
+  .hero-meta-item::before { width: 14px; }
   .hero-ctas { flex-direction: column; gap: 10px; }
   .hero-ctas .btn { width: 100%; text-align: center; justify-content: center; }
   .hero-ctas .btn-groen {
