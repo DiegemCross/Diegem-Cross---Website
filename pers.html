@@ -108,6 +108,48 @@ img { max-width: 100%; height: auto; }
   table th, table td { padding: 6px 8px !important; }
 }
 </style>
+<style>
+/* DIEGEM CROSS MOBILE FIX */
+*{box-sizing:border-box}
+body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+img{max-width:100%;height:auto}
+@media(max-width:768px){
+  .sec,section{padding:32px 16px!important}
+  .sec-sm{padding:24px 16px!important}
+  .breadcrumb{padding:10px 16px!important}
+  .page-hero{height:220px!important}
+  .page-hero-content{padding:0 16px 24px!important}
+  .page-hero h1{font-size:clamp(32px,9vw,56px)!important}
+  .sec-title{font-size:clamp(28px,8vw,56px)!important}
+  .sec-title-row{flex-direction:column!important;align-items:flex-start!important}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr!important}
+  .prog-grid{grid-template-columns:1fr!important}
+  .prog-card{padding:20px 16px!important}
+  .vip-preview{grid-template-columns:1fr!important}
+  .vip-foto{min-height:220px!important}
+  .vip-right{padding:28px 16px!important}
+  .vip-formule{flex-direction:column!important;gap:8px!important}
+  .contact-grid,.bestuur-grid{grid-template-columns:1fr!important}
+  .partners-grid,.sponsor-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px!important}
+  .partner-cell{height:80px!important}
+  table{display:block;overflow-x:auto;width:100%;font-size:13px!important}
+  th,td{padding:8px 10px!important;white-space:nowrap}
+  iframe{width:100%!important;max-width:100%!important;height:260px!important}
+  .hero-ctas,.btn-group{flex-direction:column!important}
+  .hero-ctas .btn,.btn-group .btn{width:100%!important;text-align:center!important;justify-content:center!important}
+  .footer-main{grid-template-columns:1fr!important;gap:24px!important;padding:32px 16px!important}
+  .footer-bottom{padding:14px 16px!important;flex-direction:column!important;gap:8px!important}
+  h1{font-size:clamp(32px,9vw,56px)!important}
+  h2{font-size:clamp(24px,7vw,44px)!important}
+  h3{font-size:clamp(18px,5vw,28px)!important}
+}
+@media(max-width:480px){
+  .sec,section{padding:20px 12px!important}
+  table{font-size:11px!important}
+  th,td{padding:6px 8px!important}
+  .partners-grid,.sponsor-grid{grid-template-columns:repeat(2,1fr)!important}
+}
+</style>
 </head>
 <body>
 
