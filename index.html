@@ -298,17 +298,7 @@
   </div>
 </nav>
 
-<!-- MOBILE MENU — volledig custom, geen CSS conflicten -->
-<div id="dcMenu" style="
-  display:none;
-  position:fixed;
-  top:56px;
-  left:0;right:0;bottom:0;
-  background:#000;
-  z-index:9999;
-  overflow-y:auto;
-  flex-direction:column;
-"></div>
+<!-- MOBILE MENU — gebouwd via js/menu.js -->
 
 <!-- HERO -->
 <section class="hero" style="margin-top:0;padding-top:0;">
@@ -487,9 +477,9 @@
       <div class="partner-cell"><a href="https://belorta.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/belorta-v01-1.png" alt="Belorta" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.groupbrs.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2023/10/Brs-v01.png" alt="Group BRS" loading="lazy"></a></div>
       <div class="partner-cell"><a href="http://www.mgh.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Partner-mgh.png" alt="MGH" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://esprit-ict.nl" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-182516.png" alt="Esprit ICT" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183029.png" alt="ACEG" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://werkkledij.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-183307.png" alt="Werkkledij.be" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://esprit-ict.nl" target="_blank"><img src="https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/esprit.png" alt="Esprit ICT" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/aceg.png" alt="ACEG" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://werkkledij.be" target="_blank"><img src="https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/werkkledij.png" alt="Werkkledij.be" loading="lazy"></a></div>
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Sponsors Telenet Superprestige</p>
     <div class="partners-grid">
@@ -497,7 +487,7 @@
       <div class="partner-cell"><a href="https://maes.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2020/04/Maes-Pils.webp" alt="Maes Pils" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.playsports.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/87.png" alt="Play Sports" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.electrodepot.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/ElectroDepot.png" alt="Electro Depot" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://sunseekerelite.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2025/09/Schermafbeelding-2025-09-23-191512.png" alt="Sunseeker Elite" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://sunseekerelite.be" target="_blank"><img src="https://diegemcross.github.io/Diegem-Cross---Website/images/uploads/sunseeker.png" alt="Sunseeker Elite" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.prikentik.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/PrikTik-3.png" alt="Prik &amp; Tik" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.ad-belgium.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2023/10/Logos-website_AD-Garage.png" alt="AD Garage" loading="lazy"></a></div>
       <div class="partner-cell"><a href="https://www.isolatiestock.be" target="_blank"><img src="https://www.diegemcross.be/wp-content/uploads/2022/10/Isolatiestock.png" alt="Isolatiestock" loading="lazy"></a></div>
@@ -569,61 +559,7 @@ function setLang(lang) {
 <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <script>
-function toggleMenu() {
-  const ham = document.getElementById('hamburger');
-  const menu = document.getElementById('dcMenu');
-  if (!menu) return;
-  const isOpen = menu.style.display === 'flex';
-  if (isOpen) {
-    menu.style.display = 'none';
-    document.body.style.overflow = '';
-    if (ham) { ham.style.transform = ''; ham.querySelector('span:nth-child(1)').style.transform=''; ham.querySelector('span:nth-child(2)').style.opacity='1'; ham.querySelector('span:nth-child(3)').style.transform=''; }
-  } else {
-    menu.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    if (ham) { ham.querySelector('span:nth-child(1)').style.transform='translateY(7px) rotate(45deg)'; ham.querySelector('span:nth-child(2)').style.opacity='0'; ham.querySelector('span:nth-child(3)').style.transform='translateY(-7px) rotate(-45deg)'; }
-  }
-}
-
-// Bouw het menu op
-(function buildMenu() {
-  const menu = document.getElementById('dcMenu');
-  if (!menu) return;
-  const base = '/Diegem-Cross---Website';
-  const items = [
-    { type: 'link', label: 'Home', href: base + '/index.html' },
-    { type: 'link', label: 'Programma', href: base + '/programma.html' },
-    { type: 'section', label: 'Info' },
-    { type: 'sub', label: 'Overzicht info', href: base + '/info.html' },
-    { type: 'sub', label: 'Deelnemers', href: base + '/deelnemers.html' },
-    { type: 'sub', label: 'Inschrijvingen', href: base + '/inschrijvingen.html' },
-    { type: 'sub', label: 'Parcours', href: base + '/parcours.html' },
-    { type: 'sub', label: 'Pers', href: base + '/pers.html' },
-    { type: 'sub', label: 'Reglement', href: base + '/reglement.html' },
-    { type: 'sub', label: 'Erelijst', href: base + '/erelijst.html' },
-    { type: 'link', label: 'Bereikbaarheid', href: base + '/bereikbaarheid.html' },
-    { type: 'section', label: 'VIP & Hospitality' },
-    { type: 'sub', label: 'VIP-formules', href: base + '/vip.html' },
-    { type: 'sub', label: 'Word sponsor', href: base + '/sponsor.html' },
-    { type: 'link', label: 'Media', href: base + '/media.html' },
-    { type: 'section', label: 'Contact' },
-    { type: 'sub', label: 'Contact', href: base + '/contact.html' },
-    { type: 'sub', label: 'Bestuur', href: base + '/bestuur.html' },
-    { type: 'ticket', label: '🎫 Koop tickets', href: base + '/tickets.html' },
-  ];
-  menu.innerHTML = items.map(function(item) {
-    if (item.type === 'section') {
-      return '<div style="font-family:Barlow Condensed,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#00aa13;padding:16px 24px 6px;background:rgba(0,170,19,0.07);border-top:1px solid rgba(0,170,19,0.2);margin-top:4px;">' + item.label + '</div>';
-    }
-    if (item.type === 'sub') {
-      return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;font-family:Barlow Condensed,sans-serif;font-size:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.55);padding:10px 24px 10px 40px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;">' + item.label + '</a>';
-    }
-    if (item.type === 'ticket') {
-      return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;background:#00aa13;color:#000;font-family:Bebas Neue,sans-serif;font-size:22px;letter-spacing:0.12em;text-transform:uppercase;padding:18px 24px;margin:20px 20px 0;text-align:center;text-decoration:none;border-radius:3px;">' + item.label + '</a>';
-    }
-    return '<a href="' + item.href + '" onclick="toggleMenu()" style="display:block;font-family:Bebas Neue,sans-serif;font-size:28px;letter-spacing:0.06em;color:#ffffff;padding:13px 24px;border-bottom:1px solid rgba(255,255,255,0.07);text-decoration:none;">' + item.label + '</a>';
-  }).join('');
-})();
+// Menu via js/menu.js
 
 document.addEventListener('DOMContentLoaded', () => {
   // menu links sluiten via inline onclick
@@ -678,5 +614,6 @@ function initSlideshow() {
   update(); setInterval(update, 1000);
 })();
 </script>
+<script src="/Diegem-Cross---Website/js/menu.js"></script>
 </body>
 </html>
