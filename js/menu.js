@@ -19,7 +19,7 @@
     ]},
     { type: 'link', label: 'Bereikbaarheid', href: BASE + '/bereikbaarheid.html' },
     { type: 'group', label: 'VIP & Hospitality', sub: [
-      { label: 'VIP-formules', href: BASE + '/vip.html' },
+      { label: 'VIP', href: BASE + '/vip.html' },
       { label: 'Word sponsor', href: BASE + '/sponsor.html' },
     ]},
     { type: 'link', label: 'Media', href: BASE + '/media.html' },
