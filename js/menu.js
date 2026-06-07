@@ -3,7 +3,7 @@
    Werkt op alle pagina's
 ═══════════════════════════════════════ */
 (function() {
-  var BASE = '/Diegem-Cross---Website';
+  var BASE = '';
 
   var ITEMS = [
     { type: 'link', label: 'Home', href: BASE + '/index.html' },
