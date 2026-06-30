@@ -9,28 +9,6 @@ locale: 'nl'
 
 collections:
 
-  # ── NIEUWS ──────────────────────────────────────
-  - name: "nieuws"
-    label: "Nieuws"
-    label_singular: "Nieuwsbericht"
-    folder: "content/nieuws"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} — {{datum}}"
-    fields:
-      - { label: "Titel", name: "title", widget: "string", hint: "De titel van het nieuwsbericht" }
-      - { label: "Datum", name: "datum", widget: "datetime", format: "DD/MM/YYYY", date_format: "DD/MM/YYYY", time_format: false }
-      - { label: "Omslagfoto", name: "foto", widget: "image", required: false, hint: "Aanbevolen formaat: 800x500px" }
-      - { label: "Korte samenvatting", name: "samenvatting", widget: "string", hint: "Wordt getoond op de homepage (max. 120 tekens)" }
-      - { label: "Volledige tekst", name: "body", widget: "markdown" }
-      - label: "Status"
-        name: "status"
-        widget: "select"
-        options:
-          - { label: "Gepubliceerd", value: "gepubliceerd" }
-          - { label: "Concept (niet zichtbaar)", value: "concept" }
-        default: "gepubliceerd"
-
   # ── PROGRAMMA ────────────────────────────────────
   - name: "programma"
     label: "Programma"
