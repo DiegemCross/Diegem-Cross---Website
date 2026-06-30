@@ -202,7 +202,7 @@ footer { background: #000; border-top: 3px solid #00aa13; }
 .footer-links a { font-size: 13px; color: rgba(255,255,255,0.38); transition: color 0.2s; }
 .footer-links a:hover { color: #00aa13; }
 .footer-bottom { padding: 20px 48px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-copy { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.04em; }
+.footer-copy { font-size: 11px; color: #ffffff; letter-spacing: 0.04em; }
 .footer-social { display: flex; gap: 20px; }
 .footer-social a { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); transition: color 0.2s; }
 .footer-social a:hover { color: #00aa13; }

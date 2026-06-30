@@ -10,7 +10,7 @@
 <style>
 /* ── HOMEPAGE SPECIFIEK ── */
 .hero {
-  position: relative; height: 100vh; min-height: 640px;
+  position: relative; height: calc(100vh - var(--nav-h) - var(--topbar-h)); min-height: 600px;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; margin-top: 0;
 }
@@ -56,6 +56,7 @@
 .hero-meta-item { display: flex; align-items: center; gap: 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); }
 .hero-meta-item::before { content: ''; width: 16px; height: 2px; background: var(--groen); flex-shrink: 0; }
 .hero-meta-item strong { color: var(--wit); }
+.hero-date { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5.5vw, 72px); letter-spacing: 0.04em; line-height: 1; color: var(--wit); margin-bottom: 22px; padding-left: 18px; border-left: 4px solid var(--groen); opacity: 0; animation: fadeup 0.7s 0.6s forwards; }
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: fadeup 0.7s 0.9s forwards; }
 .hero-countdown { position: absolute; bottom: 80px; right: 48px; z-index: 3; opacity: 0; animation: fadeup 0.7s 1.2s forwards; }
 .countdown-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--grijs); margin-bottom: 10px; text-align: right; }
@@ -88,7 +89,7 @@
 .prog-card { background: var(--paneel); border-top: 3px solid var(--groen); padding: 32px 28px; position: relative; overflow: hidden; transition: background 0.3s; }
 .prog-card:hover { background: var(--paneel2); }
 .prog-card::after { content: attr(data-n); position: absolute; bottom: -16px; right: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 110px; color: rgba(0,170,19,0.04); line-height: 1; pointer-events: none; }
-.prog-time { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--groen); margin-bottom: 14px; }
+.prog-time { font-family: 'Bebas Neue', sans-serif; font-size: 46px; letter-spacing: 0.04em; color: var(--groen); margin-bottom: 8px; line-height: 1; }
 .prog-name { font-family: 'Bebas Neue', sans-serif; font-size: 34px; letter-spacing: 0.04em; margin-bottom: 6px; }
 .prog-cat { font-size: 13px; color: var(--grijs); line-height: 1.5; }
 
@@ -316,18 +317,17 @@
   <div class="hero-sp">
     <span class="hero-sp-label">Onderdeel van</span>
     <span class="hero-sp-name">Telenet Superprestige</span>
-    <span class="hero-sp-manche">Manche 7 · 2026–2027</span>
+    <span class="hero-sp-manche">Seizoen 2026–2027</span>
   </div>
 
   <div class="hero-content">
     <img class="hero-logo"
       src="https://diegemcross.be/images/uploads/logo-diegem-cross.png"
       alt="Diegem Cross">
+    <div class="hero-date" data-datum>30 december 2026</div>
     <div class="hero-meta">
-      <div class="hero-meta-item"><strong data-datum>30 december 2026</strong></div>
-      <div class="hero-meta-item"><strong><span data-editie>51ste</span> editie</strong></div>
-      <div class="hero-meta-item"><strong>Dorpscentrum Diegem</strong></div>
-      <div class="hero-meta-item"><strong>Diegem Cross</strong></div>
+      <div class="hero-meta-item"><strong>Unieke avondcross</strong></div>
+      <div class="hero-meta-item"><strong>Dorpscentrum</strong></div>
     </div>
     <div class="hero-ctas">
       <a class="btn btn-groen btn-lg" href="/tickets.html">Koop tickets</a>
@@ -345,27 +345,25 @@
     </div>
   </div>
 
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item">Diegem Cross · <span data-datum>30 december 2026</span></span>
+    <span class="ticker-item"><span data-datum>30 december 2026</span></span>
     <span class="ticker-item"><span data-editie>51ste</span> editie</span>
+    <span class="ticker-item">Unieke avondcross</span>
     <span class="ticker-item">Avondcross onder kunstlicht</span>
-    <span class="ticker-item">Telenet Superprestige · Manche 7</span>
+    <span class="ticker-item">Telenet Superprestige</span>
     <span class="ticker-item">Elite mannen · Elite dames · Juniores</span>
-    <span class="ticker-item">Dorpscentrum Diegem · Diegem Cross</span>
-    <span class="ticker-item">Diegem Cross · <span data-datum>30 december 2026</span></span>
+    <span class="ticker-item">Dorpscentrum Diegem</span>
+    <span class="ticker-item"><span data-datum>30 december 2026</span></span>
     <span class="ticker-item"><span data-editie>51ste</span> editie</span>
+    <span class="ticker-item">Unieke avondcross</span>
     <span class="ticker-item">Avondcross onder kunstlicht</span>
-    <span class="ticker-item">Telenet Superprestige · Manche 7</span>
+    <span class="ticker-item">Telenet Superprestige</span>
     <span class="ticker-item">Elite mannen · Elite dames · Juniores</span>
-    <span class="ticker-item">Dorpscentrum Diegem · Diegem Cross</span>
+    <span class="ticker-item">Dorpscentrum Diegem</span>
   </div>
 </div>
 
@@ -387,22 +385,11 @@
       </div>
       <a class="btn btn-ghost" href="/programma.html">Volledig programma</a>
     </div>
-    <div class="prog-grid" id="progGrid" style="display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:3px;">
+    <div class="prog-grid" id="progGrid">
       <div class="prog-card" data-n="01"><div class="prog-time">17:00</div><div class="prog-name">Junioren</div><div class="prog-cat">Mannen · Categorie Junioren</div></div>
       <div class="prog-card" data-n="02"><div class="prog-time">18:30</div><div class="prog-name">Elite &amp; U23 Dames</div><div class="prog-cat">Dames Elite + U23 · Telenet Superprestige</div></div>
-      <div class="prog-card" data-n="03"><div class="prog-time">20:00</div><div class="prog-name">Elite &amp; U23 Heren</div><div class="prog-cat">Heren Elite + U23 · Superprestige Manche 7</div></div>
+      <div class="prog-card" data-n="03"><div class="prog-time">20:00</div><div class="prog-name">Elite &amp; U23 Heren</div><div class="prog-cat">Heren Elite + U23 · Superprestige</div></div>
     </div>
-  </div>
-</section>
-
-<!-- SFEER BANNER -->
-<section class="sfeer-banner">
-  <div class="sfeer-img" id="sfeerImg" style="background-image:url('https://diegemcross.be/images/uploads/del-grosso-en-nys.jpg.png');"></div>
-  <div class="sfeer-overlay"></div>
-  <div class="sfeer-content">
-    <div class="sfeer-quote">Voel je op<br>het <em>parcours.</em></div>
-    <div class="sfeer-sub">Elk jaar trekt Diegem Cross duizenden toeschouwers naar het dorpscentrum voor de meest spectaculaire avondcross van het seizoen — onder de spots, met de wereldtop op meters afstand.</div>
-    <a class="btn btn-groen" href="/media.html">Bekijk de sfeer</a>
   </div>
 </section>
 
