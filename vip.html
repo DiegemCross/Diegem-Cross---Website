@@ -394,7 +394,7 @@ img{max-width:100%;height:auto}
     </div>
 
     <!-- FORMULIER -->
-    <form class="vipform" name="vip-bestelling" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/vip.html?verzonden=1#bestellen">
+    <form class="vipform" name="vip-bestelling" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
       <input type="hidden" name="form-name" value="vip-bestelling">
       <input type="hidden" name="subject" value="Bestelling VIP-tickets">
       <p hidden><label>Niet invullen: <input name="bot-field"></label></p>
@@ -416,7 +416,28 @@ img{max-width:100%;height:auto}
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;">Dit is een reservatieaanvraag &mdash; geen online betaling. Je ontvangt een bevestigingsmail.</p>
       </div>
     </form>
-    <script>if(location.search.indexOf('verzonden=1')>-1){var _d=document.getElementById('vipDank');var _f=document.querySelector('.vipform');if(_d&&_f){_d.style.display='block';_f.style.display='none';}}</script>
+    <script>
+    (function(){
+      var form=document.querySelector('form[name="vip-bestelling"]');
+      if(!form) return;
+      form.addEventListener('submit',function(e){
+        e.preventDefault();
+        var btn=form.querySelector('button[type="submit"]');
+        if(btn){btn.disabled=true;btn.textContent='Versturen...';}
+        var body=new URLSearchParams(new FormData(form)).toString();
+        fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+          .then(function(r){if(!r.ok)throw new Error(r.status);
+            var d=document.getElementById('vipDank');
+            form.style.display='none';
+            if(d){d.style.display='block';window.scrollTo({top:d.getBoundingClientRect().top+window.scrollY-120});}
+          })
+          .catch(function(){
+            if(btn){btn.disabled=false;btn.textContent='Verstuur bestelling';}
+            alert('Er ging iets mis bij het versturen. Probeer opnieuw of mail ons via info@diegemcross.be.');
+          });
+      });
+    })();
+    </script>
   </div>
 </section>
 
