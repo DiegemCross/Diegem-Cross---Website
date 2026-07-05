@@ -18,7 +18,7 @@
       { label: 'Erelijst', href: BASE + '/erelijst.html' },
     ]},
     { type: 'link', label: 'Bereikbaarheid', href: BASE + '/bereikbaarheid.html' },
-    { type: 'group', label: 'VIP & Hospitality', sub: [
+    { type: 'group', label: 'VIP', sub: [
       { label: 'VIP', href: BASE + '/vip.html' },
       { label: 'Word sponsor', href: BASE + '/sponsor.html' },
     ]},
