@@ -6,6 +6,13 @@ const FROM = process.env.MAIL_FROM || "Diegem Cross <info@diegemcross.be>";
 const REPLY_TO = "info@diegemcross.be";
 const LOGO = "https://diegemcross.be/images/uploads/logo-diegem-cross.png";
 
+// Gedeelde Google Sheet (Apps Script web-app) waar elke aanvraag als rij bij komt.
+// URL + geheime code kunnen via env-vars overschreven worden.
+const SHEETS_URL =
+  process.env.SHEETS_WEBHOOK_URL ||
+  "https://script.google.com/macros/s/AKfycbxr3sehe1RYglc-peMhZWriZa_ea6iIJGbZMoYpoPhdIvkt9mrdDW4gDakWwFsho15pbw/exec";
+const SHEETS_TOKEN = process.env.SHEETS_TOKEN || "dgmx-vip-HDgHO4cxfe9Per5Y";
+
 function esc(v) {
   return String(v == null ? "" : v)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -117,12 +124,13 @@ exports.handler = async (event) => {
 
     const txt = await res.text();
 
-    // ── Automatiseringsmail voor Power Automate (gestructureerde data -> gedeelde Excel) ──
-    // Onderwerp begint met [VIP-DATA]; body is puur JSON zodat de flow de velden
-    // foutloos in de juiste kolommen kan zetten. Faalt dit, dan blijft de rest werken.
+    // ── Aanvraag doorsturen naar de gedeelde Google Sheet (Apps Script web-app) ──
+    // Elke aanvraag komt als nieuwe rij (kolommen A t/m H) in de gedeelde lijst.
+    // Volledig in try/catch: faalt dit, dan blijven inzending + bevestigingsmail werken.
     try {
       const stamp = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Brussels" }); // YYYY-MM-DD HH:mm:ss
       const record = {
+        token: SHEETS_TOKEN,
         datum: stamp,
         bedrijf: (d.bedrijf || "").trim(),
         contactpersoon: (d.naam || "").trim(),
@@ -132,22 +140,14 @@ exports.handler = async (event) => {
         overnachting: d.overnachting ? "Ja" : "Nee",
         facturatiegegevens: (d.facturatiegegevens || "").trim(),
       };
-      const DATA_TO = process.env.AUTOMATION_TO || "info@diegemcross.be";
-      await fetch("https://api.resend.com/emails", {
+      await fetch(SHEETS_URL, {
         method: "POST",
-        headers: {
-          Authorization: "Bearer " + process.env.RESEND_API_KEY,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: FROM,
-          to: [DATA_TO],
-          subject: "[VIP-DATA] Nieuwe VIP-aanvraag",
-          text: JSON.stringify(record),
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(record),
+        redirect: "follow",
       });
     } catch (e) {
-      // Automatiseringsmail mag nooit de inzending of de bevestigingsmail breken.
+      // Doorsturen naar de Sheet mag nooit de inzending of de bevestigingsmail breken.
     }
 
     return { statusCode: 200, body: res.ok ? "verstuurd" : "resend-fout: " + txt };
