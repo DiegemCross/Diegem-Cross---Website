@@ -28,7 +28,6 @@ function buildHtml(d) {
   const summary =
     row("Bedrijf / organisatie", d.bedrijf) +
     row("Aantal VIP-tickets", d.aantal_tickets) +
-    row("Exclusieve tafel (10 pers.)", d.exclusieve_tafel && d.exclusieve_tafel !== "Geen voorkeur" ? d.exclusieve_tafel : "") +
     row("Overnachting", d.overnachting) +
     row("Telefoon", d.telefoon);
 
