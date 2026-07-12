@@ -116,6 +116,40 @@ exports.handler = async (event) => {
     });
 
     const txt = await res.text();
+
+    // ── Automatiseringsmail voor Power Automate (gestructureerde data -> gedeelde Excel) ──
+    // Onderwerp begint met [VIP-DATA]; body is puur JSON zodat de flow de velden
+    // foutloos in de juiste kolommen kan zetten. Faalt dit, dan blijft de rest werken.
+    try {
+      const stamp = new Date().toLocaleString("sv-SE", { timeZone: "Europe/Brussels" }); // YYYY-MM-DD HH:mm:ss
+      const record = {
+        datum: stamp,
+        bedrijf: (d.bedrijf || "").trim(),
+        contactpersoon: (d.naam || "").trim(),
+        email: (d.email || "").trim(),
+        telefoon: (d.telefoon || "").trim(),
+        aantal_tickets: String(d.aantal_tickets || "").trim(),
+        overnachting: d.overnachting ? "Ja" : "Nee",
+        facturatiegegevens: (d.facturatiegegevens || "").trim(),
+      };
+      const DATA_TO = process.env.AUTOMATION_TO || "info@diegemcross.be";
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + process.env.RESEND_API_KEY,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: FROM,
+          to: [DATA_TO],
+          subject: "[VIP-DATA] Nieuwe VIP-aanvraag",
+          text: JSON.stringify(record),
+        }),
+      });
+    } catch (e) {
+      // Automatiseringsmail mag nooit de inzending of de bevestigingsmail breken.
+    }
+
     return { statusCode: 200, body: res.ok ? "verstuurd" : "resend-fout: " + txt };
   } catch (e) {
     // Nooit de inzending laten falen door een mailfout
