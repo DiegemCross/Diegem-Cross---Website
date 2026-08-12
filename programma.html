@@ -315,8 +315,21 @@ img{max-width:100%;height:auto}
 <div class="breadcrumb"><a href="/index.html">Home</a><span class="sep">&rsaquo;</span><span class="current">Programma</span></div>
 <section class="sec">
   <div class="container">
-    <img src="/images/uploads/programma-top.jpg" alt="Diegem Cross sfeerbeeld" loading="lazy" style="width:100%;height:clamp(240px,38vw,420px);object-fit:cover;display:block;border:1px solid rgba(0,170,19,0.35);border-top:3px solid #00aa13;margin-bottom:clamp(32px,4vw,48px);">
-    <div class="sec-label">Volledig overzicht</div>
+
+    <!-- Sfeerfoto: filmische band met verloop + onderschrift -->
+    <figure style="position:relative;height:clamp(280px,44vw,500px);margin:0 0 clamp(44px,5vw,64px);overflow:hidden;">
+      <div role="img" aria-label="Diegem Cross onder kunstlicht" style="position:absolute;inset:0;background:url('/images/uploads/programma-top.jpg') center/cover no-repeat;"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.82) 0%,rgba(0,0,0,0.12) 52%,rgba(0,0,0,0) 100%);pointer-events:none;"></div>
+      <div style="position:absolute;top:0;left:0;width:100%;height:3px;background:#00aa13;"></div>
+      <figcaption style="position:absolute;left:clamp(20px,3vw,36px);right:20px;bottom:clamp(20px,3vw,30px);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.26em;text-transform:uppercase;color:#00aa13;margin-bottom:8px;">Diegem Cross</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,40px);color:#fff;line-height:0.98;letter-spacing:0.02em;">Avondcross onder kunstlicht</div>
+      </figcaption>
+    </figure>
+
+    <!-- Programma van de wedstrijden -->
+    <div class="sec-label">Op het parcours</div>
+    <h2 class="sec-title" style="margin-bottom:28px;">Wedstrijden</h2>
     <div class="prog-page-grid" id="progPageGrid">
       <div class="prog-card-full" data-n="01">
         <div class="prog-time">17:00</div>
@@ -331,6 +344,25 @@ img{max-width:100%;height:auto}
         <div class="prog-name-big">Elite &amp; U23 Heren</div>
       </div>
     </div>
+
+    <!-- Programma van de Ambiance Tent -->
+    <div class="sec-label" style="margin-top:8px;">In de tent</div>
+    <h2 class="sec-title" style="margin-bottom:28px;">Ambiance Tent</h2>
+    <div class="grid-2">
+      <div class="prog-card-full" data-n="&#9834;">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#00aa13" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:22px;display:block;"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="2.5" y="14.5" width="4.5" height="6" rx="1.6"/><rect x="17" y="14.5" width="4.5" height="6" rx="1.6"/></svg>
+        <div class="prog-time">Doorlopend</div>
+        <div class="prog-name-big">DJ Youmen</div>
+        <div class="prog-detail">Non-stop ambiance in de tent, de hele avond door.</div>
+      </div>
+      <div class="prog-card-full" data-n="?">
+        <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="#00aa13" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:22px;display:block;"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        <div class="prog-time">19u30</div>
+        <div class="prog-name-big">Special Guest</div>
+        <div class="prog-detail">Wie het podium betreedt, houden we nog even geheim. Laat je verrassen.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 <footer>
