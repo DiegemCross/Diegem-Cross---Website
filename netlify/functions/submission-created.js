@@ -57,8 +57,8 @@ function buildHtml(d) {
 '<div style="font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:bold;letter-spacing:0.22em;text-transform:uppercase;color:#00aa13;margin-bottom:10px;">Bevestiging van je bestelling</div>' +
 '<div style="font-family:Georgia,\'Times New Roman\',serif;font-size:30px;line-height:1.15;color:#ffffff;margin-bottom:18px;">Bedankt voor je VIP-bestelling!</div>' +
 '<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#c8c8c8;margin:0 0 20px;">' +
-groet + ',<br><br>We hebben je aanvraag voor de <strong style="color:#ffffff;">VIP-Gold Experience</strong> op Diegem Cross (30 december 2026) goed ontvangen. ' +
-'We nemen zo snel mogelijk contact met je op om je reservatie te bevestigen.</p>' +
+groet + ',<br><br>Bedankt voor je bestelling van <strong style="color:#ffffff;">VIP-Gold tickets</strong> voor Diegem Cross op 30 december 2026. ' +
+'Je bestelling is goed ontvangen en bevestigd &mdash; de <strong style="color:#ffffff;">factuur volgt binnenkort</strong> per e-mail.</p>' +
 '</td></tr>' +
 
 // summary box
@@ -72,13 +72,18 @@ summary +
 
 // price note
 '<tr><td style="padding:16px 36px 8px;">' +
-'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.7;color:#8a8a8a;margin:0;">Prijs: &euro;300 per persoon (excl. btw). Dit was een reservatieaanvraag &mdash; er is nog geen betaling gebeurd.</p>' +
+'<p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.7;color:#8a8a8a;margin:0;">Prijs: &euro;300 per persoon (excl. btw). De betaling gebeurt op basis van de factuur die je binnenkort ontvangt.</p>' +
 '</td></tr>' +
 
 // contact
-'<tr><td style="padding:14px 36px 30px;">' +
+'<tr><td style="padding:14px 36px 6px;">' +
 '<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#c8c8c8;margin:0;">Vragen? Antwoord gerust op deze mail of contacteer ons via ' +
 '<a href="mailto:info@diegemcross.be" style="color:#00aa13;text-decoration:none;">info@diegemcross.be</a>.</p>' +
+'</td></tr>' +
+
+// handtekening
+'<tr><td style="padding:12px 36px 32px;">' +
+'<p style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#c8c8c8;margin:0;">Met sportieve groeten,<br><strong style="color:#ffffff;">Het Diegem Cross Team</strong></p>' +
 '</td></tr>' +
 
 // footer
@@ -116,6 +121,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         from: FROM,
         to: [to],
+        bcc: ["info@diegemcross.be"],
         reply_to: REPLY_TO,
         subject: "Bevestiging van je VIP-bestelling — Diegem Cross",
         html: buildHtml(d),
