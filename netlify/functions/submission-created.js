@@ -29,6 +29,24 @@ function row(label, value) {
   );
 }
 
+// Zet een telefoonnummer om in een net formaat met spaties, zodat de leidende 0
+// zichtbaar blijft (spaties -> Google Sheets bewaart het als tekst, niet als getal).
+function formatPhone(raw) {
+  if (!raw) return "";
+  const s = String(raw).trim();
+  if (s.startsWith("+")) {
+    const digits = s.replace(/[^\d]/g, "");
+    if (digits.startsWith("32") && digits.length === 11) {
+      return "+32 " + digits.slice(2).replace(/(\d{3})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+    }
+    return "+" + digits.replace(/(\d{2})(?=\d)/g, "$1 ");
+  }
+  const d = s.replace(/\D/g, "");
+  if (d.length === 10 && d[0] === "0") return d.replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/, "$1 $2 $3 $4 $5");
+  if (d.length === 9 && d[0] === "0") return d.replace(/(\d{2})(\d{3})(\d{2})(\d{2})/, "$1 $2 $3 $4");
+  return d ? d.replace(/(\d{2})(?=\d)/g, "$1 ") : s;
+}
+
 function buildHtml(d) {
   const naam = (d.naam || "").trim();
   const groet = naam ? "Beste " + esc(naam) : "Beste";
@@ -106,6 +124,7 @@ exports.handler = async (event) => {
       return { statusCode: 200, body: "andere form, overgeslagen" };
     }
     const d = payload.data || {};
+    d.telefoon = formatPhone(d.telefoon);
     const to = (d.email || "").trim();
     if (!to) return { statusCode: 200, body: "geen e-mailadres" };
     if (!process.env.RESEND_API_KEY) {
