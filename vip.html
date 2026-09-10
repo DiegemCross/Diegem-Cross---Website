@@ -383,12 +383,21 @@ img{max-width:100%;height:auto}
         <div><label for="vf-email">E-mailadres *</label><input id="vf-email" type="email" name="email" required></div>
         <div><label for="vf-tel">Telefoon</label><input id="vf-tel" type="tel" name="telefoon"></div>
         <div><label for="vf-aantal">Aantal VIP-tickets *</label><input id="vf-aantal" type="number" name="aantal_tickets" min="1" required placeholder="bv. 4"></div>
+        <div><label for="vf-btw">Btw-nummer <span style="text-transform:none;letter-spacing:0;font-weight:400;color:rgba(255,255,255,0.4);">(optioneel, voor bedrijven)</span></label><input id="vf-btw" type="text" name="btw" placeholder="BE 0123.456.789"></div>
       </div>
+
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#00aa13;margin:6px 0 14px;">Facturatieadres</div>
+      <div class="vipform-grid">
+        <div style="grid-column:1 / -1;"><label for="vf-straat">Straat + nr *</label><input id="vf-straat" type="text" name="straat_nr" required placeholder="bv. Dorpsstraat 12"></div>
+        <div><label for="vf-postcode">Postcode *</label><input id="vf-postcode" type="text" name="postcode" required placeholder="bv. 1831"></div>
+        <div><label for="vf-gemeente">Gemeente *</label><input id="vf-gemeente" type="text" name="gemeente" required placeholder="bv. Diegem"></div>
+      </div>
+
       <div class="vipform-check">
         <input id="vf-hotel" type="checkbox" name="overnachting" value="Ja, interesse in overnachting Van der Valk">
         <label for="vf-hotel">Ik heb interesse in een overnachting aan voordeeltarief (Van der Valk Hotel Brussels Airport).</label>
       </div>
-      <div style="margin-bottom:20px;"><label for="vf-fact">Btw-nummer &amp; facturatiegegevens (optioneel)</label><textarea id="vf-fact" name="facturatiegegevens" rows="3" placeholder="Btw-nummer, facturatieadres, bedrijfsgegevens ..."></textarea></div>
+      <div style="margin-bottom:20px;"><label for="vf-opm">Extra opmerkingen <span style="text-transform:none;letter-spacing:0;font-weight:400;color:rgba(255,255,255,0.4);">(optioneel)</span></label><textarea id="vf-opm" name="opmerkingen" rows="3" placeholder="Bv. facturatie op naam van, dieetwensen, ..."></textarea></div>
       <div style="text-align:center;">
         <button type="submit" class="btn btn-groen btn-lg">Verstuur bestelling</button>
         <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:14px;">Dit is een reservatieaanvraag &mdash; geen online betaling. Je ontvangt een bevestigingsmail.</p>

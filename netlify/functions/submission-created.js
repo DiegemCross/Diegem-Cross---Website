@@ -50,11 +50,15 @@ function formatPhone(raw) {
 function buildHtml(d) {
   const naam = (d.naam || "").trim();
   const groet = naam ? "Beste " + esc(naam) : "Beste";
+  const adres = [d.straat_nr, [d.postcode, d.gemeente].filter(Boolean).join(" ")].filter(Boolean).join(", ");
   const summary =
     row("Bedrijf / organisatie", d.bedrijf) +
     row("Aantal VIP-tickets", d.aantal_tickets) +
+    row("Telefoon", d.telefoon) +
+    row("Facturatieadres", adres) +
+    row("Btw-nummer", d.btw) +
     row("Overnachting", d.overnachting) +
-    row("Telefoon", d.telefoon);
+    row("Extra opmerkingen", d.opmerkingen);
 
   return (
 '<!DOCTYPE html><html><body style="margin:0;padding:0;background:#000000;">' +
@@ -163,7 +167,11 @@ exports.handler = async (event) => {
         telefoon: (d.telefoon || "").trim(),
         aantal_tickets: String(d.aantal_tickets || "").trim(),
         overnachting: d.overnachting ? "Ja" : "Nee",
-        facturatiegegevens: (d.facturatiegegevens || "").trim(),
+        straat_nr: (d.straat_nr || "").trim(),
+        postcode: (d.postcode || "").trim(),
+        gemeente: (d.gemeente || "").trim(),
+        btw: (d.btw || "").trim(),
+        opmerkingen: (d.opmerkingen || "").trim(),
       };
       await fetch(SHEETS_URL, {
         method: "POST",
