@@ -191,6 +191,11 @@
 .partner-cell .p-name { font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.22); text-align: center; transition: color 0.2s; }
 .partner-cell:hover .p-name { color: rgba(255,255,255,0.7); }
 
+/* SPONSORS: zelfde donkere vakjes als partners, maar 5+4 verdeling op PC */
+.sponsors-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+@media (max-width: 1040px) { .sponsors-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px)  { .sponsors-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; } }
+
 /* SLIDESHOW */
 .hero-slideshow { position: absolute; inset: 0; }
 .slide { position: absolute; inset: 0; background-size: cover; opacity: 0; transition: opacity 1.2s ease-in-out; animation: slowzoom 8s ease-out forwards; }
@@ -544,26 +549,24 @@
       </div>
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Partners Diegem Cross</p>
-    <div class="partners-grid" style="margin-bottom:24px;">
-      <div class="partner-cell"><a href="https://belorta.be" target="_blank"><img src="https://diegemcross.be/images/uploads/belorta.png" alt="Belorta" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.groupbrs.be" target="_blank"><img src="https://diegemcross.be/images/uploads/brs.png" alt="Group BRS" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="https://diegemcross.be/images/uploads/aceg.png" alt="ACEG" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.connectboost.be" target="_blank"><img src="/images/uploads/connectboost.svg" alt="Connect Boost" loading="lazy"></a></div>
+    <div class="sponsors-grid" style="margin-bottom:24px;">
+      <div class="partner-cell"><a href="https://belorta.be" target="_blank"><img src="/images/uploads/belorta.png" alt="Belorta" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.groupbrs.be" target="_blank"><img src="/images/uploads/brs.png" alt="Group BRS" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://aceg.be" target="_blank"><img src="/images/uploads/aceg.png" alt="ACEG" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.autosalon.be" target="_blank" rel="noopener"><img src="/images/uploads/salon.png" alt="Brussels Motor Show" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://chouxdebruxelles.be/nl/" target="_blank" rel="noopener"><img src="/images/uploads/choux.png" alt="Choux de Bruxelles" loading="lazy"></a></div>
     </div>
     <p style="font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--grijs);margin-bottom:10px;">Sponsors Telenet Superprestige</p>
-    <div class="partners-grid">
-      <div class="partner-cell"><a href="https://www.telenet.be" target="_blank"><img src="https://diegemcross.be/images/uploads/telenet.png" alt="Telenet" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://maes.be" target="_blank"><img src="https://diegemcross.be/images/uploads/maes.png" alt="Maes Pils" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.playsports.be" target="_blank"><img src="https://diegemcross.be/images/uploads/playsports.png" alt="Play Sports" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.electrodepot.be" target="_blank"><img src="https://diegemcross.be/images/uploads/electrodepot.png" alt="Electro Depot" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://sunseekerelite.be" target="_blank"><img src="https://diegemcross.be/images/uploads/sunseeker.png" alt="Sunseeker Elite" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.prikentik.be" target="_blank"><img src="https://diegemcross.be/images/uploads/priktik.png" alt="Prik &amp; Tik" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.ad-belgium.be" target="_blank"><img src="https://diegemcross.be/images/uploads/ad.png" alt="AD Garage" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.isolatiestock.be" target="_blank"><img src="https://diegemcross.be/images/uploads/isolatiestock.png" alt="Isolatiestock" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.sportled.nl" target="_blank"><img src="https://diegemcross.be/images/uploads/sportled.png" alt="SportLED" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.assaabloy.com" target="_blank"><img src="https://diegemcross.be/images/uploads/assaabloy.png" alt="Assa Abloy" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://www.kaercher.com" target="_blank"><img src="https://diegemcross.be/images/uploads/karcher.png" alt="Karcher" loading="lazy"></a></div>
-      <div class="partner-cell"><a href="https://metaalhandel.be" target="_blank"><img src="https://diegemcross.be/images/uploads/delrue.png" alt="Delrue" loading="lazy"></a></div>
+    <div class="sponsors-grid">
+      <div class="partner-cell"><a href="https://www.telenet.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/telenet.png" alt="Telenet" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://maes.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/maes.png" alt="Maes" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.assaabloy.com" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/assaabloy.png" alt="ASSA ABLOY" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.atlasschuhe.de" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/atlas.png" alt="Atlas Safety Shoes" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.axi.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/axi.png" alt="AXI" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.isolatiestock.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/isolatiestock.png" alt="Isolatie Stock" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.leapmotor.net/be-nl/" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/leapmotor.png" alt="Leapmotor" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.expert.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/expert.png" alt="Expert" loading="lazy"></a></div>
+      <div class="partner-cell"><a href="https://www.prikentik.be" target="_blank" rel="noopener"><img src="/images/uploads/sp2026/priktik.png" alt="Prik &amp; Tik" loading="lazy"></a></div>
     </div>
   </div>
 </section>
